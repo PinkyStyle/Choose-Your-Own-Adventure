@@ -9,14 +9,13 @@ package main;
  *
  * @author felip
  */
-public class VistaAutor extends javax.swing.JPanel {
+public class VistaJugador extends javax.swing.JPanel {
 
     /**
-     * Creates new form VistaAutor
+     * Creates new form VistaJugador
      */
-    public VistaAutor() {
+    public VistaJugador() {
         initComponents();
-        this.setVisible(true);
     }
 
     /**
@@ -31,7 +30,7 @@ public class VistaAutor extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 3, 48)); // NOI18N
-        jLabel1.setText("AUTOR CTM");
+        jLabel1.setText("JUGADOR CTM");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
