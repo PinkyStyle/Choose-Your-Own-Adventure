@@ -132,7 +132,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel1.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-
+        this.jPanel1.add(this.imagen);
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         
@@ -341,8 +341,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
     } 
     
     private void cargarImagen(java.awt.event.ActionEvent evt){
+        
         boolean flag1 = false;
         try{
+            
             JFileChooser file = new JFileChooser();
             file.showOpenDialog(this);
             File abre = file.getSelectedFile();
@@ -353,6 +355,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "El tipo del archivo no era una imagen", "Mensaje de advertencia", JOptionPane.WARNING_MESSAGE);
                     return;
                 }
+                this.jPanel1.remove(imagen);
                 ImageIcon i = new ImageIcon(abre.getAbsolutePath()); 
                 Image img = i.getImage();
                 img = img.getScaledInstance(172, 172, java.awt.Image.SCALE_SMOOTH);
@@ -438,7 +441,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel1 ;
     
-    private javax.swing.JLabel imagen;
+    private javax.swing.JLabel imagen = new JLabel();
 }
