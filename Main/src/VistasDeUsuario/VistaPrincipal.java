@@ -452,7 +452,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jButton6.setText("Terminar y Salir");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                //jButton6ActionPerformed(evt);
+                terminarYsalirLibroJuego(evt);
             }
         });
 
@@ -474,6 +474,23 @@ public class VistaPrincipal extends javax.swing.JFrame {
             }
 
         });
+        
+        jTextArea1.setEditable(false);
+        jTextArea1.setEnabled(false);
+        jTextField1.setEditable(false);
+        jTextField1.setEnabled(false);
+        jTextField2.setEditable(false);
+        jTextField2.setEnabled(false);
+        jTextField3.setEditable(false);
+        jTextField3.setEnabled(false);
+        jTextField4.setEditable(false);
+        jTextField4.setEnabled(false);
+        jTextField5.setEditable(false);
+        jTextField5.setEnabled(false);
+        jTextField6.setEditable(false);
+        jTextField6.setEnabled(false);
+        
+        
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -603,11 +620,114 @@ public class VistaPrincipal extends javax.swing.JFrame {
     
     private void jComboBox1ActionPerformed(ActionEvent evt) {
         System.out.println(this.jComboBox1.getSelectedItem());
+        this.resetPagina();
+        if (this.jComboBox1.getSelectedItem().equals("Pagina normal")) {
+            jTextArea1.setEditable(true);
+            jTextArea1.setEnabled(true);
+            jTextField1.setEditable(true);
+            jTextField1.setEnabled(true);
+            jTextField2.setEditable(true);
+            jTextField2.setEnabled(true);
+            jTextField3.setEditable(true);
+            jTextField3.setEnabled(true);
+            jTextField4.setEditable(true);
+            jTextField4.setEnabled(true);
+            jTextField5.setEditable(true);
+            jTextField5.setEnabled(true);
+            jTextField6.setEditable(true);
+            jTextField6.setEnabled(true);
+            
+        }
+        if (this.jComboBox1.getSelectedItem().equals(" ")) {
+            jTextArea1.setEditable(false);
+            jTextArea1.setEnabled(false);
+            jTextField1.setEditable(false);
+            jTextField1.setEnabled(false);
+            jTextField2.setEditable(false);
+            jTextField2.setEnabled(false);
+            jTextField3.setEditable(false);
+            jTextField3.setEnabled(false);
+            jTextField4.setEditable(false);
+            jTextField4.setEnabled(false);
+            jTextField5.setEditable(false);
+            jTextField5.setEnabled(false);
+            jTextField6.setEditable(false);
+            jTextField6.setEnabled(false);
+            
+        }
+        
+        if (this.jComboBox1.getSelectedItem().equals("Final bueno")) {
+            jTextArea1.setEditable(true);
+            jTextArea1.setEnabled(true);
+            jTextField1.setEditable(false);
+            jTextField1.setEnabled(false);
+            jTextField2.setEditable(true);
+            jTextField2.setEnabled(true);
+            jTextField3.setEditable(true);
+            jTextField3.setEnabled(true);
+            jTextField4.setEditable(false);
+            jTextField4.setEnabled(false);
+            jTextField5.setEditable(false);
+            jTextField5.setEnabled(false);
+            jTextField6.setEditable(false);
+            jTextField6.setEnabled(false);
+            
+        }
+        
+        if (this.jComboBox1.getSelectedItem().equals("Final malo")) {
+            jTextArea1.setEditable(true);
+            jTextArea1.setEnabled(true);
+            jTextField1.setEditable(false);
+            jTextField1.setEnabled(false);
+            jTextField2.setEditable(false);
+            jTextField2.setEnabled(false);
+            jTextField3.setEditable(true);
+            jTextField3.setEnabled(true);
+            jTextField4.setEditable(false);
+            jTextField4.setEnabled(false);
+            jTextField5.setEditable(true);
+            jTextField5.setEnabled(true);
+            jTextField6.setEditable(false);
+            jTextField6.setEnabled(false);
+            
+        }
+        if (this.jComboBox1.getSelectedItem().equals("Final regular")) {
+            jTextArea1.setEditable(true);
+            jTextArea1.setEnabled(true);
+            jTextField1.setEditable(false);
+            jTextField1.setEnabled(false);
+            jTextField2.setEditable(false);
+            jTextField2.setEnabled(false);
+            jTextField3.setEditable(true);
+            jTextField3.setEnabled(true);
+            jTextField4.setEditable(false);
+            jTextField4.setEnabled(false);
+            jTextField5.setEditable(false);
+            jTextField5.setEnabled(false);
+            jTextField6.setEditable(false);
+            jTextField6.setEnabled(false);
+            
+        }
     }
+    
+    private void resetPagina(){
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
+        jTextField4.setText("");
+        jTextField5.setText("");
+        jTextField6.setText("");
+        jTextArea1.setText("");
+        listModel = new DefaultListModel();
+        this.jList1.setModel(listModel);
+   
+    }
+    
+    
     
     private void agregarOpcion(ActionEvent evt) {
         if (this.jTextField1.getText().isEmpty() || this.jTextField2.getText().isEmpty() || this.jTextField4.getText().isEmpty()) {
-            
+            JOptionPane.showMessageDialog(null, "Rellene todos los campos obligatorios","Advertencia ", JOptionPane.WARNING_MESSAGE);
         }
         else {
             //this.jList1.get
@@ -617,7 +737,26 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }
     
     private void siguientePagina(ActionEvent evt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (this.jComboBox1.getSelectedItem().equals("Pagina normal")) {
+            
+            if (this.jList1.getModel().getSize()>0 && !this.jTextArea1.getText().isEmpty() && !this.jTextField3.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "La pagina fue guardada con exito");
+                this.crearPagina();
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Rellene todos los campos obligatorios","Advertencia ", JOptionPane.WARNING_MESSAGE);
+            }
+            
+            
+        }
+    }
+    
+    private void terminarYsalirLibroJuego(ActionEvent evt) {
+        if (this.salirPrincipal() == 0) {
+            this.getContentPane().removeAll(); 
+            this.repaint();
+            this.initComponents();
+        }
     }
      
     private void cargarImagen(java.awt.event.ActionEvent evt){
