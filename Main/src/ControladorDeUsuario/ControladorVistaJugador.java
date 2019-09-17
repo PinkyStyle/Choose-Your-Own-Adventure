@@ -7,6 +7,7 @@ import java.awt.Image;
 import java.util.ArrayList;
 
 
+
 /**
  *  Clase que se encarga de redireccionar acciones solicitadas por la vista del jugador
  */

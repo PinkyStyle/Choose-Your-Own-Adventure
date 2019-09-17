@@ -18,6 +18,7 @@ public class Final extends BuilderPagina {
      * @param tipo
      * @param artefacto 
      */
+    
     public Final(int numeroPagina, String descripcion, String tipo, Artefacto artefacto) {
         String[] parse = tipo.split(" ");
         super.crearNuevaPagina(numeroPagina, descripcion, parse[0]);

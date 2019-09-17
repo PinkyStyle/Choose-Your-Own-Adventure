@@ -30,6 +30,7 @@ public class ControladorVistaConstructor {
         this.gestorDeLibros.crearLibroJuego(nombreDeAutor, tituloDeAventura, imagen, sinopsis);
     }
 
+    
     /**
      * Metodo que se encarga de decirle al gestor de libros que cree una pagina
      * @param tituloDeAventura

@@ -19,6 +19,7 @@ public class Camino {
      * @param quitar
      * @param solicitar
      */
+    
     public Camino(int n, String opcion, Artefacto dar, Artefacto quitar, Artefacto solicitar) {
         this.numeroPagina=n;
         this.opcion=opcion;

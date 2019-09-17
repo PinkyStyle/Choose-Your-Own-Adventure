@@ -7,6 +7,7 @@ import ModuloDeCreacionLibroJuego.LibroJuego;
  */
 
 
+
 public class Adapter {
        
     /**

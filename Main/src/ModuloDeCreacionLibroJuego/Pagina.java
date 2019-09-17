@@ -12,6 +12,7 @@ public class Pagina {
     private String tipo;
     
 
+    
     /**
      * Constructor de Pagina.
      * @param numeroPagina El numero que se le asigna a la pagina.

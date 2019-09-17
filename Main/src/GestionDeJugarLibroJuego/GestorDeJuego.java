@@ -11,6 +11,7 @@ public class GestorDeJuego {
     private boolean protagonistaCreado = false; 
     private Protagonista protagonista;
     
+    
     /**
      * Default constructor
      */

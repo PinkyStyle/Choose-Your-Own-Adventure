@@ -14,6 +14,7 @@ public class Artefacto {
         this.nombre = nombre;
     }
     
+    
     /**
      * Metodo que retorna el nombre del artefacto.
      * @return El nombre del artefacto.

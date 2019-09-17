@@ -19,6 +19,7 @@ public abstract class BuilderPagina {
     public void crearNuevaPagina(int numeroPagina, String descripcion, String tipo) {
         this.pagina=new Pagina(numeroPagina, descripcion, tipo);
     }
+    
 
     /**
      * Metodo que retorna la pagina
