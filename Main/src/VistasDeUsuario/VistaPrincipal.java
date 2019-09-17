@@ -163,7 +163,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jButton1.setText("Elegir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cargarImagen(evt);
+                int a= 172;
+                cargarImagen(evt,a,a);
             }
         });
 
@@ -604,7 +605,15 @@ public class VistaPrincipal extends javax.swing.JFrame {
         }
         else{
             System.out.println("entro");
+            if (flag1 == true) {
+                this.imagen = new JLabel();
+                this.imagen.setBounds(0, 0,200,200);
+                this.jPanel1.add(this.imagen);
+                this.pack();
+                this.repaint();
+            }
             listModel = new DefaultListModel();
+            
             this.crearPagina();
         }
     } 
@@ -671,7 +680,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                // jButton1ActionPerformed(evt);
-                cargarImagen(evt);
+               int a = 200;
+                cargarImagen(evt,a,a);
                
             }
         });
@@ -730,7 +740,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jLabel7.setText("Quitar artefacto");
         jLabel8.setText("Necesita artefacto");
         jLabel9.setText("Tipo pagina:");
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ","Pagina normal", "Final bueno", "Final regular", "Final malo" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Escoja un tipo","Pagina normal", "Final bueno", "Final regular", "Final malo" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -878,6 +888,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         );
 
         pack();
+        JOptionPane.showMessageDialog(null, "Es necesario que escoja un tipo de pagina para seguir");
     
     }
     
@@ -901,7 +912,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
             jTextField6.setEnabled(true);
             
         }
-        if (this.jComboBox1.getSelectedItem().equals(" ")) {
+        if (this.jComboBox1.getSelectedItem().equals("Escoja un tipo")) {
             jTextArea1.setEditable(false);
             jTextArea1.setEnabled(false);
             jTextField1.setEditable(false);
@@ -989,13 +1000,18 @@ public class VistaPrincipal extends javax.swing.JFrame {
     
     
     private void agregarOpcion(ActionEvent evt) {
-        if (this.jTextField1.getText().isEmpty() || this.jTextField2.getText().isEmpty() || this.jTextField4.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Rellene todos los campos obligatorios","Advertencia ", JOptionPane.WARNING_MESSAGE);
+        if (this.jComboBox1.getSelectedItem().equals("Final malo") || this.jComboBox1.getSelectedItem().equals("Final bueno") || this.jComboBox1.getSelectedItem().equals("Final regular") ) {
+            JOptionPane.showMessageDialog(null, "Usted no puede agregar opciones a un final","Advertencia ", JOptionPane.WARNING_MESSAGE);
         }
-        else {
-            //this.jList1.get
-            this.jList1.setModel(listModel);
-            listModel.addElement(this.jTextField1.getText()+";"+this.jTextField2.getText()+";"+this.jTextField4.getText());
+        else{
+            if (this.jTextField1.getText().isEmpty() || this.jTextField2.getText().isEmpty() || this.jTextField4.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Rellene todos los campos obligatorios","Advertencia ", JOptionPane.WARNING_MESSAGE);
+            }
+            else {
+                //this.jList1.get
+                this.jList1.setModel(listModel);
+                listModel.addElement(this.jTextField1.getText()+";"+this.jTextField2.getText()+";"+this.jTextField4.getText());
+            }
         }
     }
     
@@ -1022,9 +1038,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
         }
     }
      
-    private void cargarImagen(java.awt.event.ActionEvent evt){
+    private void cargarImagen(java.awt.event.ActionEvent evt, int ancho, int largo){
         
-        boolean flag1 = false;
+        flag1 = false;
         try{
             
             JFileChooser file = new JFileChooser();
@@ -1040,11 +1056,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 this.jPanel1.remove(imagen);
                 ImageIcon i = new ImageIcon(abre.getAbsolutePath()); 
                 Image img = i.getImage();
-                img = img.getScaledInstance(172, 172, java.awt.Image.SCALE_SMOOTH);
+                img = img.getScaledInstance(ancho, largo, java.awt.Image.SCALE_SMOOTH);
                 i = new ImageIcon(img);
                 this.imagen = new JLabel();
                 this.imagen.setIcon(i);
-                this.imagen.setBounds(0, 0,172,172);
+                this.imagen.setBounds(0, 0,ancho,largo);
                 this.jPanel1.add(this.imagen);
                 this.pack();
                 this.repaint();
@@ -1124,6 +1140,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JPanel jPanel1 ;
+    private boolean flag1 = false;
     
     private javax.swing.JLabel imagen = new JLabel();
     private javax.swing.JLabel jLabel2;
