@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Pagina {
     private int numeroPagina;
     private String descripcion;
-    private ArrayList<Image> imagenes;
+    private ArrayList<String> imagenes;
     private String tipo;
     
 
@@ -46,7 +46,7 @@ public class Pagina {
      * Metodo que retorna la lista de imagenes asociadas a la pagina.
      * @return La lista de imagenes asociadas.
      */
-    public ArrayList<Image> getImagenes() {
+    public ArrayList<String> getImagenes() {
         return imagenes;
     }
     
@@ -54,7 +54,7 @@ public class Pagina {
      * Metodo que agrega una imagen a la pagina.
      * @param imagen La imagen que se desea agregar a la pagina.
      */
-    public void addImagenes(Image imagen) {
+    public void addImagenes(String imagen) {
        this.imagenes.add(imagen);
     }
     
