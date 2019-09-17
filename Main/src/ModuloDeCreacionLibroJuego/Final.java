@@ -7,6 +7,7 @@ import java.util.ArrayList;
  * 
  */
 public class Final extends BuilderPagina {
+    
     private Artefacto artefacto;
 
     /**
@@ -27,7 +28,8 @@ public class Final extends BuilderPagina {
     public void getRecompensa() {
         // TODO implement here
     }
-    
+
+       
     /**
      * Metodo que retorna el tipo de la pagina a la cual esta asociada.
      * @return El numero de la pagina.

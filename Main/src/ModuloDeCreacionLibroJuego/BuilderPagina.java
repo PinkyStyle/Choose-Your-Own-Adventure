@@ -25,9 +25,9 @@ public abstract class BuilderPagina {
     /**
      * 
      */
-    public void getPagina() {
+    public Pagina getPagina() {
         // TODO implement here
-        
+        return this.pagina;
     }
 
     public abstract String getTipo();

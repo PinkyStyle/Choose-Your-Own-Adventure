@@ -10,9 +10,10 @@ public class GestorDeLibros {
     private ArrayList<LibroJuego> listaLibrojuego;
 
     /**
-     * Default constructor
+     * 
      */
     public GestorDeLibros() {
+        this.listaLibrojuego=new ArrayList<>();
     }
 
     /**
@@ -20,6 +21,7 @@ public class GestorDeLibros {
      */
     public void crearLibroJuego() {
         // TODO implement here
+        
     }
 
     /**
@@ -27,6 +29,7 @@ public class GestorDeLibros {
      */
     public void mostrarPagina() {
         // TODO implement here
+        
     }
 
 }

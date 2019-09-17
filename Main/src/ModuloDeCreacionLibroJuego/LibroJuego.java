@@ -5,33 +5,63 @@ import java.util.ArrayList;
 
 
 /**
- * 
+ * Clase que se encarga de crear un LibroJuego
  */
 public class LibroJuego {
     private String nombreDeAutor;
     private String tituloDeAventura;
     private Image imagen;
     private String sinopsis;
-    private ArrayList<Pagina> paginas;
+    private ArrayList<BuilderPagina> paginas;
 
     /**
-     * Default constructor
+     * Constructor que inicializa el libro con sus atributos genericos y el arreglo lo crea sin paginas
+     * @param nombreDeAutor
+     * @param tituloDeAventura
+     * @param imagen
+     * @param sinopsis 
      */
-    public LibroJuego() {
+    public LibroJuego(String nombreDeAutor, String tituloDeAventura, Image imagen, String sinopsis) {
+        this.nombreDeAutor = nombreDeAutor;
+        this.tituloDeAventura = tituloDeAventura;
+        this.imagen = imagen;
+        this.sinopsis = sinopsis;
+        this.paginas=new ArrayList<>();
     }
 
     /**
-     * 
+     * Metodo que crea una pagina de 2 tipos:
+     * 1._ Pagina normal
+     * 2._ Final
+     * @param numeroPagina
+     * @param descripcion
+     * @param tipo
+     * @param artefacto 
      */
-    public void crearPagina() {
-        // TODO implement here
+    public void crearPagina(int numeroPagina, String descripcion, String tipo, Artefacto artefacto) {
+        if("Pagina Normal".equals(tipo)){
+            this.paginas.add(new PaginaNormal(numeroPagina, descripcion, tipo));
+            System.out.println("Se creo una pagina normal");
+            return;
+        }
+        String[] parseo= descripcion.split(" ");
+        if("Final".equals(parseo[0])){
+            this.paginas.add(new Final(numeroPagina, descripcion, tipo, artefacto));
+            System.out.println("se creo una pagina final");
+            return;
+        }
+        System.out.println("Fallo al crear la pagina");
     }
 
     /**
-     * 
+     * Metodo que retorna una pagina espesifica del LibroJuego
+     * @param i
+     * @return 
      */
-    public void verificarFinalJuego() {
-        // TODO implement here
+    public BuilderPagina getPagina(int i) {
+        return this.paginas.get(i);
     }
+
+    
 
 }
