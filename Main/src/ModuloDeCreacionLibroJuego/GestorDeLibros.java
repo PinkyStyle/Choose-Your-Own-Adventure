@@ -81,7 +81,7 @@ public class GestorDeLibros {
      * @param numeroPag
      * @return 
      */
-    public String descripcionDePagina(String tituloDeAventura, int numeroPag) {
+    public String mostrarDescripcionDePagina(String tituloDeAventura, int numeroPag) {
         BuilderPagina builderPagina=retornarPagina(tituloDeAventura, numeroPag);
         PaginaNormal pagina = (PaginaNormal)builderPagina;
         return pagina.getDescripcion();
@@ -100,14 +100,16 @@ public class GestorDeLibros {
         return null;
     }
 
-    public ArrayList<Camino> mostrarListaDeCaminosDePagina(String tituloDeAventura, int numeroPag) {
-        BuilderPagina builderPagina=retornarPagina(tituloDeAventura, numeroPag);
-        PaginaNormal pagina = (PaginaNormal)builderPagina;
-        return pagina.getCaminos();
+    public ArrayList<String> mostrarImagenesDePagina() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public ArrayList<LibroJuego> getLibros() {
-        return null;
+    public ArrayList<String> mostrarListaCaminosDePagina() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+
+
+
 }
 
