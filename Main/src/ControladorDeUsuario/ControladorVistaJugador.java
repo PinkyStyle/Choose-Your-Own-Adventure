@@ -39,11 +39,12 @@ public class ControladorVistaJugador {
     }
     
     /**
-     * 
+     * Metodo que se encarga de inicializar el juego seleccionando el libroJuego y el nombre del protagonista
      * @param tituloDeAventura 
+     * @param nombreAventuraro 
      */
-    public void iniciarJuego(String tituloDeAventura){
-        this.gestorDeJuego.inicialJuego(tituloDeAventura);
+    public void iniciarJuego(String tituloDeAventura, String nombreAventuraro){
+        this.gestorDeJuego.inicialJuego(tituloDeAventura, nombreAventuraro);
     }
     
     /**

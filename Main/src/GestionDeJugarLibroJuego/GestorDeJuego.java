@@ -10,22 +10,21 @@ import java.util.ArrayList;
  */
 public class GestorDeJuego {
 
-    private boolean protagonistaCreado = false;
     private Protagonista protagonista;
+    private String tituloDeAventura;
+    private int nPagina;
 
     /**
      * Default constructor
      *
-     * @param nombreLibro
      */
-    public GestorDeJuego() {
-    }
+    public GestorDeJuego() {}
+    
     /**
      *
      */
     public void jugarLibroJuego(String nombre) {
         this.crearProtagonista(nombre);
-
     }
 
     /**
@@ -47,45 +46,11 @@ public class GestorDeJuego {
     }
 
     /**
-     *
+     * 
+     * @return 
      */
-    public void obtenerSiguientePagina() {
-        // TODO implement here
-
-    }
-
-    /**
-     *
-     */
-    public void nuevoInicio() {
-        // TODO implement here
-
-    }
-
-    /**
-     *
-     */
-    public void libroFinalizado() {
-        // TODO implement here
-        // que cambie el estado del libro al inicio del juego como completado
-    }
-
-    public void cambiarNombre() {
-        //cambia NOMBRE por el nombre ingresado por el Protagonista
-    }
-
-    public void gestionarArtefacto() {
-        // obtiene el artefacto de la pagina segun la opcion seleccionada
-        // elimina el artefactgo en caso de ser quemado segun la opcion seleccionada
-    }
-
-    public void validarOpciones() {
-        // segun los artefactos que se tengan son las opciones 
-        // segun los objetos quemados 
-
-    }
-
     public ArrayList<String> mostrarListaLibroJuegos() {
+        /**
         ArrayList<LibroJuego>libros=gestorDeLibros.getLibros();
         ArrayList<String>nombreLibros=new ArrayList<>();
         for (int i = 0; i < libros.size(); i++) {
@@ -95,8 +60,15 @@ public class GestorDeJuego {
         }
 
         return nombreLibros;
+        * */
+        return null;
     }
 
+    /**
+     * 
+     * @param tituloDeAventura
+     * @return 
+     */
     public ArrayList<String> mostrarinformacionDeUnLibroJuegos(String tituloDeAventura) {
         ArrayList<String> lista = new ArrayList<>();
         LibroJuego libro = gestorDeLibros.informacionLibroJuego(tituloDeAventura);
@@ -115,52 +87,51 @@ public class GestorDeJuego {
         }
         return null;
     }
+
+ //-----------------------------------------------------------------------
+
+
     /**
-     * muestra la informacion de una pagina.
-     * @param tituloDeAventura
-     * @param numeroPag
-     * @return 
+     * Inicializa el juego creando el protagonista, npagina 1, tituloDeAventura
+     * @param tituloDeAventura 
+     * @param nombreAventuraro 
      */
-    public String mostrarDescripcionDePagina(String tituloDeAventura, int numeroPag) {
-        return gestorDeLibros.descripcionDePagina(tituloDeAventura,numeroPag);
+    public void inicialJuego(String tituloDeAventura, String nombreAventuraro) {
+        this.protagonista=new Protagonista(nombreAventuraro);
+        this.tituloDeAventura=tituloDeAventura;
+        this.nPagina=1;      
     }
+
     /**
-     * retorna una array con la lista de las rutas de las imagenes.
-     * NO ESTA FUNCIONAL AUN, HASTA QUE MODIFIQUEN EL TIPO DE ATRIBUTO QUE TIENE
-     * LIBRO JUEGO.
-     * @param tituloDeAventura
-     * @param i
-     * @return 
+     * 
+     * @param camino 
      */
-    public ArrayList<String> mostrarImagenesDePagina(String tituloDeAventura, int i) {
-
-        //return gestorDeLibros.mostrarRutasDePagina();
-        return null;
-    }
-
-    public ArrayList<String> mostrarListaCaminosDePagina(String tituloDeAventura, int i) {
-        ArrayList<Camino> caminos= gestorDeLibros.mostrarListaDeCaminosDePagina(tituloDeAventura,i);
-        ArrayList<String> lista= new ArrayList<>();
-        return lista;
-    }
-
-    public void inicialJuego(String tituloDeAventura) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     public void actualizarPagina(String camino) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String[] parse = camino.split(" ");
+        this.nPagina=Integer.parseInt(parse[parse.length-1]);
     }
 
+    /**
+     * 
+     * @return 
+     */
     public String mostrarDescripcionDePagina() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return gestorDeLibros.mostrarDescripcionDePagina(this.tituloDeAventura, this.nPagina);
     }
-
+    
+    /**
+     * 
+     * @return 
+     */
     public ArrayList<String> mostrarImagenesDePagina() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return gestorDeLibros.mostrarImagenesDePagina();
     }
 
+    /**
+     * 
+     * @return 
+     */
     public ArrayList<String> mostrarListaCaminosDePagina() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return gestorDeLibros.mostrarListaCaminosDePagina();
     }
 }
