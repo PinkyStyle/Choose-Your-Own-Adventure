@@ -5,14 +5,6 @@ import ModuloDeCreacionLibroJuego.Camino;
 import ModuloDeCreacionLibroJuego.LibroJuego;
 import java.util.ArrayList;
 
-import ModuloDeCreacionLibroJuego.BuilderPagina;
-import ModuloDeCreacionLibroJuego.GestorDeLibros;
-import ModuloDeCreacionLibroJuego.LibroJuego;
-import ModuloDeCreacionLibroJuego.Pagina;
-import ModuloDeCreacionLibroJuego.PaginaNormal;
-import java.awt.Image;
-import java.util.ArrayList;
-
 /**
  *
  */
@@ -146,8 +138,29 @@ public class GestorDeJuego {
         return null;
     }
 
-    public ArrayList<Camino> mostrarListaCaminosDePagina(String tituloDeAventura, int i) {
+    public ArrayList<String> mostrarListaCaminosDePagina(String tituloDeAventura, int i) {
+        ArrayList<Camino> caminos= gestorDeLibros.mostrarListaDeCaminosDePagina(tituloDeAventura,i);
+        ArrayList<String> lista= new ArrayList<>();
+        return lista;
+    }
 
-        return gestorDeLibros.mostrarListaDeCaminosDePagina(tituloDeAventura,i);
+    public void inicialJuego(String tituloDeAventura) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void actualizarPagina(String camino) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public String mostrarDescripcionDePagina() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public ArrayList<String> mostrarImagenesDePagina() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public ArrayList<String> mostrarListaCaminosDePagina() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
