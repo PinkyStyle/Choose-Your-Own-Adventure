@@ -9,16 +9,22 @@ import java.util.ArrayList;
 public class Final extends BuilderPagina {
     
     private Artefacto artefacto;
-
+    private String tipo;
+    
     /**
-     * 
+     * Constructor de pagina tipo final
+     * Nota:
+     * Tipo del siper es final
+     * Tipo de final es de 3 tipos: malo, bueno, regular
      * @param numeroPagina
      * @param descripcion
      * @param tipo
      * @param artefacto 
      */
     public Final(int numeroPagina, String descripcion, String tipo, Artefacto artefacto) {
-        super.crearNuevaPagina(numeroPagina, descripcion, tipo);
+        String[] parse = tipo.split(" ");
+        super.crearNuevaPagina(numeroPagina, descripcion, parse[0]);
+        this.tipo=parse[1];
         this.artefacto = artefacto;
     }
 
@@ -36,7 +42,7 @@ public class Final extends BuilderPagina {
      */
     @Override
     public String getTipo() {
-        return this.pagina.getTipo();
+        return this.tipo;
     }
     
     /**
