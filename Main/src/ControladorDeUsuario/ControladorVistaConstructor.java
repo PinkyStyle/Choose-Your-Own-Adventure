@@ -10,7 +10,7 @@ import java.awt.Image;
 public class ControladorVistaConstructor {
 
     private String tituloDeAventura;
-    private GestorDeLibros gestorDeLibros;
+    public static GestorDeLibros gestorDeLibros;
     
     /**
      * Constructor de la vista del autor

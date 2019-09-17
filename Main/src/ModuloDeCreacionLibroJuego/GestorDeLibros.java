@@ -54,6 +54,10 @@ public class GestorDeLibros {
         }
         return null;
     }
+    
+    public ArrayList<String> mostrarListaNombreLibroJuegos(){
+        return null;
+    }
          
     /**
      * Metodo que se encarga de retornar una pagina especifica dado a un tituloDeAventura y un numero de pagina
@@ -69,6 +73,18 @@ public class GestorDeLibros {
         }
         System.out.println("No se encontro el libro");
         return null;
+    }
+
+    public String descripcionDePagina(String tituloDeAventura) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public ArrayList<String> mostrarRutasDePagina() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public ArrayList<Camino> mostrarListaDeCaminosDePagina() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
