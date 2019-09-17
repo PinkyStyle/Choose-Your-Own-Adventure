@@ -45,6 +45,15 @@ public class GestorDeLibros {
         }
         System.out.println("no se creo la nueva pagina");
     }
+    
+    public LibroJuego informacionLibroJuego(String tituloDeAventura){
+        for (int i = 0; i < listaLibrojuego.size() ; i++) {
+            if(this.listaLibrojuego.get(i).getTituloDeAventura().equals(tituloDeAventura)){
+                return this.listaLibrojuego.get(i);
+            }
+        }
+        return null;
+    }
          
     /**
      * Metodo que se encarga de retornar una pagina especifica dado a un tituloDeAventura y un numero de pagina
