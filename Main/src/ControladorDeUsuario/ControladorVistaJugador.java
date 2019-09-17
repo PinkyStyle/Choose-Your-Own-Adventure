@@ -1,7 +1,6 @@
 package ControladorDeUsuario;
 
 import GestionDeJugarLibroJuego.GestorDeJuego;
-import ModuloDeCreacionLibroJuego.Camino;
 import java.util.ArrayList;
 
 

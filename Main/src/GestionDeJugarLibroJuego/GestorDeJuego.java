@@ -1,7 +1,6 @@
 package GestionDeJugarLibroJuego;
 
 import static ControladorDeUsuario.ControladorVistaConstructor.gestorDeLibros;
-import ModuloDeCreacionLibroJuego.Camino;
 import ModuloDeCreacionLibroJuego.LibroJuego;
 import java.util.ArrayList;
 

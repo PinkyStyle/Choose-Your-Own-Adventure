@@ -1,6 +1,4 @@
 package ModuloDeCreacionLibroJuego;
-
-import java.awt.Image;
 import java.util.ArrayList;
 
 
@@ -24,7 +22,7 @@ public class GestorDeLibros {
      * @param imagen
      * @param sinopsis 
      */
-    public void crearLibroJuego(String nombreDeAutor, String tituloDeAventura, Image imagen, String sinopsis){
+    public void crearLibroJuego(String nombreDeAutor, String tituloDeAventura, String imagen, String sinopsis){
         this.listaLibrojuego.add(new LibroJuego(nombreDeAutor, tituloDeAventura, imagen, sinopsis));
     }
     
@@ -101,15 +99,12 @@ public class GestorDeLibros {
     }
 
     public ArrayList<String> mostrarImagenesDePagina() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
     }
 
     public ArrayList<String> mostrarListaCaminosDePagina() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
     }
-
-
-
-
+    
 }
 
