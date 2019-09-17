@@ -18,7 +18,7 @@ public class Protagonista {
 
     public boolean buscarArtefacto(String artefacto) {
         if(artefactos.contains(artefacto)){
-            return true
+            return true;
         }
         else {
             return false;

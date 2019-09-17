@@ -62,6 +62,12 @@ public class LibroJuego {
         return this.paginas.get(i);
     }
 
+    /**
+     * 
+     * @return tituloDeAventura
+     */
+    public String getTituloDeAventura() {
+        return tituloDeAventura;
+    }
     
-
 }
