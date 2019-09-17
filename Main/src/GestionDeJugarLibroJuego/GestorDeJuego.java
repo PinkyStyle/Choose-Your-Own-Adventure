@@ -94,6 +94,7 @@ public class GestorDeJuego {
         return gestorDeLibros.mostrarRutasDePagina();
     }
     
+    
     public ArrayList<Camino> mostrarListaCaminosDePagina(String tituloDeAventura, int i){
         
         return gestorDeLibros.mostrarListaDeCaminosDePagina();
