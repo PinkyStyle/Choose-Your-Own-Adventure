@@ -55,8 +55,6 @@ public class GestorDeLibros {
         return null;
     }
     
-    
-    
     public ArrayList<String> mostrarListaNombreLibroJuegos(){
         return null;
     }
@@ -76,17 +74,40 @@ public class GestorDeLibros {
         System.out.println("No se encontro el libro");
         return null;
     }
-
-    public String descripcionDePagina(String tituloDeAventura) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    /**
+     * retorna la descripcion de una pagina, atraves del nombre de la aventura
+     * y el numero de pagina.
+     * @param tituloDeAventura
+     * @param numeroPag
+     * @return 
+     */
+    public String descripcionDePagina(String tituloDeAventura, int numeroPag) {
+        BuilderPagina builderPagina=retornarPagina(tituloDeAventura, numeroPag);
+        PaginaNormal pagina = (PaginaNormal)builderPagina;
+        return pagina.getDescripcion();
+    }
+    /**
+     * retorna una array con la lista de las rutas de la imagenes.
+     * OJO NO ESTA FUNCIONAL, FALTA QUE EN VEZ DE QUE ME PASEN LA IMAGEN, SOLO ME PASEN LA RUTA.
+     * @param tituloDeAventura
+     * @param numeroPag
+     * @return 
+     */
+    public ArrayList<String> mostrarRutasDePagina(String tituloDeAventura, int numeroPag) {
+        BuilderPagina builderPagina=retornarPagina(tituloDeAventura, numeroPag);
+        PaginaNormal pagina = (PaginaNormal)builderPagina;
+        //return pagina.getImagenes();
+        return null;
     }
 
-    public ArrayList<String> mostrarRutasDePagina() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public ArrayList<Camino> mostrarListaDeCaminosDePagina(String tituloDeAventura, int numeroPag) {
+        BuilderPagina builderPagina=retornarPagina(tituloDeAventura, numeroPag);
+        PaginaNormal pagina = (PaginaNormal)builderPagina;
+        return pagina.getCaminos();
     }
 
-    public ArrayList<Camino> mostrarListaDeCaminosDePagina() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public ArrayList<LibroJuego> getLibros() {
+        return null;
     }
-
 }
+
