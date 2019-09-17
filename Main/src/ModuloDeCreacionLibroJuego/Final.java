@@ -24,6 +24,7 @@ public class Final extends BuilderPagina {
         this.tipoFinal=parse[1];
         this.artefacto = artefacto;
     }
+    
 
     /**
      * Metodo que retorna el artefacto que gano, perdio en el final de la aventura

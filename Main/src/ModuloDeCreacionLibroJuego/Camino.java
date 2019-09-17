@@ -27,6 +27,7 @@ public class Camino {
         this.solicitarArtefacto=solicitar;
         
     }
+    
 
     /**
      * Metodo que retorna el numero de la pagina

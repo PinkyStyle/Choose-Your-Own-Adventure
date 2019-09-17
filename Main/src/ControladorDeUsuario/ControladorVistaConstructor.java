@@ -42,4 +42,6 @@ public class ControladorVistaConstructor {
         this.gestorDeLibros.agregarPagina(tituloDeAventura, numeroPagina, descripcion, tipo, artefacto);
     }
 
+    
+    
 }

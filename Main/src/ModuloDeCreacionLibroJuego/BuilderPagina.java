@@ -26,6 +26,7 @@ public abstract class BuilderPagina {
     public Pagina getPagina() {
         return this.pagina;
     }
+    
 
     public abstract String getTipo();
     public abstract int getNumeroPagina();

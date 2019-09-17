@@ -21,6 +21,7 @@ public class PaginaNormal extends BuilderPagina {
         this.caminos = new ArrayList();
     }
     
+    
     /**
      * Metodo que retorna los caminos asociados a la pagina.
      * @return La lista de caminos asociados a la pagina.

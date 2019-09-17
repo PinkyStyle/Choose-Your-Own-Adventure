@@ -24,6 +24,7 @@ public class Pagina {
         this.tipo = tipo;
     }
     
+    
     /**
      * Metodo que retorna el numero de la pagina correspondiente.
      * @return El numero de la pagina.

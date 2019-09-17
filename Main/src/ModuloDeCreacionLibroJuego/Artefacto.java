@@ -21,4 +21,5 @@ public class Artefacto {
     public String getNombre() {
         return nombre;
     }        
+    
 }

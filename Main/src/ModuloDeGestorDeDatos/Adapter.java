@@ -17,6 +17,7 @@ public class Adapter {
         
     }
     
+    
     /**
      * Metodo que transforma un archivo txt a un librjuego.
      */
