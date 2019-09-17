@@ -1,52 +1,45 @@
 package ModuloDeCreacionLibroJuego;
 
-import java.util.*;
+import java.util.ArrayList;
+
 
 /**
  * 
  */
 public class PaginaNormal extends BuilderPagina {
     private ArrayList<Camino> caminos;
-    private String tipo;
-    /**
-     * Default constructor
-     */
-    public PaginaNormal() {
-    }
-    /**
-     * 
-     */
-    @Override
-    public void getType() {
-        // TODO implement here
-    }
 
     /**
-     * 
+     * Constructor de Paginas Normales
+     * @param tipo El tipo de Pagina 
      */
-    public void getnumeroPaginasAnexas() {
-        // TODO implement here
+    public PaginaNormal(int numeroPagina, String descripcion,String tipo) {
+        super(numeroPagina,descripcion,tipo);
+        this.caminos = new ArrayList();
     }
-
+    
     /**
-     * 
+     * Metodo que retorna los caminos asociados a la pagina.
+     * @return La lista de caminos asociados a la pagina.
      */
-    public void getOpcionesQuemadas() {
-        // TODO implement here
+    public ArrayList<Camino> getCaminos() {
+        return caminos;
     }
-
+    
     /**
-     * @param pagina
+     * Metodo que asocia un camino a la pagina correspondiente.
+     * @param camino El camino que se desea agregar a la pagina.
      */
-    public void agregarPaginaAnexada(Pagina pagina) {
-        // TODO implement here
+    public void setCaminos(Camino camino) {
+        this.caminos.add(camino);
     }
-
+    
     /**
-     * @param pagina
+     * Metodo que agrega un camino a la pagina.
+     * @param camino El camino a agregar a la pagina.
      */
-    public void agregarPaginaVisitada(Pagina pagina) {
-        // TODO implement here
+    public void agregarCamino(Camino camino) {
+        this.caminos.add(camino);
     }
 
 }

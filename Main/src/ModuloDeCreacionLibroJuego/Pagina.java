@@ -9,46 +9,53 @@ public class Pagina {
     private int numeroPagina;
     private String descripcion;
     private ArrayList<Image> imagenes;
+    private String tipo;
+    
 
     /**
-     * Default constructor
+     * Constructor de Pagina.
+     * @param numeroPagina El numero que se le asigna a la pagina.
+     * @param descripcion La descripcion asociada a la pagina.
      */
-    public Pagina() {
+    public Pagina(int numeroPagina, String descripcion, String tipo) {
+        this.numeroPagina = numeroPagina;
+        this.descripcion = descripcion;
+        this.tipo = tipo;
+    }
+    
+    /**
+     * Metodo que retorna el numero de la pagina correspondiente.
+     * @return El numero de la pagina.
+     */
+    public int getNumeroPagina() {
+        return numeroPagina;
+    }
+    
+    /**
+     * Metodo que retorna la descripcion o contenido de la pagina.
+     * @return La descripcion de la pagina correspondiente.
+     */
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    /**
-     * 
-     */
-    public void añadirArtefacto() {
-        // TODO implement here
+    public ArrayList<Image> getImagenes() {
+        return imagenes;
     }
 
-    /**
-     * 
-     */
-    public void getType() {
-        // TODO implement here
+    public void setImagenes(Image imagen) {
+       this.imagenes.add(imagen);
     }
 
-    /**
-     * 
-     */
-    public void getnumeroPagina() {
-        // TODO implement here
+    public String getTipo() {
+        return tipo;
     }
 
-    /**
-     * 
-     */
-    public void getDescripcion() {
-        // TODO implement here
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
-
-    /**
-     * @param i
-     */
-    public void getImagen(int i) {
-        // TODO implement here
-    }
+    
+    
+    
 
 }
