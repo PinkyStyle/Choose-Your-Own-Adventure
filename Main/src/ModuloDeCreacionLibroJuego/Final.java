@@ -1,16 +1,16 @@
 package ModuloDeCreacionLibroJuego;
 
-
 /**
  * 
  */
-public class FinalRegular extends BuilderPagina {
+public class Final extends BuilderPagina {
     private String tipo;
-
+    private Artefacto artefacto;
+    
     /**
      * Default constructor
      */
-    public FinalRegular() {
+    public Final() {
     }
 
     /**
@@ -18,6 +18,13 @@ public class FinalRegular extends BuilderPagina {
      */
     @Override
     public void getType() {
+        // TODO implement here
+    }
+
+    /**
+     * 
+     */
+    public void getRecompensa() {
         // TODO implement here
     }
 
