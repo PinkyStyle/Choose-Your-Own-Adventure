@@ -1,8 +1,11 @@
 package GestionDeJugarLibroJuego;
 
 import static ControladorDeUsuario.ControladorVistaConstructor.gestorDeLibros;
+import ModuloDeCreacionLibroJuego.Artefacto;
+import ModuloDeCreacionLibroJuego.BuilderPagina;
 import ModuloDeCreacionLibroJuego.Camino;
 import ModuloDeCreacionLibroJuego.LibroJuego;
+import ModuloDeCreacionLibroJuego.PaginaNormal;
 import java.util.ArrayList;
 
 /**
@@ -13,12 +16,15 @@ public class GestorDeJuego {
     private Protagonista protagonista;
     private String tituloDeAventura;
     private int nPagina;
+    private ArrayList<String>artefactosQuemados;
+    private ArrayList<String>artefactosActuales;
 
     /**
      * Default constructor
      *
      */
-    public GestorDeJuego() {}
+    public GestorDeJuego() {
+    }
     
     /**
      *
@@ -99,16 +105,17 @@ public class GestorDeJuego {
     public void inicialJuego(String tituloDeAventura, String nombreAventuraro) {
         this.protagonista=new Protagonista(nombreAventuraro);
         this.tituloDeAventura=tituloDeAventura;
-        this.nPagina=1;      
+        this.nPagina=1;  
+        this.artefactosActuales= new ArrayList<>();
+        this.artefactosQuemados= new ArrayList<>();
     }
 
     /**
      * 
      * @param camino 
      */
-    public void actualizarPagina(String camino) {
-        String[] parse = camino.split(" ");
-        this.nPagina=Integer.parseInt(parse[parse.length-1]);
+    public void actualizarPagina(String opcionCamino) {
+        
     }
 
     /**
@@ -128,10 +135,43 @@ public class GestorDeJuego {
     }
 
     /**
-     * 
-     * @return 
+     * muestra todos los posibles caminos a los que puedo llegar teniendo en cuenta
+     * la pagina actual y si tengo los artefactos necesarios para transitar por este
+     * camino
+     * @return ArrayList<String> o null, dependera de si existen caminos.
      */
     public ArrayList<String> mostrarListaCaminosDePagina() {
-        return gestorDeLibros.mostrarListaCaminosDePagina();
+         ArrayList<Camino>caminosAux=gestorDeLibros.getCaminosDePagina(tituloDeAventura, nPagina);
+        return procesarCaminosMostrar(caminosAux);
+    }
+    /**
+     * verifica los caminos a los cuales puedo llegar desde la pagina actual
+     * y con los artefactos que tengo actualmente, solo muestra los 
+     * caminos a los que puedo llegar.
+     * @param caminos
+     * @return 
+     */
+    public ArrayList<String> procesarCaminosMostrar(ArrayList<Camino>caminos){
+        ArrayList<String>caminosQuePuedoIr=new ArrayList<>();
+        for (int i = 0; i < caminos.size(); i++) {
+            Camino camino = caminos.get(i);
+            Artefacto solicitarArtefacto=camino.getSolicitarArtefacto();
+            if( solicitarArtefacto != null ){// me solicitan un artefacto para transitar por ese camino.
+                String nombreArtefactoSolicitado=solicitarArtefacto.getNombre();
+                for (String artefactosActuale : this.artefactosActuales) {
+                    String miArtefacto=this.artefactosActuales.get(i);// obtengo el nombre del primer artefacto.
+                    if(nombreArtefactoSolicitado.equalsIgnoreCase(miArtefacto) == true){ //significa que tengo el artefacto para ir por ese camino.
+                        
+                        caminosQuePuedoIr.add(camino.getOpcion());
+                    }
+                }
+            }
+            
+        }
+        return caminosQuePuedoIr;
+    }
+
+    public void procesarOpcionDeCamino(String opcionCamino){
+        ArrayList<Camino>caminosAux=gestorDeLibros.mostrarListaDeCaminosDePagina(tituloDeAventura, nPagina);
     }
 }

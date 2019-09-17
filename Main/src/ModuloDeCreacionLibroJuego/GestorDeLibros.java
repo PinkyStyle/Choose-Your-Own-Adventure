@@ -100,14 +100,23 @@ public class GestorDeLibros {
         return null;
     }
 
-    public ArrayList<String> mostrarImagenesDePagina() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    /**
+     * devuelve los caminos de una pagina, validando si la pagina de la que
+     * se piden los caminos es final, si no es final devuelve los caminos de la pagina.
+     * @param tituloDeAventura
+     * @param nPagina
+     * @return 
+     */
+    public ArrayList<Camino> getCaminosDePagina(String tituloDeAventura, int nPagina) {
+        BuilderPagina builder=retornarPagina(tituloDeAventura, nPagina);
+        if(builder.getTipo().equalsIgnoreCase("pagina normal") == true){
+            PaginaNormal pagina = (PaginaNormal)builderPagina;
+            return pagina.getCaminos();
+        }
+        return null;
     }
 
-    public ArrayList<String> mostrarListaCaminosDePagina() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+   
 
 
 
