@@ -1,23 +1,25 @@
 package ModuloDeCreacionLibroJuego;
 
+import java.awt.Image;
+import java.util.ArrayList;
+
 /**
- * 
+ * Clase abstracta que el el cascaron para la generacion de builder
+ * este se encarga de crear una pagina y definir la estructura estandar 
+ * de todas las paginas
  */
 public abstract class BuilderPagina {
+    
     protected Pagina pagina;
-
-    /**
-     * Default constructor
-     */
-    public BuilderPagina() {
-    }
-
-
+    
     /**
      * 
+     * @param numeroPagina
+     * @param descripcion
+     * @param tipo 
      */
-    public void crearNuevaPagina() {
-        // TODO implement here
+    public void crearNuevaPagina(int numeroPagina, String descripcion, String tipo) {
+        this.pagina=new Pagina(numeroPagina, descripcion, tipo);
     }
 
     /**
@@ -25,13 +27,16 @@ public abstract class BuilderPagina {
      */
     public void getPagina() {
         // TODO implement here
+        
     }
 
     /**
      * 
      */
-    public void getType() {
-        // TODO implement here
-    }
-
+    public abstract void getTipo();
+    public abstract int getNumeroPagina();
+    public abstract String getDescripcion() ;
+    public abstract ArrayList<Image> getImagenes();
+    public abstract void addImagenes(Image imagen);
+    
 }

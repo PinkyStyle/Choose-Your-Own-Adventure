@@ -1,6 +1,6 @@
 package VistasDeUsuario;
 
-import VistasDeUsuario.VistaJugador;
+
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ActionEvent;

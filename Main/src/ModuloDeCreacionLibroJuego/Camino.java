@@ -2,7 +2,7 @@ package ModuloDeCreacionLibroJuego;
 
 
 /**
- * 
+ * Clase encargada de establecer el camino de nodo a nodo
  */
 public class Camino {
     private int numeroPagina;
@@ -12,7 +12,7 @@ public class Camino {
     private Artefacto solicitarArtefacto;
 
     /**
-     * Default constructor
+     * Constructor que declara todas las variables al ser creada
      */
     public Camino(int n, String opcion, Artefacto dar, Artefacto quitar, Artefacto solicitar) {
         this.numeroPagina=n;
@@ -23,10 +23,18 @@ public class Camino {
         
     }
 
+    /**
+     * Metodo que retorna el numero de la pagina
+     * @return numeroPagina
+     */
     public int getNumeroPagina() {
         return numeroPagina;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public String getOpcion() {
         return opcion;
     }

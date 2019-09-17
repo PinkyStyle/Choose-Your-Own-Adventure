@@ -1,6 +1,7 @@
 package ModuloDeCreacionLibroJuego;
 import java.awt.Image;
-import java.util.*;
+import java.util.ArrayList;
+
 
 /**
  * 
@@ -43,19 +44,12 @@ public class Pagina {
         return imagenes;
     }
 
-    public void setImagenes(Image imagen) {
+    public void addImagenes(Image imagen) {
        this.imagenes.add(imagen);
     }
 
     public String getTipo() {
         return tipo;
     }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-    
-    
-    
 
 }

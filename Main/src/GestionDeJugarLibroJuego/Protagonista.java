@@ -1,6 +1,6 @@
 package GestionDeJugarLibroJuego;
 import ModuloDeCreacionLibroJuego.Artefacto;
-import java.util.*;
+import java.util.ArrayList;
 
 /**
  * 
