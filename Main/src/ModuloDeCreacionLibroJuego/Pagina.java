@@ -2,7 +2,6 @@ package ModuloDeCreacionLibroJuego;
 import java.awt.Image;
 import java.util.ArrayList;
 
-
 /**
  * 
  */
@@ -17,6 +16,7 @@ public class Pagina {
      * Constructor de Pagina.
      * @param numeroPagina El numero que se le asigna a la pagina.
      * @param descripcion La descripcion asociada a la pagina.
+     * @param tipo
      */
     public Pagina(int numeroPagina, String descripcion, String tipo) {
         this.numeroPagina = numeroPagina;
@@ -39,15 +39,27 @@ public class Pagina {
     public String getDescripcion() {
         return descripcion;
     }
-
+    
+    /**
+     * Metodo que retorna la lista de imagenes asociadas a la pagina.
+     * @return La lista de imagenes asociadas.
+     */
     public ArrayList<Image> getImagenes() {
         return imagenes;
     }
-
+    
+    /**
+     * Metodo que agrega una imagen a la pagina.
+     * @param imagen La imagen que se desea agregar a la pagina.
+     */
     public void addImagenes(Image imagen) {
        this.imagenes.add(imagen);
     }
-
+    
+    /**
+     * Metodo que retorna el tipo de la pagina.
+     * @return El numero de la pagina.
+     */
     public String getTipo() {
         return tipo;
     }

@@ -12,6 +12,8 @@ public class PaginaNormal extends BuilderPagina {
 
     /**
      * Constructor de Paginas Normales
+     * @param numeroPagina
+     * @param descripcion
      * @param tipo El tipo de Pagina 
      */
     public PaginaNormal(int numeroPagina, String descripcion,String tipo) {
@@ -42,30 +44,50 @@ public class PaginaNormal extends BuilderPagina {
     public void agregarCamino(Camino camino) {
         this.caminos.add(camino);
     }
-
+    
+    /**
+     * Metodo que retorna el tipo de la pagina a la cual esta asociada.
+     * @return El numero de la pagina.
+     */
     @Override
-    public void getTipo() {
-        super.pagina.getTipo();
+    public String getTipo() {
+        return this.pagina.getTipo();
     }
-
+    
+    /**
+     * Metodo que retorna el numero de la pagina a la cual esta asociada.
+     * @return El numero de la pagina.
+     */
     @Override
     public int getNumeroPagina() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.pagina.getNumeroPagina();
     }
-
+    
+    /**
+     * Metodo que retorna la descripcion de la pagina a la cual esta asociada.
+     * @return La descripcion de la pagina.
+     */
     @Override
     public String getDescripcion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.pagina.getDescripcion();
     }
-
+    
+    /**
+     * Metodo que retorna las imagenes de la pagina a la cual esta asociada.
+     * @return La lista de imagenes asociadas.
+     */
     @Override
     public ArrayList<Image> getImagenes() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.pagina.getImagenes();
     }
-
+    
+    /**
+     * Metodo que agrega una imagen a la pagina a la cual esta asociada.
+     * @param imagen La imagen que se desea agregar a la pagina.
+     */
     @Override
     public void addImagenes(Image imagen) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.pagina.addImagenes(imagen);
     }
     
     
