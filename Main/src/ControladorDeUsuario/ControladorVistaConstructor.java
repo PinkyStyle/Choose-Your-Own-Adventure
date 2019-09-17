@@ -5,24 +5,22 @@ import ModuloDeCreacionLibroJuego.GestorDeLibros;
 import java.awt.Image;
 
 /**
- * 
+ * Clase que se encarga de redireccionar acciones solicitadas por la vista del constructor
  */
 public class ControladorVistaConstructor {
 
-    /**
-     * Default constructor
-     */
-    
     private String tituloDeAventura;
     private GestorDeLibros gestorDeLibros;
     
+    /**
+     * Constructor de la vista del autor
+     */
     public ControladorVistaConstructor() {
         this.gestorDeLibros=new GestorDeLibros();
     }
 
-
     /**
-     * 
+     * Metodo que se encarga de decirle al gestor de libros que cree un libro
      * @param nombreDeAutor
      * @param tituloDeAventura
      * @param imagen
@@ -33,7 +31,7 @@ public class ControladorVistaConstructor {
     }
 
     /**
-     * 
+     * Metodo que se encarga de decirle al gestor de libros que cree una pagina
      * @param tituloDeAventura
      * @param numeroPagina
      * @param descripcion

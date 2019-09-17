@@ -4,9 +4,7 @@ import java.awt.Image;
 import java.util.ArrayList;
 
 /**
- * Clase abstracta que el el cascaron para la generacion de builder
- * este se encarga de crear una pagina y definir la estructura estandar 
- * de todas las paginas
+ * Clase abstracta que el el cascaron para la generacion de builder este se encarga de crear una pagina y definir la estructura estandar de todas las paginas
  */
 public abstract class BuilderPagina {
     
@@ -23,10 +21,9 @@ public abstract class BuilderPagina {
     }
 
     /**
-     * 
+     * Metodo que retorna la pagina
      */
     public Pagina getPagina() {
-        // TODO implement here
         return this.pagina;
     }
 

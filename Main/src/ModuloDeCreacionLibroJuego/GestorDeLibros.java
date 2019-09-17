@@ -5,20 +5,20 @@ import java.util.ArrayList;
 
 
 /**
- * 
+ * Clase que se encarga de administrar la creacion de libros y paginas, ademas este guarda el arreglo de libros
  */
 public class GestorDeLibros {
     private ArrayList<LibroJuego> listaLibrojuego;
 
     /**
-     * 
+     * Constructor que inicializa el arreglo de libros vacio
      */
     public GestorDeLibros() {
         this.listaLibrojuego=new ArrayList<>();
     }
 
     /**
-     * 
+     * Metodo que se encarga de crear un libro nuevo
      * @param nombreDeAutor
      * @param tituloDeAventura
      * @param imagen
@@ -29,7 +29,7 @@ public class GestorDeLibros {
     }
     
     /**
-     * 
+     * Metodo que se encarga de crear una pagina nueva al libro
      * @param tituloDeAventura
      * @param numeroPagina
      * @param descripcion
@@ -47,7 +47,7 @@ public class GestorDeLibros {
     }
          
     /**
-     * 
+     * Metodo que se encarga de retornar una pagina especifica dado a un tituloDeAventura y un numero de pagina
      * @param tituloDeAventura
      * @param numeroPagina
      * @return 

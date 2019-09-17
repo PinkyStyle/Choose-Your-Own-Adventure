@@ -54,7 +54,7 @@ public class LibroJuego {
     }
 
     /**
-     * Metodo que retorna una pagina espesifica del LibroJuego
+     * Metodo que retorna una pagina especifica del LibroJuego
      * @param i
      * @return 
      */
@@ -63,7 +63,7 @@ public class LibroJuego {
     }
 
     /**
-     * 
+     * Metodo que retorna el titulo de la aventura
      * @return tituloDeAventura
      */
     public String getTituloDeAventura() {

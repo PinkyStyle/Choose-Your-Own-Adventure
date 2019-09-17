@@ -21,14 +21,14 @@ public class Final extends BuilderPagina {
         super.crearNuevaPagina(numeroPagina, descripcion, tipo);
         this.artefacto = artefacto;
     }
-    
-    /**
-     * 
-     */
-    public void getRecompensa() {
-        // TODO implement here
-    }
 
+    /**
+     * Metodo que retorna el artefacto que gano, perdio en el final de la aventura
+     * @return 
+     */
+    public Artefacto getArtefacto() {
+        return artefacto;
+    }
        
     /**
      * Metodo que retorna el tipo de la pagina a la cual esta asociada.

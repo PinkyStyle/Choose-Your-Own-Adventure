@@ -5,14 +5,19 @@ package ModuloDeCreacionLibroJuego;
  * Clase encargada de establecer el camino de nodo a nodo
  */
 public class Camino {
-    private int numeroPagina;
-    private String opcion;
-    private Artefacto darArtefacto;
-    private Artefacto quitarArtefacto;
-    private Artefacto solicitarArtefacto;
+    private final int numeroPagina;
+    private final String opcion;
+    private final Artefacto darArtefacto;
+    private final Artefacto quitarArtefacto;
+    private final Artefacto solicitarArtefacto;
 
     /**
-     * Constructor que declara todas las variables al ser creada
+     * Constructor de camino que declara todas las variables al ser creada
+     * @param n
+     * @param opcion
+     * @param dar
+     * @param quitar
+     * @param solicitar
      */
     public Camino(int n, String opcion, Artefacto dar, Artefacto quitar, Artefacto solicitar) {
         this.numeroPagina=n;
@@ -32,21 +37,33 @@ public class Camino {
     }
 
     /**
-     * 
+     * Metodo que retorna la opcion "el texto adjunto a este"
      * @return 
      */
     public String getOpcion() {
         return opcion;
     }
 
+    /**
+     * Metodo que retorna el artefacto a dar
+     * @return 
+     */
     public Artefacto getDarArtefacto() {
         return darArtefacto;
     }
 
+    /**
+     * Metodo que retorna el artefacto a quitar si ocupa este camino
+     * @return 
+     */
     public Artefacto getQuitarArtefacto() {
         return quitarArtefacto;
     }
 
+    /**
+     * Metodo que retorna el artefacto necesario para ocupara el camino
+     * @return 
+     */
     public Artefacto getSolicitarArtefacto() {
         return solicitarArtefacto;
     }
