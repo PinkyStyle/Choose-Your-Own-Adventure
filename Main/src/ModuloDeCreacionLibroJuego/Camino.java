@@ -14,34 +14,33 @@ public class Camino {
     /**
      * Default constructor
      */
-    public Camino() {
-    }
-    /**
-     * 
-     */
-    public void getNumeroPagina() {
-        // TODO implement here
-    }
-
-    /**
-     * 
-     */
-    public void getOpcion() {
-        // TODO implement here
+    public Camino(int n, String opcion, Artefacto dar, Artefacto quitar, Artefacto solicitar) {
+        this.numeroPagina=n;
+        this.opcion=opcion;
+        this.darArtefacto=dar;
+        this.quitarArtefacto=quitar;
+        this.solicitarArtefacto=solicitar;
+        
     }
 
-    /**
-     * 
-     */
-    public void getDarArtefacto() {
-        // TODO implement here
+    public int getNumeroPagina() {
+        return numeroPagina;
     }
 
-    /**
-     * 
-     */
-    public void getSolicitarArtefacto() {
-        // TODO implement here
+    public String getOpcion() {
+        return opcion;
     }
 
+    public Artefacto getDarArtefacto() {
+        return darArtefacto;
+    }
+
+    public Artefacto getQuitarArtefacto() {
+        return quitarArtefacto;
+    }
+
+    public Artefacto getSolicitarArtefacto() {
+        return solicitarArtefacto;
+    }
+    
 }
