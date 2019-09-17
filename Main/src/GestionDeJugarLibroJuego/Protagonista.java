@@ -1,4 +1,5 @@
-package main;
+package GestionDeJugarLibroJuego;
+import ModuloDeCreacionLibroJuego.Artefacto;
 import java.util.*;
 
 /**

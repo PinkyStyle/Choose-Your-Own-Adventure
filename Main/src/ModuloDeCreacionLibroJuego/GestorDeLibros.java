@@ -1,4 +1,4 @@
-package main;
+package ModuloDeCreacionLibroJuego;
 import java.util.*;
 
 /**
