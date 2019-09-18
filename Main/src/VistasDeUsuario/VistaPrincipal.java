@@ -531,10 +531,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
         else{
             if (this.cvj.tipoDePagina()== -1) {
                 this.flag1=false;
-                JOptionPane.showMessageDialog(null, "El Libro no fue completado correctamente, saliendo al menu inicial","Advertencia ", JOptionPane.WARNING_MESSAGE);
-                this.getContentPane().removeAll(); 
-                this.repaint();
-                this.initComponents();
+                //JOptionPane.showMessageDialog(null, "El Libro no fue completado correctamente, saliendo al menu inicial","Advertencia ", JOptionPane.WARNING_MESSAGE);
+                //this.getContentPane().removeAll(); 
+                //this.repaint();
+                //this.initComponents();
+                
             }
             if (this.cvj.tipoDePagina()== 0) {
                 this.flag1=false;
@@ -715,9 +716,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
     
     private void jugandoPaginaFinal(){
         //estoy viendo como lo muestro correctamente de momento solo manda al menu principal
-        this.getContentPane().removeAll(); 
-        this.repaint();
-        this.initComponents();
+        //this.getContentPane().removeAll(); 
+        //this.repaint();
+        //this.initComponents();
     }
     
     private void jugandoSiguientePagina() throws FileNotFoundException {
@@ -1211,6 +1212,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
             this.jTextField2.setText(datos.get(1));
             this.jTextArea1.setText(datos.get(2));
             this.jTextField4.setText(datos.get(4));
+            //error archivco
             abre = new File(datos.get(3));
             if(abre!=null){     
                 FileReader archivos=new FileReader(abre);
