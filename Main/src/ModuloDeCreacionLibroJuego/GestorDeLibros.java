@@ -174,7 +174,7 @@ public class GestorDeLibros {
      * @param numeroPagina
      * @return 
      */
-    private BuilderPagina retornarPagina(String tituloDeAventura, int nPagina) {
+    public BuilderPagina retornarPagina(String tituloDeAventura, int nPagina) {
         for (int i = 0; i < listaLibrojuego.size() ; i++) {
             if(this.listaLibrojuego.get(i).getTituloDeAventura().equals(tituloDeAventura)){
                 return this.listaLibrojuego.get(i).getPagina(nPagina);

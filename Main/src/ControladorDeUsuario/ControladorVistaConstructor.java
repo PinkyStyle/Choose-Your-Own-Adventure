@@ -2,7 +2,6 @@ package ControladorDeUsuario;
 
 import ModuloDeCreacionLibroJuego.Artefacto;
 import ModuloDeCreacionLibroJuego.GestorDeLibros;
-import java.awt.Image;
 
 /**
  * Clase que se encarga de redireccionar acciones solicitadas por la vista del constructor
@@ -37,9 +36,7 @@ public class ControladorVistaConstructor {
      * @param numeroPagina
      * @param descripcion
      * @param tipo
-     * @param dar
-     * @param quitar
-     * @param pedir 
+     * @param artefacto
      */
     public void crearPagina(String tituloDeAventura, int numeroPagina, String descripcion, String tipo, Artefacto artefacto) {
         this.gestorDeLibros.agregarPagina(tituloDeAventura, numeroPagina, descripcion, tipo, artefacto);
@@ -58,5 +55,5 @@ public class ControladorVistaConstructor {
     public void agregarCamino(String tituloDeAventura, int nPagina, int proximoSalto, String opcion, Artefacto dar, Artefacto quitar, Artefacto solicitar){
          this.gestorDeLibros.agregarCamino(tituloDeAventura,  nPagina,  proximoSalto,  opcion,  dar,  quitar,  solicitar);
     }
-    
+
 }
