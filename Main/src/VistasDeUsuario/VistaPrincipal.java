@@ -41,6 +41,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
      * Creates new form NewJFrame
      */
     public VistaPrincipal() {
+        cvc = new ControladorVistaConstructor();
+        cvj = new ControladorVistaJugador();
         initComponents();
     }
 
@@ -128,7 +130,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         this.repaint();
         this.setLayout(null);
         
-        this.cvc = new ControladorVistaConstructor();
+        
         if (flag1 == true) {
             this.imagen = new JLabel();
             this.imagen.setBounds(0, 0,172,172);
@@ -341,7 +343,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jTextField4 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
+        System.out.println("tama;o <"+this.cvj.mostrarListaLibros());
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(listaLibroJuegos (this.cvj.mostrarListaLibros())));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -502,7 +504,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         if (!this.jComboBox1.getSelectedItem().equals("Escoje uno")){
             if (!this.jTextField3.getText().isEmpty()) {
                 this.cvj.iniciarJuego((String) this.jComboBox1.getSelectedItem(), this.jTextField3.getText());
-                empezarLibroJuego();
+                jugandoLibroJuego();
             }
             else{
                 JOptionPane.showMessageDialog(null, "Debe ingresar su apodo para continuar","Advertencia ", JOptionPane.WARNING_MESSAGE);
@@ -514,7 +516,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         }
     }
     
-    private void empezarLibroJuego() {
+    private void jugandoLibroJuego() {
         this.getContentPane().removeAll(); 
         this.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         this.repaint();
@@ -1061,42 +1063,51 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }
     
     private String[] listaLibroJuegos (ArrayList<String> lista){
-        String [] listaLibroJuego = new String [lista.size()+1];
-        for (int i = 0; i < lista.size()+1; i++) {
-            if (i==0) {
-                listaLibroJuego[i]="Escoje uno";
-            }
-            else{
-                listaLibroJuego[i]=lista.get(i-1);
-            }
-            
+        String [] listaLibroJuego = new String [1];
+        listaLibroJuego[0]="Escoje uno";
+        
+        if (lista != null) {
+            listaLibroJuego = new String [lista.size()+1];
+            for (int i = 0; i < lista.size()+1; i++) {
+                if (i==0) {
+                    listaLibroJuego[i]="Escoje uno";
+                }
+                else{
+                    listaLibroJuego[i]=lista.get(i-1);
+                }
+            }   
         }
+        
+        
         return listaLibroJuego;
     }
     
     private void obtenerDatosLibro(ActionEvent evt,ArrayList<String> datos) throws FileNotFoundException {
         //obtenerdatos()this.jComboBox1.getSelectedItem();
+        if (!this.jComboBox1.getSelectedItem().equals("Escoje uno") ) {
+            this.jTextField1.setText(datos.get(0));
+            this.jTextField2.setText(datos.get(1));
+            this.jTextArea1.setText(datos.get(2));
+            this.jTextField4.setText(datos.get(4));
+            File abre = new File(datos.get(3));
+            if(abre!=null){     
+                FileReader archivos=new FileReader(abre);
+                //this.jPanel1.remove(imagen);
+                ImageIcon i = new ImageIcon(abre.getAbsolutePath()); 
+                Image img = i.getImage();
+                img = img.getScaledInstance(200, 200, java.awt.Image.SCALE_SMOOTH);
+                i = new ImageIcon(img);
+                this.imagen = new JLabel();
+                this.imagen.setIcon(i);
+                this.imagen.setBounds(0, 0,200,200);
+                this.jPanel1.add(this.imagen);
+                this.pack();
+                this.repaint();
+                this.flag1 = true;
+            }  
+
+        }
         
-        this.jTextField1.setText(datos.get(0));
-        this.jTextField2.setText(datos.get(1));
-        this.jTextArea1.setText(datos.get(2));
-        this.jTextField4.setText(datos.get(4));
-        File abre = new File(datos.get(3));
-        if(abre!=null){     
-            FileReader archivos=new FileReader(abre);
-            //this.jPanel1.remove(imagen);
-            ImageIcon i = new ImageIcon(abre.getAbsolutePath()); 
-            Image img = i.getImage();
-            img = img.getScaledInstance(200, 200, java.awt.Image.SCALE_SMOOTH);
-            i = new ImageIcon(img);
-            this.imagen = new JLabel();
-            this.imagen.setIcon(i);
-            this.imagen.setBounds(0, 0,200,200);
-            this.jPanel1.add(this.imagen);
-            this.pack();
-            this.repaint();
-            this.flag1 = true;
-        }  
         
     }
     private void agregarOpcion(ActionEvent evt) {
@@ -1424,8 +1435,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private ArrayList<Integer> paginasLibroJuego;
     
     /// controladores
-    private ControladorVistaConstructor cvc;
-    private ControladorVistaJugador cvj;
+    private final ControladorVistaConstructor cvc;
+    private final ControladorVistaJugador cvj;
     private String tituloLibroJuego;
     private File abre;
 }
