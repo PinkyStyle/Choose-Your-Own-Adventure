@@ -6,6 +6,7 @@ import java.util.ArrayList;
  * Clase que se encarga de administrar la creacion de libros y paginas, ademas este guarda el arreglo de libros
  */
 public class GestorDeLibros {
+    
     private ArrayList<LibroJuego> listaLibrojuego;
 
     /**
@@ -52,7 +53,7 @@ public class GestorDeLibros {
     public ArrayList<String> mostrarinformacionDeUnLibroJuegos(String tituloDeAventura){
         for (int i = 0; i < listaLibrojuego.size() ; i++) {
             if(this.listaLibrojuego.get(i).getTituloDeAventura().equals(tituloDeAventura)){
-                return null;
+                return this.listaLibrojuego.get(i).informacionDeLibroJuego();
             }
         }
         return null;
@@ -164,8 +165,7 @@ public class GestorDeLibros {
             System.out.println("no encuntro la pagina");
             return null;
         }
-        
-        return null;
+        return builderPagina.getImagenes();
     }
     
      /**
@@ -183,5 +183,26 @@ public class GestorDeLibros {
         System.out.println("No se encontro el libro");
         return null;
     }
-}
 
+    /**
+     * Metodo que agrega un camino
+     * @param tituloDeAventura
+     * @param nPagina
+     * @param proximoSalto
+     * @param opcion
+     * @param dar
+     * @param quitar
+     * @param solicitar 
+     */
+    public void agregarCamino(String tituloDeAventura, int nPagina, int proximoSalto, String opcion, Artefacto dar, Artefacto quitar, Artefacto solicitar) {
+        ArrayList<String> lista = new ArrayList<>();
+        for (int i = 0; i < listaLibrojuego.size() ; i++) {
+            if(this.listaLibrojuego.get(i).getTituloDeAventura().equals(tituloDeAventura)){
+                this.listaLibrojuego.get(i).agregarCamino(nPagina, proximoSalto, opcion, dar, quitar, solicitar);
+                return;
+            }
+        }
+        System.out.println("no se agrego el camino");
+    }
+    
+}

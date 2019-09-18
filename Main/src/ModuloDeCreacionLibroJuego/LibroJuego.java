@@ -53,6 +53,11 @@ public class LibroJuego {
         }
         System.out.println("Fallo al crear la pagina");
     }
+ 
+    public void agregarCamino(int nPagina, int proximoSalto, String opcion, Artefacto dar, Artefacto quitar, Artefacto solicitar){
+        PaginaNormal pagina=(PaginaNormal)this.paginas.get(nPagina);
+        pagina.agregarCamino(new Camino(proximoSalto, opcion,  dar,  quitar,  solicitar));
+    }
 
     /**
      * Metodo que retorna una pagina especifica del LibroJuego
@@ -107,4 +112,26 @@ public class LibroJuego {
         return sinopsis;
     }
     
+    /**
+     * Metodo que retorna la informacion de un libro en una cadena
+     * @return 
+     */
+    @Override
+    public String toString(){
+        return nombreDeAutor + " " + tituloDeAventura + " " + sinopsis + " " + imagen + " " + estado;
+    }
+
+    /**
+     * Metodo que retorna una lista con toda la informacion del libro juego
+     * @return 
+     */
+    public ArrayList<String> informacionDeLibroJuego() {
+        ArrayList<String> lista = new ArrayList<>();
+        lista.add(this.nombreDeAutor);
+        lista.add(this.tituloDeAventura);
+        lista.add(this.sinopsis);
+        lista.add(this.imagen);
+        lista.add(this.estado);
+        return lista;
+    }
 }

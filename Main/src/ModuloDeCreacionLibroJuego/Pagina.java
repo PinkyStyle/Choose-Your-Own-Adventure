@@ -23,6 +23,7 @@ public class Pagina {
         this.numeroPagina = numeroPagina;
         this.descripcion = descripcion;
         this.tipo = tipo;
+        this.imagenes=new ArrayList<>();
     }
     
     

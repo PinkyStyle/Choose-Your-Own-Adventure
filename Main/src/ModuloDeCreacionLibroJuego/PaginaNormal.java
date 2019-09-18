@@ -92,6 +92,10 @@ public class PaginaNormal extends BuilderPagina {
         this.pagina.addImagenes(imagen);
     }
 
+    /**
+     * 
+     * @return 
+     */
     public ArrayList<String> arragloDeCaminos() {
         ArrayList<String> lista = new ArrayList<>();
         for (int i = 0; i < this.caminos.size(); i++) {

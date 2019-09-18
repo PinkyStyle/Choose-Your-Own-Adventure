@@ -26,7 +26,6 @@ public class Camino {
         this.darArtefacto=dar;
         this.quitarArtefacto=quitar;
         this.solicitarArtefacto=solicitar;
-        
     }
     
 

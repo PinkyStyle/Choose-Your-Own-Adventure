@@ -37,12 +37,26 @@ public class ControladorVistaConstructor {
      * @param numeroPagina
      * @param descripcion
      * @param tipo
-     * @param artefacto 
+     * @param dar
+     * @param quitar
+     * @param pedir 
      */
     public void crearPagina(String tituloDeAventura, int numeroPagina, String descripcion, String tipo, Artefacto artefacto) {
         this.gestorDeLibros.agregarPagina(tituloDeAventura, numeroPagina, descripcion, tipo, artefacto);
     }
-
     
+    /**
+     * Metodo que agrega un camino
+     * @param tituloDeAventura
+     * @param nPagina
+     * @param proximoSalto
+     * @param opcion
+     * @param dar
+     * @param quitar
+     * @param solicitar 
+     */
+    public void agregarCamino(String tituloDeAventura, int nPagina, int proximoSalto, String opcion, Artefacto dar, Artefacto quitar, Artefacto solicitar){
+         this.gestorDeLibros.agregarCamino(tituloDeAventura,  nPagina,  proximoSalto,  opcion,  dar,  quitar,  solicitar);
+    }
     
 }
