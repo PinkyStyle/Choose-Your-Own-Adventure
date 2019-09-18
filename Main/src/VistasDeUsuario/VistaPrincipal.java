@@ -1268,10 +1268,28 @@ public class VistaPrincipal extends javax.swing.JFrame {
                         for (int i = 0; i < this.listModel.size(); i++) {
                             String [] s = this.listModel.get(i).toString().split(";");
                             int salto = Integer.parseInt(s[1]);
-                            Artefacto dar = new Artefacto(s[2]);
-                            Artefacto quitar = new Artefacto(s[3]);
-                            Artefacto solicitar = new Artefacto(s[4]);
-                            this.cvc.agregarCamino(this.tituloLibroJuego, a,salto ,s[0], dar, quitar, solicitar);
+                            if (s.length ==3) {
+                                Artefacto dar = new Artefacto(s[2]);
+                                //Artefacto quitar = new Artefacto(s[3]);
+                                //Artefacto solicitar = new Artefacto(s[4]);
+                                this.cvc.agregarCamino(this.tituloLibroJuego, a,salto ,s[0], dar, null, null);
+                            }
+                            else{
+                                if (s.length ==4) {
+                                    Artefacto dar = new Artefacto(s[2]);
+                                    Artefacto quitar = new Artefacto(s[3]);
+                                    //Artefacto solicitar = new Artefacto(s[4]);
+                                    this.cvc.agregarCamino(this.tituloLibroJuego, a,salto ,s[0], dar, quitar, null);
+                                }
+                                else{
+                                    if (s.length ==4) {
+                                        Artefacto dar = new Artefacto(s[2]);
+                                        Artefacto quitar = new Artefacto(s[3]);
+                                        Artefacto solicitar = new Artefacto(s[4]);
+                                        this.cvc.agregarCamino(this.tituloLibroJuego, a,salto ,s[0], dar, quitar, solicitar);
+                                    }
+                                }
+                            }
                         }
                         this.crearPagina();
                     }
