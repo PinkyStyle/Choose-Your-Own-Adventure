@@ -25,6 +25,7 @@ public class GestorDeLibros {
      */
     public void crearLibroJuego(String nombreDeAutor, String tituloDeAventura, String imagen, String sinopsis){
         this.listaLibrojuego.add(new LibroJuego(nombreDeAutor, tituloDeAventura, imagen, sinopsis));
+        //ADAPTADOR VEN A BUSCARLO
     }
     
     /**
@@ -33,12 +34,13 @@ public class GestorDeLibros {
      * @param nPagina
      * @param descripcion
      * @param tipo
+     * @param imagen
      * @param artefacto 
      */
-    public void agregarPagina(String tituloDeAventura, int nPagina, String descripcion, String tipo, Artefacto artefacto){
+    public void agregarPagina(String tituloDeAventura, int nPagina, String descripcion, String tipo, String imagen, Artefacto artefacto){
         for (int i = 0; i < listaLibrojuego.size() ; i++) {
             if(this.listaLibrojuego.get(i).getTituloDeAventura().equals(tituloDeAventura)){
-                this.listaLibrojuego.get(i).crearPagina(nPagina, descripcion, tipo, artefacto);
+                this.listaLibrojuego.get(i).crearPagina(nPagina, descripcion, tipo, imagen, artefacto);
                 return;
             }
         }
@@ -195,7 +197,6 @@ public class GestorDeLibros {
      * @param solicitar 
      */
     public void agregarCamino(String tituloDeAventura, int nPagina, int proximoSalto, String opcion, Artefacto dar, Artefacto quitar, Artefacto solicitar) {
-        ArrayList<String> lista = new ArrayList<>();
         for (int i = 0; i < listaLibrojuego.size() ; i++) {
             if(this.listaLibrojuego.get(i).getTituloDeAventura().equals(tituloDeAventura)){
                 this.listaLibrojuego.get(i).agregarCamino(nPagina, proximoSalto, opcion, dar, quitar, solicitar);

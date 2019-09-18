@@ -39,24 +39,44 @@ public class LibroJuego {
      * @param tipo
      * @param artefacto 
      */
-    public void crearPagina(int numeroPagina, String descripcion, String tipo, Artefacto artefacto) {
+    public void crearPagina(int numeroPagina, String descripcion, String tipo, String imagen, Artefacto artefacto) {
         if("Pagina Normal".equals(tipo)){
-            this.paginas.add(new PaginaNormal(numeroPagina, descripcion, tipo));
+            PaginaNormal pagina= new PaginaNormal(numeroPagina, descripcion, tipo);
+            pagina.addImagenes(imagen);
+            this.paginas.add(pagina);
             System.out.println("Se creo una pagina normal");
             return;
         }
         String[] parseo= descripcion.split(" ");
         if("Final".equals(parseo[0])){
-            this.paginas.add(new Final(numeroPagina, descripcion, tipo, artefacto));
+            Final pagina=new Final(numeroPagina, descripcion, tipo, artefacto);
+            pagina.addImagenes(imagen);
+            this.paginas.add(pagina);
             System.out.println("se creo una pagina final");
             return;
         }
         System.out.println("Fallo al crear la pagina");
     }
  
+    /**
+     * 
+     * @param nPagina
+     * @param proximoSalto
+     * @param opcion
+     * @param dar
+     * @param quitar
+     * @param solicitar 
+     */
     public void agregarCamino(int nPagina, int proximoSalto, String opcion, Artefacto dar, Artefacto quitar, Artefacto solicitar){
-        PaginaNormal pagina=(PaginaNormal)this.paginas.get(nPagina);
-        pagina.agregarCamino(new Camino(proximoSalto, opcion,  dar,  quitar,  solicitar));
+        for (int i = 0; i < this.paginas.size(); i++) {
+            if(this.paginas.get(i).getNumeroPagina()==nPagina){
+                PaginaNormal pagina=(PaginaNormal)this.paginas.get(i);
+                pagina.agregarCamino(new Camino(proximoSalto, opcion,  dar,  quitar,  solicitar));
+                System.out.println("Se agrego el camino correctamente");
+                return;
+            }
+        }
+        System.out.println("no se agrego el camino correctamente");
     }
 
     /**
@@ -67,6 +87,7 @@ public class LibroJuego {
     public BuilderPagina getPagina(int nPagina) {
         for (int j = 0; j < this.paginas.size(); j++) {
             if(this.paginas.get(j).getNumeroPagina()==nPagina){
+                System.out.println("se encontro la pagina correctamente");
                 return this.paginas.get(j);
             }
         }

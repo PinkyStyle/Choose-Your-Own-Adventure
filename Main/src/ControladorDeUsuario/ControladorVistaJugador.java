@@ -63,6 +63,9 @@ public class ControladorVistaJugador {
         this.gestorDeJuego.inicialJuego(tituloDeAventura, nombreAventuraro);
     }
     
+    /**
+     * 
+     */
     public void nuevoInicio(){
         this.gestorDeJuego.nuevoInicio();
     }
