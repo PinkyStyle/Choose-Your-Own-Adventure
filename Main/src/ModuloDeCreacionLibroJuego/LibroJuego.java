@@ -75,20 +75,28 @@ public class LibroJuego {
         return tituloDeAventura;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public String getNombreDeAutor() {
         return nombreDeAutor;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public String getImagen() {
         return imagen;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public String getSinopsis() {
         return sinopsis;
     }
-    
-    
-    
-    
     
 }
