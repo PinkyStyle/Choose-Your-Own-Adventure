@@ -29,7 +29,7 @@ public class ControladorVistaJugador {
     
     /**
      * dependiendo del nombre de la aventura, retorna una array Con los siguientes
-     * parametros: nombreAutor, tituloAventura,Sinopsis,rutaImagen.
+     * parametros: nombreAutor, tituloAventura,Sinopsis,rutaImagen, estado.
      * @param tituloDeAventura
      * @return ArrayList<String>
      */

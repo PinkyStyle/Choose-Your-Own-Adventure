@@ -13,6 +13,7 @@ public class LibroJuego {
     private String imagen;
     private String sinopsis;
     private ArrayList<BuilderPagina> paginas;
+    private String estado="No Completado";
 
     /**
      * Constructor que inicializa el libro con sus atributos genericos y el arreglo lo crea sin paginas
@@ -65,6 +66,13 @@ public class LibroJuego {
             }
         }
         return null;
+    }
+    
+    /**
+     * 
+     */
+    public void editarEstado(){
+        this.estado="Completado";
     }
 
     /**
