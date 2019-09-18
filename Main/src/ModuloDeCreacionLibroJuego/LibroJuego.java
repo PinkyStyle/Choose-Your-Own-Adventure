@@ -47,7 +47,7 @@ public class LibroJuego {
             System.out.println("Se creo una pagina normal");
             return;
         }
-        String[] parseo= descripcion.split(" ");
+        String[] parseo= tipo.split(" ");
         if("Final".equals(parseo[0])){
             Final pagina=new Final(numeroPagina, descripcion, tipo, artefacto);
             pagina.addImagenes(imagen);
