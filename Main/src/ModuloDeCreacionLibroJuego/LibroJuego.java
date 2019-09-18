@@ -91,6 +91,7 @@ public class LibroJuego {
                 return this.paginas.get(j);
             }
         }
+        System.out.println("No se encontro la pagina");
         return null;
     }
     
@@ -153,6 +154,7 @@ public class LibroJuego {
         lista.add(this.sinopsis);
         lista.add(this.imagen);
         lista.add(this.estado);
+        System.out.println("Metodo informacion de libro juego completada");
         return lista;
     }
 }
