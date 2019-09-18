@@ -1,6 +1,9 @@
 package VistasDeUsuario;
 
 
+import ControladorDeUsuario.ControladorVistaConstructor;
+import ControladorDeUsuario.ControladorVistaJugador;
+import ModuloDeCreacionLibroJuego.Artefacto;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -17,7 +20,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -126,6 +128,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         this.repaint();
         this.setLayout(null);
         
+        this.cvc = new ControladorVistaConstructor();
         if (flag1 == true) {
             this.imagen = new JLabel();
             this.imagen.setBounds(0, 0,172,172);
@@ -645,13 +648,21 @@ public class VistaPrincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Rellene todos los campos obligatorios","Advertencia ", JOptionPane.WARNING_MESSAGE);
         }
         else{
+            //this.cvc.crearLibroJuego(jTextField1.getText(), jTextField2.getText(), imagen, jTextArea1.getText());
             System.out.println("entro");
             if (flag1 == true) {
+                //agregar ruta de la imagen en el null
+                this.tituloLibroJuego=jTextField2.getText();
+                this.cvc.crearLibroJuego(jTextField1.getText(), jTextField2.getText(),abre.getAbsolutePath(), jTextArea1.getText());
                 this.imagen = new JLabel();
                 this.imagen.setBounds(0, 0,200,200);
                 this.jPanel1.add(this.imagen);
                 this.pack();
                 this.repaint();
+            }
+            else{
+                this.tituloLibroJuego=jTextField2.getText();
+                this.cvc.crearLibroJuego(jTextField1.getText(), jTextField2.getText(), null, jTextArea1.getText());
             }
             listModel = new DefaultListModel();
             this.paginasLibroJuego = new ArrayList<>();
@@ -1130,7 +1141,16 @@ public class VistaPrincipal extends javax.swing.JFrame {
                     if (!this.paginasLibroJuego.contains(Integer.parseInt(this.jTextField3.getText()))) {
                         JOptionPane.showMessageDialog(null, "La pagina fue guardada con exito");
                         int a = Integer.parseInt(this.jTextField3.getText());
+                        this.cvc.crearPagina(this.tituloLibroJuego, a,this.jTextArea1.getText(),"Pagina Normal", null);
                         this.paginasLibroJuego.add(a);
+                        for (int i = 0; i < this.listModel.size(); i++) {
+                            String [] s = this.listModel.get(i).toString().split(";");
+                            int salto = Integer.parseInt(s[1]);
+                            Artefacto dar = new Artefacto(s[2]);
+                            Artefacto quitar = new Artefacto(s[3]);
+                            Artefacto solicitar = new Artefacto(s[4]);
+                            this.cvc.agregarCamino(this.tituloLibroJuego, a,salto ,s[0], dar, quitar, solicitar);
+                        }
                         this.crearPagina();
                     }
                     else{
@@ -1152,6 +1172,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
                     if (!this.paginasLibroJuego.contains(Integer.parseInt(this.jTextField3.getText()))) {
                         JOptionPane.showMessageDialog(null, "La pagina fue guardada con exito");
                         int a = Integer.parseInt(this.jTextField3.getText());
+                        Artefacto ar = new Artefacto(this.jTextField2.getText());
+                        this.cvc.crearPagina(this.tituloLibroJuego, a,this.jTextArea1.getText(),"Final bueno", ar);
                         this.paginasLibroJuego.add(a);
                         this.crearPagina();
                     }
@@ -1173,6 +1195,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
                     if (!this.paginasLibroJuego.contains(Integer.parseInt(this.jTextField3.getText()))) {
                         JOptionPane.showMessageDialog(null, "La pagina fue guardada con exito");
                         int a = Integer.parseInt(this.jTextField3.getText());
+                        Artefacto ar = new Artefacto(this.jTextField5.getText());
+                        this.cvc.crearPagina(this.tituloLibroJuego, a,this.jTextArea1.getText(),"Final malo", ar);
                         this.paginasLibroJuego.add(a);
                         this.crearPagina();
                     }
@@ -1194,6 +1218,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                     if (!this.paginasLibroJuego.contains(Integer.parseInt(this.jTextField3.getText()))) {
                         JOptionPane.showMessageDialog(null, "La pagina fue guardada con exito");
                         int a = Integer.parseInt(this.jTextField3.getText());
+                        this.cvc.crearPagina(this.tituloLibroJuego, a,this.jTextArea1.getText(),"Final regular", null);
                         this.paginasLibroJuego.add(a);
                         this.crearPagina();
                     }
@@ -1218,6 +1243,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 if (this.isNumero(this.jTextField3.getText())) {
                     //guardar en controlador
                     if (!this.paginasLibroJuego.contains(Integer.parseInt(this.jTextField3.getText()))) {
+                        int a = Integer.parseInt(this.jTextField3.getText());
+                        this.cvc.crearPagina(this.tituloLibroJuego, a,this.jTextArea1.getText(),"Pagina Normal", null);
+
                         JOptionPane.showMessageDialog(null, "La pagina fue guardada con exito");
                         if (this.salirPrincipal() == 0) {
                             this.getContentPane().removeAll(); 
@@ -1243,6 +1271,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 if (this.isNumero(this.jTextField3.getText())) {
                     //guardar en controlador
                     if (!this.paginasLibroJuego.contains(Integer.parseInt(this.jTextField3.getText()))) {
+                        int a = Integer.parseInt(this.jTextField3.getText());
+                        Artefacto ar = new Artefacto(this.jTextField2.getText());
+                        this.cvc.crearPagina(this.tituloLibroJuego, a,this.jTextArea1.getText(),"Final bueno", ar);
                         JOptionPane.showMessageDialog(null, "La pagina fue guardada con exito");
                         if (this.salirPrincipal() == 0) {
                             this.getContentPane().removeAll(); 
@@ -1267,6 +1298,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 if (this.isNumero(this.jTextField3.getText())) {
                     //guardar en controlador
                     if (!this.paginasLibroJuego.contains(Integer.parseInt(this.jTextField3.getText()))) {
+                        int a = Integer.parseInt(this.jTextField3.getText());
+                        Artefacto ar = new Artefacto(this.jTextField5.getText());
+                        this.cvc.crearPagina(this.tituloLibroJuego, a,this.jTextArea1.getText(),"Final malo", ar);
                         JOptionPane.showMessageDialog(null, "La pagina fue guardada con exito");
                         if (this.salirPrincipal() == 0) {
                             this.getContentPane().removeAll(); 
@@ -1290,6 +1324,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
             if (!this.jTextArea1.getText().isEmpty() && !this.jTextField3.getText().isEmpty()) {
                 if (this.isNumero(this.jTextField3.getText())) {
                     if (!this.paginasLibroJuego.contains(Integer.parseInt(this.jTextField3.getText()))) {
+                        int a = Integer.parseInt(this.jTextField3.getText());
+                        this.cvc.crearPagina(this.tituloLibroJuego, a,this.jTextArea1.getText(),"Final regular", null);
                         JOptionPane.showMessageDialog(null, "La pagina fue guardada con exito");
                         if (this.salirPrincipal() == 0) {
                             this.getContentPane().removeAll(); 
@@ -1320,7 +1356,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
             
             JFileChooser file = new JFileChooser();
             file.showOpenDialog(this);
-            File abre = file.getSelectedFile();
+            abre = file.getSelectedFile();
             if(abre!=null){     
                 FileReader archivos=new FileReader(abre);
                 String tipo = file.getTypeDescription(abre);
@@ -1394,4 +1430,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox1;
     
     private ArrayList<Integer> paginasLibroJuego;
+    
+    /// controladores
+    private ControladorVistaConstructor cvc;
+    private ControladorVistaJugador cvj;
+    private String tituloLibroJuego;
+    private File abre;
 }
