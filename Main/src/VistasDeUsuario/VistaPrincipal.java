@@ -5,9 +5,12 @@ import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
@@ -122,6 +125,14 @@ public class VistaPrincipal extends javax.swing.JFrame {
         this.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         this.repaint();
         this.setLayout(null);
+        
+        if (flag1 == true) {
+            this.imagen = new JLabel();
+            this.imagen.setBounds(0, 0,172,172);
+            this.jPanel1.add(this.imagen);
+            this.pack();
+            this.repaint();
+        }
         
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -325,14 +336,25 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         JLabel jLabel6 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
+        ArrayList<String> lista = new ArrayList<>(); 
+        lista.add("hola");
+        lista.add("llavalo pal hospital");
+                
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Escoje uno", "LibroJuego1", "LibroJuego2", "LibroJuego3", "LibroJuego4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(listaLibroJuegos (lista)));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                try {
+                    //jComboBox1ActionPerformed(evt);
+                    obtenerDatosLibro(evt);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(VistaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
+
+            
         });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -386,7 +408,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jButton2.setText("Empezar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                empezarLibroJuego(evt);
+                verificarInicioJuego(evt);
             }
 
             
@@ -474,7 +496,25 @@ public class VistaPrincipal extends javax.swing.JFrame {
         pack(); 
     }//GEN-LAST:event_jButton3ActionPerformed
     
-    private void empezarLibroJuego(ActionEvent evt) {
+    private void verificarInicioJuego(ActionEvent evt){
+        System.out.println("dssadds");
+        System.out.println(this.jComboBox1.getSelectedItem());
+        System.out.println("dssadds");
+        if (!this.jComboBox1.getSelectedItem().equals("Escoje uno")){
+            if (!this.jTextField3.getText().isEmpty()) {
+                empezarLibroJuego();
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Debe ingresar su apodo para continuar","Advertencia ", JOptionPane.WARNING_MESSAGE);
+            }
+               
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Escoja un LibroJuego para continuar","Advertencia ", JOptionPane.WARNING_MESSAGE);
+        }
+    }
+    
+    private void empezarLibroJuego() {
         this.getContentPane().removeAll(); 
         this.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         this.repaint();
@@ -1012,7 +1052,50 @@ public class VistaPrincipal extends javax.swing.JFrame {
         return resultado;
     }
     
+    private String[] listaLibroJuegos (ArrayList<String> lista){
+        String [] listaLibroJuego = new String [lista.size()+1];
+        for (int i = 0; i < lista.size()+1; i++) {
+            if (i==0) {
+                listaLibroJuego[i]="Escoje uno";
+            }
+            else{
+                listaLibroJuego[i]=lista.get(i-1);
+            }
+            
+        }
+        return listaLibroJuego;
+    }
     
+    private void obtenerDatosLibro(ActionEvent evt) throws FileNotFoundException {
+        //obtenerdatos()this.jComboBox1.getSelectedItem();
+        ArrayList<String> lista = new ArrayList<>();
+        lista.add("felipe");
+        lista.add("felipe");
+        lista.add("felipe");
+        lista.add("Jugador.png");
+        lista.add("Completado");
+        this.jTextField1.setText(lista.get(0));
+        this.jTextField2.setText(lista.get(1));
+        this.jTextArea1.setText(lista.get(2));
+        this.jTextField4.setText(lista.get(4));
+        File abre = new File(lista.get(3));
+        if(abre!=null){     
+            FileReader archivos=new FileReader(abre);
+            //this.jPanel1.remove(imagen);
+            ImageIcon i = new ImageIcon(abre.getAbsolutePath()); 
+            Image img = i.getImage();
+            img = img.getScaledInstance(200, 200, java.awt.Image.SCALE_SMOOTH);
+            i = new ImageIcon(img);
+            this.imagen = new JLabel();
+            this.imagen.setIcon(i);
+            this.imagen.setBounds(0, 0,200,200);
+            this.jPanel1.add(this.imagen);
+            this.pack();
+            this.repaint();
+            this.flag1 = true;
+        }  
+        
+    }
     private void agregarOpcion(ActionEvent evt) {
         if (this.jComboBox1.getSelectedItem().equals("Final malo") || this.jComboBox1.getSelectedItem().equals("Final bueno") || this.jComboBox1.getSelectedItem().equals("Final regular") ) {
             JOptionPane.showMessageDialog(null, "Usted no puede agregar opciones a un final","Advertencia ", JOptionPane.WARNING_MESSAGE);
