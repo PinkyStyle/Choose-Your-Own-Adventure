@@ -76,7 +76,7 @@ public class Final extends BuilderPagina {
      * @return La lista de imagenes asociadas.
      */
     @Override
-    public ArrayList<Image> getImagenes() {
+    public ArrayList<String> getImagenes() {
         return this.pagina.getImagenes();
     }
     
@@ -85,7 +85,7 @@ public class Final extends BuilderPagina {
      * @param imagen La imagen que se desea agregar a la pagina.
      */
     @Override
-    public void addImagenes(Image imagen) {
+    public void addImagenes(String imagen) {
         this.pagina.addImagenes(imagen);
     }
 
