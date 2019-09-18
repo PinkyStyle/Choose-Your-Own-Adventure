@@ -535,11 +535,15 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 //this.getContentPane().removeAll(); 
                 //this.repaint();
                 //this.initComponents();
+                this.jugandoPaginaNormal();
+                this.rellenadoDatosPaginaNormal();
                 
             }
             if (this.cvj.tipoDePagina()== 0) {
                 this.flag1=false;
-                jugandoPaginaFinal();
+                //jugandoPaginaFinal();
+                this.jugandoPaginaNormal();
+                this.rellenadoDatosPaginaNormal();
             }
         
         }
