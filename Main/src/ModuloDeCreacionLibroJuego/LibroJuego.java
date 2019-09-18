@@ -13,6 +13,7 @@ public class LibroJuego {
     private String imagen;
     private String sinopsis;
     private ArrayList<BuilderPagina> paginas;
+    private String estado="No Completado";
 
     /**
      * Constructor que inicializa el libro con sus atributos genericos y el arreglo lo crea sin paginas
@@ -66,6 +67,13 @@ public class LibroJuego {
         }
         return null;
     }
+    
+    /**
+     * 
+     */
+    public void editarEstado(){
+        this.estado="Completado";
+    }
 
     /**
      * Metodo que retorna el titulo de la aventura
@@ -75,20 +83,28 @@ public class LibroJuego {
         return tituloDeAventura;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public String getNombreDeAutor() {
         return nombreDeAutor;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public String getImagen() {
         return imagen;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public String getSinopsis() {
         return sinopsis;
     }
-    
-    
-    
-    
     
 }

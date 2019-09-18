@@ -29,70 +29,55 @@ public class GestorDeLibros {
     /**
      * Metodo que se encarga de crear una pagina nueva al libro
      * @param tituloDeAventura
-     * @param numeroPagina
+     * @param nPagina
      * @param descripcion
      * @param tipo
      * @param artefacto 
      */
-    public void agregarPagina(String tituloDeAventura, int numeroPagina, String descripcion, String tipo, Artefacto artefacto){
+    public void agregarPagina(String tituloDeAventura, int nPagina, String descripcion, String tipo, Artefacto artefacto){
         for (int i = 0; i < listaLibrojuego.size() ; i++) {
             if(this.listaLibrojuego.get(i).getTituloDeAventura().equals(tituloDeAventura)){
-                this.listaLibrojuego.get(i).crearPagina(numeroPagina, descripcion, tipo, artefacto);
+                this.listaLibrojuego.get(i).crearPagina(nPagina, descripcion, tipo, artefacto);
                 return;
             }
         }
         System.out.println("no se creo la nueva pagina");
     }
     
-    public LibroJuego informacionLibroJuego(String tituloDeAventura){
+    /**
+     * Metodo que retorna una lista con los datos del libro para ser enviados a la interfaz
+     * @param tituloDeAventura
+     * @return 
+     */
+    public ArrayList<String> mostrarinformacionDeUnLibroJuegos(String tituloDeAventura){
         for (int i = 0; i < listaLibrojuego.size() ; i++) {
             if(this.listaLibrojuego.get(i).getTituloDeAventura().equals(tituloDeAventura)){
-                return this.listaLibrojuego.get(i);
+                return null;
             }
         }
         return null;
     }
     
-    public ArrayList<String> mostrarListaNombreLibroJuegos(){
-        return null;
-    }
-         
     /**
-     * Metodo que se encarga de retornar una pagina especifica dado a un tituloDeAventura y un numero de pagina
-     * @param tituloDeAventura
-     * @param numeroPagina
+     * Metodo que retorna una lista con los nombres de todos los libros para ser mandados a la interfaz
      * @return 
      */
-    public BuilderPagina retornarPagina(String tituloDeAventura, int numeroPagina) {
+    public ArrayList<String> mostrarListaDeLibroJuegos(){
+        ArrayList<String> lista = new ArrayList<>();
         for (int i = 0; i < listaLibrojuego.size() ; i++) {
-            if(this.listaLibrojuego.get(i).getTituloDeAventura().equals(tituloDeAventura)){
-                return this.listaLibrojuego.get(i).getPagina(numeroPagina);
-            }
+            lista.add(this.listaLibrojuego.get(i).getTituloDeAventura());
         }
-        System.out.println("No se encontro el libro");
-        return null;
+        return lista;
     }
     
     /**
-     * retorna la descripcion de una pagina, atraves del nombre de la aventura
-     * y el numero de pagina.
+     * Metodo que retorna el tipo de pagina
      * @param tituloDeAventura
-     * @param numeroPag
+     * @param nPagina
      * @return 
      */
-    public String mostrarDescripcionDePagina(String tituloDeAventura, int numeroPag) {
-        BuilderPagina builderPagina=retornarPagina(tituloDeAventura, numeroPag);
-        return builderPagina.getDescripcion();
-    }
-    
-    /**
-     * 
-     * @param tituloDeAventura
-     * @param numeroPag
-     * @return 
-     */
-    public String tipoDePagina(String tituloDeAventura, int numeroPag){
-        BuilderPagina builderPagina=this.retornarPagina(tituloDeAventura, numeroPag);
+    public String tipoDePagina(String tituloDeAventura, int nPagina){
+        BuilderPagina builderPagina=this.retornarPagina(tituloDeAventura, nPagina);
         if(builderPagina==null){
             return null;
         }
@@ -100,47 +85,103 @@ public class GestorDeLibros {
     }
     
     /**
-     * retorna una array con la lista de las rutas de la imagenes.
+     * Metodo que devuelve la lista de caminos pero en tipo camino
      * @param tituloDeAventura
-     * @param numeroPag
+     * @param nPagina
      * @return 
      */
-    public ArrayList<String> mostrarRutasDePagina(String tituloDeAventura, int numeroPag) {
-        BuilderPagina builderPagina=retornarPagina(tituloDeAventura, numeroPag);
+    public ArrayList<Camino> getCaminosDePagina(String tituloDeAventura, int nPagina) {
+        BuilderPagina builderPagina=retornarPagina(tituloDeAventura, nPagina);
         if(builderPagina==null){
+            System.out.println("no encuntro la pagina");
             return null;
         }
         PaginaNormal pagina;
         if("Pagina Normal".equals(builderPagina.getTipo())){
             pagina = (PaginaNormal)builderPagina;
         }else{
+            System.out.println("no era pagina normal");
+            return null;
+        }
+        return pagina.getCaminos();
+    }
+    
+    /**
+     * Metodo que cambia el estado del libro de no completado a completado
+     * @param tituloDeAventura 
+     */
+    public void cambiarEstadoLibro(String tituloDeAventura){
+        for (int i = 0; i < listaLibrojuego.size() ; i++) {
+            if(this.listaLibrojuego.get(i).getTituloDeAventura().equals(tituloDeAventura)){
+                this.listaLibrojuego.get(i).editarEstado();
+                return;
+            }
+        }
+    }
+    
+    /**
+     * Metodo que retorna la descripcion de una pagina
+     * @param tituloDeAventura
+     * @param nPagina
+     * @return 
+     */
+    public String mostrarDescripcionDePagina(String tituloDeAventura, int nPagina) {
+        BuilderPagina builderPagina=retornarPagina(tituloDeAventura, nPagina);
+        return builderPagina.getDescripcion();
+    }
+    
+    /**
+     * Metodo que retorna las rutas para la interfaz
+     * @param tituloDeAventura
+     * @param nPagina
+     * @return 
+     */
+    public ArrayList<String> mostrarRutasDePagina(String tituloDeAventura, int nPagina) {
+        BuilderPagina builderPagina=retornarPagina(tituloDeAventura, nPagina);
+        if(builderPagina==null){
+            System.out.println("no encuntro la pagina");
+            return null;
+        }
+        PaginaNormal pagina;
+        if("Pagina Normal".equals(builderPagina.getTipo())){
+            pagina = (PaginaNormal)builderPagina;
+        }else{
+            System.out.println("no era pagina normal");
             return null;
         }
         return pagina.arragloDeCaminos();
     }
 
-    public ArrayList<String> mostrarImagenesDePagina(String tituloDeAventura, int numeroPag) {
-        BuilderPagina builderPagina=retornarPagina(tituloDeAventura, numeroPag);
+    /**
+     * Metodo que retorna las rutas de imagenes para la interfas
+     * @param tituloDeAventura
+     * @param nPagina
+     * @return 
+     */
+    public ArrayList<String> mostrarImagenesDePagina(String tituloDeAventura, int nPagina) {
+        BuilderPagina builderPagina=retornarPagina(tituloDeAventura, nPagina);
         if(builderPagina==null){
+            System.out.println("no encuntro la pagina");
             return null;
         }
         
         return null;
     }
-
-    public ArrayList<String> mostrarListaCaminosDePagina() {
+    
+     /**
+     * Metodo que se encarga de retornar una pagina especifica pero es privado, solo uso interno
+     * @param tituloDeAventura
+     * @param numeroPagina
+     * @return 
+     */
+    private BuilderPagina retornarPagina(String tituloDeAventura, int nPagina) {
+        for (int i = 0; i < listaLibrojuego.size() ; i++) {
+            if(this.listaLibrojuego.get(i).getTituloDeAventura().equals(tituloDeAventura)){
+                return this.listaLibrojuego.get(i).getPagina(nPagina);
+            }
+        }
+        System.out.println("No se encontro el libro");
         return null;
     }
-
-    public ArrayList<Camino> getCaminosDePagina(String tituloDeAventura, int nPagina) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-  
-
-    public ArrayList<String> mostrarImagenesDePagina() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 }
 

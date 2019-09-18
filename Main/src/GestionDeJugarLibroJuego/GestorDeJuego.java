@@ -63,22 +63,7 @@ public class GestorDeJuego {
      * @return
      */
     public ArrayList<String> mostrarinformacionDeUnLibroJuegos(String tituloDeAventura) {
-        ArrayList<String> lista = new ArrayList<>();
-        LibroJuego libro = gestorDeLibros.informacionLibroJuego(tituloDeAventura);
-        if (libro != null) {
-            String nombreAutor = libro.getNombreDeAutor();
-            String tituloAventura = libro.getTituloDeAventura();
-            String Sinopsis = libro.getSinopsis();
-            // cuando cambien el contructor de la imagen descomentan esta parte.
-            //String rutaImagen=libro.getImagen();
-
-            lista.add(nombreAutor);
-            lista.add(tituloAventura);
-            lista.add(Sinopsis);
-            //lista.add(rutaImagen);
-            return lista;
-        }
-        return null;
+        return gestorDeLibros.mostrarinformacionDeUnLibroJuegos(tituloDeAventura);
     }
 
     //-----------------------------------------------------------------------
@@ -121,7 +106,7 @@ public class GestorDeJuego {
      * @return
      */
     public ArrayList<String> mostrarImagenesDePagina() {
-        return gestorDeLibros.mostrarImagenesDePagina();
+        return gestorDeLibros.mostrarImagenesDePagina(this.tituloDeAventura, this.nPagina);
     }
 
     /**
