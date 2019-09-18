@@ -131,6 +131,16 @@ public class GestorDeLibros {
     public ArrayList<String> mostrarListaCaminosDePagina() {
         return null;
     }
+
+    public ArrayList<Camino> getCaminosDePagina(String tituloDeAventura, int nPagina) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+  
+
+    public ArrayList<String> mostrarImagenesDePagina() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
 
