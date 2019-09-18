@@ -1255,7 +1255,12 @@ public class VistaPrincipal extends javax.swing.JFrame {
                     if (!this.paginasLibroJuego.contains(Integer.parseInt(this.jTextField3.getText()))) {
                         JOptionPane.showMessageDialog(null, "La pagina fue guardada con exito");
                         int a = Integer.parseInt(this.jTextField3.getText());
-                        this.cvc.crearPagina(this.tituloLibroJuego, a,this.jTextArea1.getText(),"Pagina Normal",abre.getAbsolutePath(), null);
+                        if (abre.getAbsolutePath() == null) {
+                            this.cvc.crearPagina(this.tituloLibroJuego, a,this.jTextArea1.getText(),"Pagina Normal",null, null);
+                        }
+                        else{
+                            this.cvc.crearPagina(this.tituloLibroJuego, a,this.jTextArea1.getText(),"Pagina Normal",abre.getAbsolutePath(), null);
+                        }
                         this.paginasLibroJuego.add(a);
                         for (int i = 0; i < this.listModel.size(); i++) {
                             String [] s = this.listModel.get(i).toString().split(";");
@@ -1287,7 +1292,14 @@ public class VistaPrincipal extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "La pagina fue guardada con exito");
                         int a = Integer.parseInt(this.jTextField3.getText());
                         Artefacto ar = new Artefacto(this.jTextField2.getText());
-                        this.cvc.crearPagina(this.tituloLibroJuego, a,this.jTextArea1.getText(),"Final bueno",abre.getAbsolutePath(), ar);
+                        if (abre.getAbsolutePath() == null) {
+                            this.cvc.crearPagina(this.tituloLibroJuego, a,this.jTextArea1.getText(),"Final bueno",null, ar);
+                        }
+                        else{
+                            this.cvc.crearPagina(this.tituloLibroJuego, a,this.jTextArea1.getText(),"Final bueno",abre.getAbsolutePath(), ar);
+                        }
+                        
+                        
                         this.paginasLibroJuego.add(a);
                         this.crearPagina();
                     }
@@ -1310,7 +1322,12 @@ public class VistaPrincipal extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "La pagina fue guardada con exito");
                         int a = Integer.parseInt(this.jTextField3.getText());
                         Artefacto ar = new Artefacto(this.jTextField5.getText());
-                        this.cvc.crearPagina(this.tituloLibroJuego, a,this.jTextArea1.getText(),"Final malo",abre.getAbsolutePath(), ar);
+                        if (abre.getAbsolutePath() == null) {
+                            this.cvc.crearPagina(this.tituloLibroJuego, a,this.jTextArea1.getText(),"Final malo",null, ar);
+                        }
+                        else{
+                            this.cvc.crearPagina(this.tituloLibroJuego, a,this.jTextArea1.getText(),"Final malo",abre.getAbsolutePath(), ar);
+                        }
                         this.paginasLibroJuego.add(a);
                         this.crearPagina();
                     }
@@ -1332,7 +1349,12 @@ public class VistaPrincipal extends javax.swing.JFrame {
                     if (!this.paginasLibroJuego.contains(Integer.parseInt(this.jTextField3.getText()))) {
                         JOptionPane.showMessageDialog(null, "La pagina fue guardada con exito");
                         int a = Integer.parseInt(this.jTextField3.getText());
-                        this.cvc.crearPagina(this.tituloLibroJuego, a,this.jTextArea1.getText(),"Final regular",abre.getAbsolutePath(), null);
+                        if (abre.getAbsoluteFile() == null) {
+                            this.cvc.crearPagina(this.tituloLibroJuego, a,this.jTextArea1.getText(),"Final regular",null, null);
+                        }
+                        else{
+                            this.cvc.crearPagina(this.tituloLibroJuego, a,this.jTextArea1.getText(),"Final regular",abre.getAbsolutePath(), null);
+                        }
                         this.paginasLibroJuego.add(a);
                         this.crearPagina();
                     }
