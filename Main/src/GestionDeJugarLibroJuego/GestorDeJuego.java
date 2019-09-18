@@ -22,6 +22,7 @@ public class GestorDeJuego {
     public GestorDeJuego() {
     }
 
+    //noh vimoh giles ctm
     /**
      *
      */

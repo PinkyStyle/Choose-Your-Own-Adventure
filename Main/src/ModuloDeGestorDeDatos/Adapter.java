@@ -108,9 +108,15 @@ public class Adapter {
         }
     }
     
+    /**
+     * Metodo para cargar los librojuegos ya existentes como txt.s
+     */
+    public void cargarLibroJuego(){
+        
+    }
     
     /**
-     * Metodo que transforma un archivo txt a un librjuego.
+     * Metodo que transforma una pagina en formato txt en una pagina funcional.
      */
     public void cargarPaginaLibroJuegos(){        
         
