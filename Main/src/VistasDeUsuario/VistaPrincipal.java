@@ -524,18 +524,20 @@ public class VistaPrincipal extends javax.swing.JFrame {
     
     private void jugandoLibroJuego() throws FileNotFoundException {
         if (this.cvj.tipoDePagina()== 1) {
-            
+            this.flag1=false;
             this.jugandoPaginaNormal();
             this.rellenadoDatosPaginaNormal();
         }
         else{
             if (this.cvj.tipoDePagina()== -1) {
+                this.flag1=false;
                 JOptionPane.showMessageDialog(null, "El Libro no fue completado correctamente, saliendo al menu inicial","Advertencia ", JOptionPane.WARNING_MESSAGE);
                 this.getContentPane().removeAll(); 
                 this.repaint();
                 this.initComponents();
             }
             if (this.cvj.tipoDePagina()== 0) {
+                this.flag1=false;
                 jugandoPaginaFinal();
             }
         
@@ -1255,12 +1257,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
                     if (!this.paginasLibroJuego.contains(Integer.parseInt(this.jTextField3.getText()))) {
                         JOptionPane.showMessageDialog(null, "La pagina fue guardada con exito");
                         int a = Integer.parseInt(this.jTextField3.getText());
-                        if (abre.getAbsolutePath() == null) {
+                        if (flag1==false) {
                             this.cvc.crearPagina(this.tituloLibroJuego, a,this.jTextArea1.getText(),"Pagina Normal",null, null);
                         }
                         else{
                             this.cvc.crearPagina(this.tituloLibroJuego, a,this.jTextArea1.getText(),"Pagina Normal",abre.getAbsolutePath(), null);
                         }
+                        System.out.println("a"+a);
                         this.paginasLibroJuego.add(a);
                         for (int i = 0; i < this.listModel.size(); i++) {
                             String [] s = this.listModel.get(i).toString().split(";");
