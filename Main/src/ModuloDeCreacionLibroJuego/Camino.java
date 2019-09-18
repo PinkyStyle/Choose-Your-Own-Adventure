@@ -26,7 +26,6 @@ public class Camino {
         this.darArtefacto=dar;
         this.quitarArtefacto=quitar;
         this.solicitarArtefacto=solicitar;
-        
     }
     
 
@@ -69,5 +68,11 @@ public class Camino {
     public Artefacto getSolicitarArtefacto() {
         return solicitarArtefacto;
     }
+    
+    @Override
+    public String toString(){
+        return this.opcion + " salta a pagina: " + this.numeroPagina;
+    }
+
     
 }

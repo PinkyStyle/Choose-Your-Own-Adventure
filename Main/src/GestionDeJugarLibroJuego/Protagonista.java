@@ -6,8 +6,8 @@ import java.util.ArrayList;
  * 
  */
 public class Protagonista {
-    private ArrayList<String> artefactos;
-    private ArrayList<String> artefactosQuemados;
+    private ArrayList<Artefacto> artefactos;
+    private ArrayList<Artefacto> artefactosQuemados;
     private String nombre; 
     /**
      * Default constructor
@@ -16,7 +16,7 @@ public class Protagonista {
         this.nombre = nombre;
     }
 
-    public boolean buscarArtefacto(String artefacto) {
+    public boolean buscarArtefacto(Artefacto artefacto) {
         if(artefactos.contains(artefacto)){
             return true;
         }
@@ -24,13 +24,13 @@ public class Protagonista {
             return false;
         }
     }
-    public void setArtefactos(ArrayList<String> artefactos) {
+    public void setArtefactos(ArrayList<Artefacto> artefactos) {
         this.artefactos = artefactos;
     }
-    public void addArtefacto(String artefacto){
+    public void addArtefacto(Artefacto artefacto){
         artefactos.add(artefacto);
     }
-    public void eliminarArtefacto(String artefacto){
+    public void eliminarArtefacto(Artefacto artefacto){
         artefactos.remove(artefacto);  
         addArtefactoQuemado(artefacto);
     }
@@ -43,10 +43,10 @@ public class Protagonista {
             return false;
         }
     }
-    public void setArtefactosQuemados(ArrayList<String> artegactosQuemados) {
+    public void setArtefactosQuemados(ArrayList<Artefacto> artegactosQuemados) {
         this.artefactosQuemados = artegactosQuemados;
     }
-    public void addArtefactoQuemado(String artefacto){
+    public void addArtefactoQuemado(Artefacto artefacto){
         artefactosQuemados.add(artefacto);
     }
   

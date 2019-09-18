@@ -10,9 +10,10 @@ import java.util.ArrayList;
 public class LibroJuego {
     private String nombreDeAutor;
     private String tituloDeAventura;
-    private Image imagen;
+    private String imagen;
     private String sinopsis;
     private ArrayList<BuilderPagina> paginas;
+    private String estado="No Completado";
 
     /**
      * Constructor que inicializa el libro con sus atributos genericos y el arreglo lo crea sin paginas
@@ -21,7 +22,7 @@ public class LibroJuego {
      * @param imagen
      * @param sinopsis 
      */
-    public LibroJuego(String nombreDeAutor, String tituloDeAventura, Image imagen, String sinopsis) {
+    public LibroJuego(String nombreDeAutor, String tituloDeAventura, String imagen, String sinopsis) {
         this.nombreDeAutor = nombreDeAutor;
         this.tituloDeAventura = tituloDeAventura;
         this.imagen = imagen;
@@ -52,14 +53,31 @@ public class LibroJuego {
         }
         System.out.println("Fallo al crear la pagina");
     }
+ 
+    public void agregarCamino(int nPagina, int proximoSalto, String opcion, Artefacto dar, Artefacto quitar, Artefacto solicitar){
+        PaginaNormal pagina=(PaginaNormal)this.paginas.get(nPagina);
+        pagina.agregarCamino(new Camino(proximoSalto, opcion,  dar,  quitar,  solicitar));
+    }
 
     /**
      * Metodo que retorna una pagina especifica del LibroJuego
      * @param i
      * @return 
      */
-    public BuilderPagina getPagina(int i) {
-        return this.paginas.get(i);
+    public BuilderPagina getPagina(int nPagina) {
+        for (int j = 0; j < this.paginas.size(); j++) {
+            if(this.paginas.get(j).getNumeroPagina()==nPagina){
+                return this.paginas.get(j);
+            }
+        }
+        return null;
+    }
+    
+    /**
+     * 
+     */
+    public void editarEstado(){
+        this.estado="Completado";
     }
 
     /**
@@ -70,20 +88,50 @@ public class LibroJuego {
         return tituloDeAventura;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public String getNombreDeAutor() {
         return nombreDeAutor;
     }
 
-    public Image getImagen() {
+    /**
+     * 
+     * @return 
+     */
+    public String getImagen() {
         return imagen;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public String getSinopsis() {
         return sinopsis;
     }
     
-    
-    
-    
-    
+    /**
+     * Metodo que retorna la informacion de un libro en una cadena
+     * @return 
+     */
+    @Override
+    public String toString(){
+        return nombreDeAutor + " " + tituloDeAventura + " " + sinopsis + " " + imagen + " " + estado;
+    }
+
+    /**
+     * Metodo que retorna una lista con toda la informacion del libro juego
+     * @return 
+     */
+    public ArrayList<String> informacionDeLibroJuego() {
+        ArrayList<String> lista = new ArrayList<>();
+        lista.add(this.nombreDeAutor);
+        lista.add(this.tituloDeAventura);
+        lista.add(this.sinopsis);
+        lista.add(this.imagen);
+        lista.add(this.estado);
+        return lista;
+    }
 }
