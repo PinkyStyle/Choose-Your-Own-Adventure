@@ -1282,7 +1282,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                                     this.cvc.agregarCamino(this.tituloLibroJuego, a,salto ,s[0], dar, quitar, null);
                                 }
                                 else{
-                                    if (s.length ==4) {
+                                    if (s.length ==5) {
                                         Artefacto dar = new Artefacto(s[2]);
                                         Artefacto quitar = new Artefacto(s[3]);
                                         Artefacto solicitar = new Artefacto(s[4]);
