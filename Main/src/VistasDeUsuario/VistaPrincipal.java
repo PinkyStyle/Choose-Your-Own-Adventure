@@ -339,19 +339,15 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         JLabel jLabel6 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
-        ArrayList<String> lista = new ArrayList<>(); 
-        lista.add("hola");
-        lista.add("llavalo pal hospital");
-                
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(listaLibroJuegos (lista)));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(listaLibroJuegos (this.cvj.mostrarListaLibros())));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try {
                     //jComboBox1ActionPerformed(evt);
-                    obtenerDatosLibro(evt);
+                    obtenerDatosLibro(evt,cvj.mostrarInformacionDeUnLibroJuego((String) jComboBox1.getSelectedItem()));
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(VistaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -505,6 +501,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         System.out.println("dssadds");
         if (!this.jComboBox1.getSelectedItem().equals("Escoje uno")){
             if (!this.jTextField3.getText().isEmpty()) {
+                this.cvj.iniciarJuego((String) this.jComboBox1.getSelectedItem(), this.jTextField3.getText());
                 empezarLibroJuego();
             }
             else{
@@ -1077,19 +1074,14 @@ public class VistaPrincipal extends javax.swing.JFrame {
         return listaLibroJuego;
     }
     
-    private void obtenerDatosLibro(ActionEvent evt) throws FileNotFoundException {
+    private void obtenerDatosLibro(ActionEvent evt,ArrayList<String> datos) throws FileNotFoundException {
         //obtenerdatos()this.jComboBox1.getSelectedItem();
-        ArrayList<String> lista = new ArrayList<>();
-        lista.add("felipe");
-        lista.add("felipe");
-        lista.add("felipe");
-        lista.add("Jugador.png");
-        lista.add("Completado");
-        this.jTextField1.setText(lista.get(0));
-        this.jTextField2.setText(lista.get(1));
-        this.jTextArea1.setText(lista.get(2));
-        this.jTextField4.setText(lista.get(4));
-        File abre = new File(lista.get(3));
+        
+        this.jTextField1.setText(datos.get(0));
+        this.jTextField2.setText(datos.get(1));
+        this.jTextArea1.setText(datos.get(2));
+        this.jTextField4.setText(datos.get(4));
+        File abre = new File(datos.get(3));
         if(abre!=null){     
             FileReader archivos=new FileReader(abre);
             //this.jPanel1.remove(imagen);
