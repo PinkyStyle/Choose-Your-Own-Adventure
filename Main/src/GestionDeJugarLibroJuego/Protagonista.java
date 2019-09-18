@@ -9,6 +9,7 @@ public class Protagonista {
     private ArrayList<Artefacto> artefactos;
     private ArrayList<Artefacto> artefactosQuemados;
     private String nombre; 
+    
     /**
      * Default constructor
      */
@@ -24,18 +25,23 @@ public class Protagonista {
             return false;
         }
     }
+    
+    
+    
     public void setArtefactos(ArrayList<Artefacto> artefactos) {
         this.artefactos = artefactos;
     }
+    
     public void addArtefacto(Artefacto artefacto){
         artefactos.add(artefacto);
     }
+    
     public void eliminarArtefacto(Artefacto artefacto){
         artefactos.remove(artefacto);  
         addArtefactoQuemado(artefacto);
     }
     
-    public boolean buscarAtefactoQuemado(String artefacto){
+    public boolean buscarAtefactoQuemado(Artefacto artefacto){
        if(artefactos.contains(artefacto)){
             return true;
         }
