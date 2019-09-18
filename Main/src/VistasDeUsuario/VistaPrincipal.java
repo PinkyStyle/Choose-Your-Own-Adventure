@@ -857,7 +857,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jButton2.setText("Check");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                //jButton2ActionPerformed(evt);
+                check(evt);
             }
         });
 
@@ -1055,6 +1055,14 @@ public class VistaPrincipal extends javax.swing.JFrame {
         pack();
         JOptionPane.showMessageDialog(null, "Es necesario que escoja un tipo de pagina para seguir");
     
+    }
+    
+    private void check(ActionEvent evt) {
+        if (isNumero(this.jTextField3.getText())) {
+            if (this.paginasLibroJuego.contains(Integer.parseInt(this.jTextField3.getText()))) {
+                JOptionPane.showMessageDialog(null, "Ese n° de pagina ya esta creada","Advertencia ", JOptionPane.WARNING_MESSAGE);
+            }
+        }
     }
     
     private void jComboBox1ActionPerformed(ActionEvent evt) {
