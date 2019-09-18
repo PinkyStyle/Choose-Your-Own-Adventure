@@ -32,7 +32,7 @@ public abstract class BuilderPagina {
     public abstract String getTipo();
     public abstract int getNumeroPagina();
     public abstract String getDescripcion() ;
-    public abstract ArrayList<Image> getImagenes();
-    public abstract void addImagenes(Image imagen);
+    public abstract ArrayList<String> getImagenes();
+    public abstract void addImagenes(String imagen);
     
 }

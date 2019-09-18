@@ -26,7 +26,7 @@ public class ControladorVistaConstructor {
      * @param imagen
      * @param sinopsis 
      */
-    public void crearLibroJuego(String nombreDeAutor, String tituloDeAventura, Image imagen, String sinopsis) {
+    public void crearLibroJuego(String nombreDeAutor, String tituloDeAventura, String imagen, String sinopsis) {
         this.gestorDeLibros.crearLibroJuego(nombreDeAutor, tituloDeAventura, imagen, sinopsis);
     }
 

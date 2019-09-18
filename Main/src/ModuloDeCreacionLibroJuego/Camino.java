@@ -70,4 +70,10 @@ public class Camino {
         return solicitarArtefacto;
     }
     
+    @Override
+    public String toString(){
+        return this.opcion + " salta a pagina: " + this.numeroPagina;
+    }
+
+    
 }

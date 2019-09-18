@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class LibroJuego {
     private String nombreDeAutor;
     private String tituloDeAventura;
-    private Image imagen;
+    private String imagen;
     private String sinopsis;
     private ArrayList<BuilderPagina> paginas;
 
@@ -21,7 +21,7 @@ public class LibroJuego {
      * @param imagen
      * @param sinopsis 
      */
-    public LibroJuego(String nombreDeAutor, String tituloDeAventura, Image imagen, String sinopsis) {
+    public LibroJuego(String nombreDeAutor, String tituloDeAventura, String imagen, String sinopsis) {
         this.nombreDeAutor = nombreDeAutor;
         this.tituloDeAventura = tituloDeAventura;
         this.imagen = imagen;
@@ -58,8 +58,13 @@ public class LibroJuego {
      * @param i
      * @return 
      */
-    public BuilderPagina getPagina(int i) {
-        return this.paginas.get(i);
+    public BuilderPagina getPagina(int nPagina) {
+        for (int j = 0; j < this.paginas.size(); j++) {
+            if(this.paginas.get(j).getNumeroPagina()==nPagina){
+                return this.paginas.get(j);
+            }
+        }
+        return null;
     }
 
     /**
@@ -74,7 +79,7 @@ public class LibroJuego {
         return nombreDeAutor;
     }
 
-    public Image getImagen() {
+    public String getImagen() {
         return imagen;
     }
 

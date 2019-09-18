@@ -131,7 +131,8 @@ public class GestorDeJuego {
      * @return 
      */
     public ArrayList<String> mostrarImagenesDePagina() {
-        return gestorDeLibros.mostrarImagenesDePagina();
+        //return gestorDeLibros.mostrarImagenesDePagina();
+        return null;
     }
 
     /**

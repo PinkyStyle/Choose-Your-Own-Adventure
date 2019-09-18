@@ -1,10 +1,13 @@
 package ModuloDeGestorDeDatos;
+import ModuloDeCreacionLibroJuego.BuilderPagina;
+import ModuloDeCreacionLibroJuego.Camino;
 import ModuloDeCreacionLibroJuego.LibroJuego;
-import ModuloDeCreacionLibroJuego.Pagina;
+import ModuloDeCreacionLibroJuego.PaginaNormal;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -62,23 +65,47 @@ public class Adapter {
             else{
                 System.out.println("Ya existe un directorio para imagenes");
             }
-        }
+        }        
         
         try (PrintWriter pw = new PrintWriter(this.origen+libro+"Descripcion.txt","UTF-8")) {
             pw.println(librojuego.getTituloDeAventura());
             pw.println(librojuego.getNombreDeAutor());
-            
+            pw.println("-");
             pw.println(librojuego.getSinopsis());
-            
-        }               
-        
+            pw.println("-");       
+            pw.println(librojuego.getImagen());            
+        }                       
     }
     
-    public void guardarPagina(Pagina pagina, String titulo) throws FileNotFoundException, UnsupportedEncodingException{
+    /**
+     * Metodo que transforma una pagina para ser guardada en un archivo .txt
+     * @param pagina La pagina a guardar
+     * @param titulo El titulo del libro al que pertenece la pagina.
+     * @throws FileNotFoundException
+     * @throws UnsupportedEncodingException 
+     */
+    public void guardarPagina(BuilderPagina pagina, String titulo) throws FileNotFoundException, UnsupportedEncodingException{
         String directorio = origen+"/"+titulo+"/paginas";
         
-        PrintWriter pw = new PrintWriter(directorio+"/pagina"+pagina.getNumeroPagina(),"UTF-8");
-        
+        try (PrintWriter pw = new PrintWriter(directorio+"/pagina"+pagina.getNumeroPagina(),"UTF-8")) {
+            pw.println(pagina.getNumeroPagina());
+            pw.println(pagina.getTipo());
+            pw.println(pagina.getDescripcion());
+            if(pagina.getTipo().equals("Pagina Normal")){
+                PaginaNormal pn = (PaginaNormal) pagina;
+                ArrayList<Camino> caminos = pn.getCaminos();
+                
+                for(Camino c:caminos){
+                    pw.println("-");
+                    pw.println(c.getOpcion());
+                    pw.println(c.getDarArtefacto());
+                    pw.println(c.getQuitarArtefacto());
+                    pw.println(c.getSolicitarArtefacto());
+                    pw.println(c.getNumeroPagina());                
+                }
+                pw.println("end");
+            }
+        }
     }
     
     

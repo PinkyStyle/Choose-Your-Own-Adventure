@@ -1,6 +1,4 @@
 package ModuloDeCreacionLibroJuego;
-
-import java.awt.Image;
 import java.util.ArrayList;
 
 
@@ -24,7 +22,7 @@ public class GestorDeLibros {
      * @param imagen
      * @param sinopsis 
      */
-    public void crearLibroJuego(String nombreDeAutor, String tituloDeAventura, Image imagen, String sinopsis){
+    public void crearLibroJuego(String nombreDeAutor, String tituloDeAventura, String imagen, String sinopsis){
         this.listaLibrojuego.add(new LibroJuego(nombreDeAutor, tituloDeAventura, imagen, sinopsis));
     }
     
@@ -68,12 +66,13 @@ public class GestorDeLibros {
     public BuilderPagina retornarPagina(String tituloDeAventura, int numeroPagina) {
         for (int i = 0; i < listaLibrojuego.size() ; i++) {
             if(this.listaLibrojuego.get(i).getTituloDeAventura().equals(tituloDeAventura)){
-                return this.listaLibrojuego.get(i).getPagina(i);
+                return this.listaLibrojuego.get(i).getPagina(numeroPagina);
             }
         }
         System.out.println("No se encontro el libro");
         return null;
     }
+    
     /**
      * retorna la descripcion de una pagina, atraves del nombre de la aventura
      * y el numero de pagina.
@@ -83,42 +82,55 @@ public class GestorDeLibros {
      */
     public String mostrarDescripcionDePagina(String tituloDeAventura, int numeroPag) {
         BuilderPagina builderPagina=retornarPagina(tituloDeAventura, numeroPag);
-        PaginaNormal pagina = (PaginaNormal)builderPagina;
-        return pagina.getDescripcion();
+        return builderPagina.getDescripcion();
     }
+    
+    /**
+     * 
+     * @param tituloDeAventura
+     * @param numeroPag
+     * @return 
+     */
+    public String tipoDePagina(String tituloDeAventura, int numeroPag){
+        BuilderPagina builderPagina=this.retornarPagina(tituloDeAventura, numeroPag);
+        if(builderPagina==null){
+            return null;
+        }
+        return builderPagina.getTipo();
+    }
+    
     /**
      * retorna una array con la lista de las rutas de la imagenes.
-     * OJO NO ESTA FUNCIONAL, FALTA QUE EN VEZ DE QUE ME PASEN LA IMAGEN, SOLO ME PASEN LA RUTA.
      * @param tituloDeAventura
      * @param numeroPag
      * @return 
      */
     public ArrayList<String> mostrarRutasDePagina(String tituloDeAventura, int numeroPag) {
         BuilderPagina builderPagina=retornarPagina(tituloDeAventura, numeroPag);
-        PaginaNormal pagina = (PaginaNormal)builderPagina;
-        //return pagina.getImagenes();
-        return null;
-    }
-
-    /**
-     * devuelve los caminos de una pagina, validando si la pagina de la que
-     * se piden los caminos es final, si no es final devuelve los caminos de la pagina.
-     * @param tituloDeAventura
-     * @param nPagina
-     * @return 
-     */
-    public ArrayList<Camino> getCaminosDePagina(String tituloDeAventura, int nPagina) {
-        BuilderPagina builder=retornarPagina(tituloDeAventura, nPagina);
-        if(builder.getTipo().equalsIgnoreCase("pagina normal") == true){
-            PaginaNormal pagina = (PaginaNormal)builderPagina;
-            return pagina.getCaminos();
+        if(builderPagina==null){
+            return null;
         }
+        PaginaNormal pagina;
+        if("Pagina Normal".equals(builderPagina.getTipo())){
+            pagina = (PaginaNormal)builderPagina;
+        }else{
+            return null;
+        }
+        return pagina.arragloDeCaminos();
+    }
+
+    public ArrayList<String> mostrarImagenesDePagina(String tituloDeAventura, int numeroPag) {
+        BuilderPagina builderPagina=retornarPagina(tituloDeAventura, numeroPag);
+        if(builderPagina==null){
+            return null;
+        }
+        
         return null;
     }
 
-   
-
-
-
+    public ArrayList<String> mostrarListaCaminosDePagina() {
+        return null;
+    }
+    
 }
 
