@@ -15,9 +15,6 @@ public class GestorDeJuego {
     private Protagonista protagonista;
     private String tituloDeAventura;
     private int nPagina;
-    private ArrayList<String> artefactosQuemados;
-    private ArrayList<String> artefactosActuales;
-
     /**
      * Default constructor
      *
@@ -95,8 +92,8 @@ public class GestorDeJuego {
         this.protagonista = new Protagonista(nombreAventuraro);
         this.tituloDeAventura = tituloDeAventura;
         this.nPagina = 1;
-        this.artefactosActuales = new ArrayList<>();
-        this.artefactosQuemados = new ArrayList<>();
+        this.protagonista.setArtefactos(new ArrayList<>());
+        this.protagonista.setArtefactosQuemados(new ArrayList<>());
     }
 
     /**
@@ -153,17 +150,11 @@ public class GestorDeJuego {
             Camino camino = caminos.get(i);
             Artefacto solicitarArtefacto = camino.getSolicitarArtefacto();
             if (solicitarArtefacto != null) {// me solicitan un artefacto para transitar por ese camino.
-                String nombreArtefactoSolicitado = solicitarArtefacto.getNombre();
-                for (String artefactosActuale : this.artefactosActuales) {
-                    String miArtefacto = this.artefactosActuales.get(i);// obtengo el nombre del primer artefacto.
-                    if (nombreArtefactoSolicitado.equalsIgnoreCase(miArtefacto) == true) { //significa que tengo el artefacto para ir por ese camino.
-
+                    if (protagonista.buscarArtefacto(solicitarArtefacto)) { //significa que tengo el artefacto para ir por ese camino.
                         caminosQuePuedoIr.add(camino.getOpcion());
                     }
                 }
             }
-
-        }
         return caminosQuePuedoIr;
     }
 
@@ -178,13 +169,11 @@ public class GestorDeJuego {
             for (int i = 0; i < caminosAux.size(); i++) {
                 Camino camino = caminosAux.get(i);
                 if (camino.getOpcion().equalsIgnoreCase(opcionCamino) == true) {
-                    String nombreArtefacto = camino.getDarArtefacto().getNombre();
+                    //String nombreArtefacto = camino.getDarArtefacto().getNombre();
                     if (camino.getDarArtefacto() != null) {// me estan dando un  artefacto
-
-                        agregarArtefacto(nombreArtefacto);
+                        protagonista.addArtefacto(camino.getDarArtefacto());
                     } else if (camino.getQuitarArtefacto() != null) {// me estan quitando un artefacto por ir a ese camino.
-                        eliminarArtefacto(nombreArtefacto);
-                        agrefarArtefactoListaDeQuemados(nombreArtefacto);
+                        protagonista.eliminarArtefacto(camino.getQuitarArtefacto()); // al eliminar el artefacto de la lista se agrega al tiro a la lista de quemados
                     }
 
                 }
@@ -216,21 +205,12 @@ public class GestorDeJuego {
         return -1;
     }
 
-    public void agregarArtefacto(String artefacto) {
-        this.artefactosActuales.add(artefacto);
+    /* Recibe el String de la pagina del libro al que se le modificara NOMBRE 
+    por el nombre del prota
+    */
+    public String agregarNombre (String texto){
+        texto = texto.replaceAll("NOMBRE", this.protagonista.getNombre());
+        return texto;
     }
-
-    public void eliminarArtefacto(String artefacto) {
-        for (int i = 0; i < this.artefactosActuales.size(); i++) {
-            String artefactoAux = this.artefactosActuales.get(i);
-            if (artefactoAux.equalsIgnoreCase(artefacto) == true) {
-                this.artefactosActuales.remove(i);
-            }
-
-        }
+    
     }
-
-    public void agrefarArtefactoListaDeQuemados(String artefacto) {
-        this.artefactosQuemados.add(artefacto);
-    }
-}
