@@ -52,7 +52,7 @@ public class LibroJuego {
             Final pagina=new Final(numeroPagina, descripcion, tipo, artefacto);
             pagina.addImagenes(imagen);
             this.paginas.add(pagina);
-            System.out.println("se creo una pagina final");
+            System.out.println("se creo una pagina final de tipo " + tipo);
             return;
         }
         System.out.println("Fallo al crear la pagina");
@@ -100,6 +100,7 @@ public class LibroJuego {
      */
     public void editarEstado(){
         this.estado="Completado";
+        System.out.println("El libro se ha completado");
     }
 
     /**
