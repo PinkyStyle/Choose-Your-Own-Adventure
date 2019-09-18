@@ -58,8 +58,13 @@ public class LibroJuego {
      * @param i
      * @return 
      */
-    public BuilderPagina getPagina(int i) {
-        return this.paginas.get(i);
+    public BuilderPagina getPagina(int nPagina) {
+        for (int j = 0; j < this.paginas.size(); j++) {
+            if(this.paginas.get(j).getNumeroPagina()==nPagina){
+                return this.paginas.get(j);
+            }
+        }
+        return null;
     }
 
     /**

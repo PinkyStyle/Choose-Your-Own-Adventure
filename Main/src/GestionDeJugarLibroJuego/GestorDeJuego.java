@@ -106,6 +106,7 @@ public class GestorDeJuego {
      * @param camino 
      */
     public void actualizarPagina(String camino) {
+        
         String[] parse = camino.split(" ");
         this.nPagina=Integer.parseInt(parse[parse.length-1]);
     }
@@ -123,7 +124,8 @@ public class GestorDeJuego {
      * @return 
      */
     public ArrayList<String> mostrarImagenesDePagina() {
-        return gestorDeLibros.mostrarImagenesDePagina();
+        //return gestorDeLibros.mostrarImagenesDePagina();
+        return null;
     }
 
     /**
