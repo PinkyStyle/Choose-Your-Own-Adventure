@@ -622,14 +622,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(this.opcionesJugandoPaginaNormal(this.cvj.mostrarListaCaminosDePagina())));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-               // jComboBox1ActionPerformed(evt);
-            }
-        });
-
+        
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Opciones");
 
@@ -698,6 +691,14 @@ public class VistaPrincipal extends javax.swing.JFrame {
             }
             
         }
+        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(this.opcionesJugandoPaginaNormal(this.cvj.mostrarListaCaminosDePagina())));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+               // jComboBox1ActionPerformed(evt);
+            }
+        });
+
         
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -808,7 +809,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 }
             }   
         }else{
-            System.out.println("no tiene camino !!!");
+            JOptionPane.showMessageDialog(null, "No puedes seguir avanzado ya que quemaste todos tus objetos, saliendo... ","Advertencia ", JOptionPane.WARNING_MESSAGE);
+            this.getContentPane().removeAll(); 
+            this.repaint();
+            this.initComponents();
         }
         
         return opcionesJugandoPaginaNormal;
