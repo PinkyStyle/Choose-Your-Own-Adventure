@@ -765,23 +765,25 @@ public class VistaPrincipal extends javax.swing.JFrame {
             this.jPanel1.add(this.imagen);
             this.pack();
             this.repaint();
+            
+            abre = new File(this.cvj.mostrarImagenesDePagina().get(0));
+            if(abre!=null){     
+                FileReader archivos=new FileReader(abre);
+                //this.jPanel1.remove(imagen);
+                ImageIcon i = new ImageIcon(abre.getAbsolutePath()); 
+                Image img = i.getImage();
+                img = img.getScaledInstance(200, 200, java.awt.Image.SCALE_SMOOTH);
+                i = new ImageIcon(img);
+                this.imagen = new JLabel();
+                this.imagen.setIcon(i);
+                this.imagen.setBounds(0, 0,200,200);
+                this.jPanel1.add(this.imagen);
+                this.pack();
+                this.repaint();
+                this.flag1 = true;
+            }  
         }
-        abre = new File(this.cvj.mostrarImagenesDePagina().get(0));
-        if(abre!=null){     
-            FileReader archivos=new FileReader(abre);
-            //this.jPanel1.remove(imagen);
-            ImageIcon i = new ImageIcon(abre.getAbsolutePath()); 
-            Image img = i.getImage();
-            img = img.getScaledInstance(200, 200, java.awt.Image.SCALE_SMOOTH);
-            i = new ImageIcon(img);
-            this.imagen = new JLabel();
-            this.imagen.setIcon(i);
-            this.imagen.setBounds(0, 0,200,200);
-            this.jPanel1.add(this.imagen);
-            this.pack();
-            this.repaint();
-            this.flag1 = true;
-        }  
+        
         
         
     }
