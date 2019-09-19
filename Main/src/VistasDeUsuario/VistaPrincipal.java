@@ -1587,6 +1587,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Rellene todos los campos obligatorios","Advertencia ", JOptionPane.WARNING_MESSAGE);
             }  
         }
+        if (this.jComboBox1.getSelectedItem().equals("Escoja un tipo")){
+            if (this.salirPrincipal() == 0) {
+                this.getContentPane().removeAll(); 
+                this.repaint();
+                this.initComponents();
+            }
+        }
         
         
     }
