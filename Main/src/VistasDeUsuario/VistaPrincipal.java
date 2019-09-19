@@ -791,6 +791,15 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private void crearPagina(){
         this.getContentPane().removeAll(); 
         this.repaint();
+        if (flag1 == true) {
+            this.imagen = new JLabel();
+            this.imagen.setBounds(0, 0,172,172);
+            this.jPanel1.add(this.imagen);
+            this.pack();
+            this.repaint();
+        }
+        
+        
         jButton4 = new javax.swing.JButton();
         JScrollPane jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
