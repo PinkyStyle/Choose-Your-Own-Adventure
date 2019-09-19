@@ -2,6 +2,7 @@ package GestionDeJugarLibroJuego;
 
 import static ControladorDeUsuario.ControladorVistaConstructor.gestorDeLibros;
 import ModuloDeCreacionLibroJuego.Artefacto;
+import ModuloDeCreacionLibroJuego.BuilderPagina;
 import ModuloDeCreacionLibroJuego.Camino;
 import ModuloDeCreacionLibroJuego.Final;
 import java.util.ArrayList;
@@ -95,8 +96,12 @@ public class GestorDeJuego {
             System.out.println("Tipo null. Página no encontrada");
             return -1;
         }
+        
         if("Final".equals(tipo)){
-            Final pagina = (Final)gestorDeLibros.retornarPagina(tituloDeAventura, nPagina);
+            BuilderPagina pag= gestorDeLibros.retornarPagina(tituloDeAventura, camino.getNumeroPagina());
+            System.out.println("estamos aca wn ql: "+pag.getTipo());
+            Final pagina = (Final)pag;
+            
             if("Bueno".equals(pagina.getTipoFinal())){
                 System.out.println("Final bueno obtenido");
                 gestorDeLibros.cambiarEstadoLibro(tituloDeAventura);
@@ -138,6 +143,7 @@ public class GestorDeJuego {
         ArrayList<Camino> caminos = gestorDeLibros.getCaminosDePagina(tituloDeAventura, nPagina);
         ArrayList<String> lista = gestorDeLibros.mostrarRutasDePagina(tituloDeAventura, nPagina);
         ArrayList<String> aux = new ArrayList<>();
+        System.out.println("el tamaño del camino :" +caminos.size());
         for (int i = 0; i < caminos.size(); i++) {
             if(caminos.get(i).getSolicitarArtefacto()!=null){
                 if(protagonista.buscarArtefacto(caminos.get(i).getSolicitarArtefacto())){
@@ -148,7 +154,9 @@ public class GestorDeJuego {
                 aux.add(lista.get(i));
                 System.out.println("Camino transitable añadido");
             }
+            
         }
+        
         if(aux.isEmpty()){
             System.out.println("No hay caminos");
             return null;
@@ -193,9 +201,9 @@ public class GestorDeJuego {
     public int tipoPag() {
         String tipoPagina = gestorDeLibros.tipoDePagina(this.tituloDeAventura, this.nPagina);
         if (tipoPagina != null) {
-            if (tipoPagina.equalsIgnoreCase("final") == true) {
+            if (tipoPagina.equalsIgnoreCase("Final") == true) {
                 return 0;
-            } else if (tipoPagina.equalsIgnoreCase("paginaNormal") == true) {
+            } else if (tipoPagina.equalsIgnoreCase("Pagina Normal") == true) {
                 return 1;
             }
         }

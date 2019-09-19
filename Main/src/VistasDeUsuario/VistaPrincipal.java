@@ -523,6 +523,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }
     
     private void jugandoLibroJuego() throws FileNotFoundException {
+        System.out.println("tipo  de pagina : "+this.cvj.tipoDePagina());
         if (this.cvj.tipoDePagina()== 1) {
             this.flag1=false;
             this.jugandoPaginaNormal();
@@ -674,7 +675,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private void rellenadoDatosPaginaNormal() throws FileNotFoundException{
         //this.jTextField4.setText(tituloLibroJuego);
         
-        this.jTextArea1.setToolTipText(this.cvj.mostrarDescripcionDePagina());
+        this.jTextArea1.setText(this.cvj.mostrarDescripcionDePagina());
         if (flag1 == true) {
             this.imagen = new JLabel();
             this.imagen.setBounds(0, 0,172,172);
@@ -717,6 +718,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
                     opcionesJugandoPaginaNormal[i]=caminos.get(i-1);
                 }
             }   
+        }else{
+            System.out.println("no tiene camino !!!");
         }
         
         return opcionesJugandoPaginaNormal;
@@ -732,6 +735,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private void jugandoSiguientePagina() throws FileNotFoundException {
         if (!this.jComboBox1.getSelectedItem().equals("Escoje uno")) {
             //siguiente pagina jugando
+             System.out.println("imprimiendo desde el milla :"+ this.jComboBox1.getSelectedItem());
             int a = this.cvj.actualizarPagina((String) this.jComboBox1.getSelectedItem());
             if (a== 1) {
 
