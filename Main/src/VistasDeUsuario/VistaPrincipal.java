@@ -523,7 +523,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private void jugandoLibroJuego() throws FileNotFoundException {
         System.out.println("tipo  de pagina bryan========================================== : "+this.cvj.tipoDePagina());
         if (this.cvj.tipoDePagina()== 1) {
-            this.flag1=false;
+            //this.flag1=false;
             String s ="normal";
             this.jugandoPagina(s);
             this.rellenadoDatosPagina();
@@ -767,6 +767,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
             this.repaint();
         }
         if (this.cvj.mostrarImagenesDePagina().get(0) != null) {
+            System.out.println("direccion pagina: "+this.cvj.mostrarImagenesDePagina().get(0));
             abre = new File(this.cvj.mostrarImagenesDePagina().get(0));
             if(abre!=null){     
                 FileReader archivos=new FileReader(abre);
@@ -1449,7 +1450,14 @@ public class VistaPrincipal extends javax.swing.JFrame {
                             //}
                            // System.out.println("fin split");
                            // System.out.println("largo "+s.length);
+                           
                             int salto = Integer.parseInt(s[1]);
+                            if (s.length ==2) {
+                                //Artefacto dar = new Artefacto(s[2]);
+                                //Artefacto quitar = new Artefacto(s[3]);
+                                //Artefacto solicitar = new Artefacto(s[4]);
+                                this.cvc.agregarCamino(this.tituloLibroJuego, a,salto ,s[0], null, null, null);
+                            }
                             if (s.length ==3) {
                                 Artefacto dar = new Artefacto(s[2]);
                                 //Artefacto quitar = new Artefacto(s[3]);
