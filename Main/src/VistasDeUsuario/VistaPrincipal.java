@@ -539,7 +539,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 ///this.rellenadoDatosPaginaNormal();
                 
             }
-            if (this.cvj.tipoDePagina()== 2) {
+            if (this.cvj.tipoDePagina()== 4) {
                 //this.flag1=false;
                 String s ="bueno";
                 this.jugandoPagina(s);
@@ -547,7 +547,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 ///this.jugandoPaginaNormal();
                 ///this.rellenadoDatosPaginaNormal();
             }
-            if (this.cvj.tipoDePagina()== 3) {
+            if (this.cvj.tipoDePagina()== 2) {
                 //this.flag1=false;
                 String s ="malo";
                 this.jugandoPagina(s);
@@ -555,7 +555,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 ///this.jugandoPaginaNormal();
                 ///this.rellenadoDatosPaginaNormal();
             }
-            if (this.cvj.tipoDePagina()== 4) {
+            if (this.cvj.tipoDePagina()== 3) {
                 //this.flag1=false;
                 String s ="regular";
                 this.jugandoPagina(s);
@@ -827,7 +827,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                     this.repaint();
                     this.initComponents();
                 }
-                if (a== 0) {
+                if (a== 4) {
                     String s = "bueno";
                     JOptionPane.showMessageDialog(null, "Haz llegado al final de la historia");
                     this.jugandoPagina(s);
