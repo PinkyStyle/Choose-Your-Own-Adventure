@@ -1217,22 +1217,25 @@ public class VistaPrincipal extends javax.swing.JFrame {
             this.jTextArea1.setText(datos.get(2));
             this.jTextField4.setText(datos.get(4));
             //error archivco
-            abre = new File(datos.get(3));
-            if(abre!=null){     
-                FileReader archivos=new FileReader(abre);
-                //this.jPanel1.remove(imagen);
-                ImageIcon i = new ImageIcon(abre.getAbsolutePath()); 
-                Image img = i.getImage();
-                img = img.getScaledInstance(200, 200, java.awt.Image.SCALE_SMOOTH);
-                i = new ImageIcon(img);
-                this.imagen = new JLabel();
-                this.imagen.setIcon(i);
-                this.imagen.setBounds(0, 0,200,200);
-                this.jPanel1.add(this.imagen);
-                this.pack();
-                this.repaint();
-                this.flag1 = true;
-            }  
+            if (datos.get(3) != null) {
+                abre = new File(datos.get(3));
+                if(abre!=null){     
+                    FileReader archivos=new FileReader(abre);
+                    //this.jPanel1.remove(imagen);
+                    ImageIcon i = new ImageIcon(abre.getAbsolutePath()); 
+                    Image img = i.getImage();
+                    img = img.getScaledInstance(200, 200, java.awt.Image.SCALE_SMOOTH);
+                    i = new ImageIcon(img);
+                    this.imagen = new JLabel();
+                    this.imagen.setIcon(i);
+                    this.imagen.setBounds(0, 0,200,200);
+                    this.jPanel1.add(this.imagen);
+                    this.pack();
+                    this.repaint();
+                    this.flag1 = true;
+                }  
+            }
+            
 
         }
  
