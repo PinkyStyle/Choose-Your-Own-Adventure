@@ -52,6 +52,7 @@ public class LibroJuego {
             Final pagina=new Final(numeroPagina, descripcion, tipo, artefacto);
             pagina.addImagenes(imagen);
             this.paginas.add(pagina);
+            //System.out.println("brayan final :"+tipo);
             System.out.println("se creo una pagina final de tipo " + tipo);
             return;
         }

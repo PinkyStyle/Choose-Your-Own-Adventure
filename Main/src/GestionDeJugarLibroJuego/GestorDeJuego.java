@@ -200,9 +200,23 @@ public class GestorDeJuego {
      */
     public int tipoPag() {
         String tipoPagina = gestorDeLibros.tipoDePagina(this.tituloDeAventura, this.nPagina);
+        
+        System.out.println("Desde gestor de juego, ti de pagina :"+tipoPagina);
         if (tipoPagina != null) {
-            if (tipoPagina.equalsIgnoreCase("Final") == true) {
-                return 0;
+            String[] parse = tipoPagina.split(" ");
+            if (parse[0].equalsIgnoreCase("Final") == true) {
+                if(parse[1].equalsIgnoreCase("bueno")== true)// final bueno
+                {
+                    return 4;
+                }
+                else if(parse[1].equalsIgnoreCase("regular")== true)
+                {
+                    return 3;
+                }
+                else if(parse[1].equalsIgnoreCase("malo")== true)
+                {
+                    return 2;
+                }
             } else if (tipoPagina.equalsIgnoreCase("Pagina Normal") == true) {
                 return 1;
             }

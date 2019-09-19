@@ -21,8 +21,10 @@ public class Final extends BuilderPagina {
     
     public Final(int numeroPagina, String descripcion, String tipo, Artefacto artefacto) {
         String[] parse = tipo.split(" ");
-        super.crearNuevaPagina(numeroPagina, descripcion, parse[0]);
-        this.tipoFinal=parse[1];
+        //super.crearNuevaPagina(numeroPagina, descripcion, parse[0]);
+        super.crearNuevaPagina(numeroPagina, descripcion, tipo);
+        //this.tipoFinal=parse[1];
+        this.tipoFinal=tipo;
         this.artefacto = artefacto;
     }
     
