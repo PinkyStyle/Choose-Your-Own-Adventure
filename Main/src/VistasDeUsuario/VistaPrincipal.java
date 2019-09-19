@@ -1307,6 +1307,12 @@ public class VistaPrincipal extends javax.swing.JFrame {
                         this.paginasLibroJuego.add(a);
                         for (int i = 0; i < this.listModel.size(); i++) {
                             String [] s = this.listModel.get(i).toString().split(";");
+                            //System.out.println("split");
+                            //for (int j = 0; j < s.length; j++) {
+                            //    System.out.println(s[j]);
+                            //}
+                           // System.out.println("fin split");
+                           // System.out.println("largo "+s.length);
                             int salto = Integer.parseInt(s[1]);
                             if (s.length ==3) {
                                 Artefacto dar = new Artefacto(s[2]);
@@ -1316,17 +1322,48 @@ public class VistaPrincipal extends javax.swing.JFrame {
                             }
                             else{
                                 if (s.length ==4) {
-                                    Artefacto dar = new Artefacto(s[2]);
-                                    Artefacto quitar = new Artefacto(s[3]);
-                                    //Artefacto solicitar = new Artefacto(s[4]);
-                                    this.cvc.agregarCamino(this.tituloLibroJuego, a,salto ,s[0], dar, quitar, null);
+                                    if (s[2]==null) {
+                                        Artefacto quitar = new Artefacto(s[3]);
+                                        //Artefacto solicitar = new Artefacto(s[4]);
+                                        this.cvc.agregarCamino(this.tituloLibroJuego, a,salto ,s[0], null, quitar, null);
+                                    }
+                                    else{
+                                        Artefacto dar = new Artefacto(s[2]);
+                                        Artefacto quitar = new Artefacto(s[3]);
+                                        //Artefacto solicitar = new Artefacto(s[4]);
+                                        this.cvc.agregarCamino(this.tituloLibroJuego, a,salto ,s[0], dar, quitar, null);
+                                    }
+                                    
                                 }
                                 else{
                                     if (s.length ==5) {
-                                        Artefacto dar = new Artefacto(s[2]);
-                                        Artefacto quitar = new Artefacto(s[3]);
-                                        Artefacto solicitar = new Artefacto(s[4]);
-                                        this.cvc.agregarCamino(this.tituloLibroJuego, a,salto ,s[0], dar, quitar, solicitar);
+                                        if (s[2]==null) {
+                                            if (s[3]==null) {
+                                                //Artefacto dar = new Artefacto(s[2]);
+                                                //Artefacto quitar = new Artefacto(s[3]);
+                                                Artefacto solicitar = new Artefacto(s[4]);
+                                                this.cvc.agregarCamino(this.tituloLibroJuego, a,salto ,s[0], null, null, solicitar);
+                                            }
+                                            else{
+                                                Artefacto quitar = new Artefacto(s[3]);
+                                                Artefacto solicitar = new Artefacto(s[4]);
+                                                this.cvc.agregarCamino(this.tituloLibroJuego, a,salto ,s[0], null, quitar, solicitar);
+                                            }
+                                        }
+                                        else{
+                                            if (s[3]==null) {
+                                                Artefacto dar = new Artefacto(s[2]);
+                                                Artefacto solicitar = new Artefacto(s[4]);
+                                                this.cvc.agregarCamino(this.tituloLibroJuego, a,salto ,s[0], dar, null, solicitar);
+                                            }
+                                            else{
+                                                Artefacto dar = new Artefacto(s[2]);
+                                                Artefacto quitar = new Artefacto(s[3]);
+                                                Artefacto solicitar = new Artefacto(s[4]);
+                                                this.cvc.agregarCamino(this.tituloLibroJuego, a,salto ,s[0], dar, quitar, solicitar);
+                                            }
+                                        }
+                                        
                                     }
                                 }
                             }
