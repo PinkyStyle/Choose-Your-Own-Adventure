@@ -765,7 +765,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
             this.jPanel1.add(this.imagen);
             this.pack();
             this.repaint();
-            
+        }
+        if (this.cvj.mostrarImagenesDePagina().get(0) != null) {
             abre = new File(this.cvj.mostrarImagenesDePagina().get(0));
             if(abre!=null){     
                 FileReader archivos=new FileReader(abre);
@@ -783,6 +784,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 this.flag1 = true;
             }  
         }
+        
         
         
         
