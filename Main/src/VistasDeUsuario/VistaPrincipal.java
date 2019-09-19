@@ -526,7 +526,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
             this.flag1=false;
             String s ="normal";
             this.jugandoPagina(s);
-            this.rellenadoDatosPaginaNormal();
+            this.rellenadoDatosPagina();
         }
         else{
             //System.out.println(this.cvj);
@@ -544,6 +544,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 //this.flag1=false;
                 String s ="bueno";
                 this.jugandoPagina(s);
+                this.rellenadoDatosPagina();
                 //jugandoPaginaFinal();
                 ///this.jugandoPaginaNormal();
                 ///this.rellenadoDatosPaginaNormal();
@@ -552,6 +553,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 //this.flag1=false;
                 String s ="malo";
                 this.jugandoPagina(s);
+                this.rellenadoDatosPagina();
                 //jugandoPaginaFinal();
                 ///this.jugandoPaginaNormal();
                 ///this.rellenadoDatosPaginaNormal();
@@ -560,6 +562,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 //this.flag1=false;
                 String s ="regular";
                 this.jugandoPagina(s);
+                this.rellenadoDatosPagina();
                 //jugandoPaginaFinal();
                 ///this.jugandoPaginaNormal();
                 ///this.rellenadoDatosPaginaNormal();
@@ -752,7 +755,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         pack();
     
     }
-    private void rellenadoDatosPaginaNormal() throws FileNotFoundException{
+    private void rellenadoDatosPagina() throws FileNotFoundException{
         //this.jTextField4.setText(tituloLibroJuego);
         
         this.jTextArea1.setText(this.cvj.mostrarDescripcionDePagina());
@@ -821,7 +824,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 System.out.println("entro");
                 String s = "normal";
                 this.jugandoPagina(s);
-                this.rellenadoDatosPaginaNormal();
+                this.rellenadoDatosPagina();
             }
             else{
                 if (a == -1) {
@@ -834,16 +837,19 @@ public class VistaPrincipal extends javax.swing.JFrame {
                     String s = "bueno";
                     JOptionPane.showMessageDialog(null, "Haz llegado al final de la historia");
                     this.jugandoPagina(s);
+                    this.rellenadoDatosPagina();
                 }
                 if (a== 2) {
                     String s = "malo";
                     //JOptionPane.showMessageDialog(null, "Haz llegado al final de la historia");
                     this.jugandoPagina(s);
+                    this.rellenadoDatosPagina();
                 }
                 if (a== 3) {
                     String s = "regular";
                     //JOptionPane.showMessageDialog(null, "Haz llegado al final de la historia");
                     this.jugandoPagina(s);
+                    this.rellenadoDatosPagina();
                 }
 
             }
