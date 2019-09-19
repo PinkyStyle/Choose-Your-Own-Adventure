@@ -1233,6 +1233,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Ese n° de pagina ya esta creada","Advertencia ", JOptionPane.WARNING_MESSAGE);
             }
         }
+
     }
     
     private void jComboBox1ActionPerformed(ActionEvent evt) {
@@ -1350,6 +1351,16 @@ public class VistaPrincipal extends javax.swing.JFrame {
         } catch (NumberFormatException excepcion) {
             resultado = false;
         }
+        if (resultado==true) {
+            int a = Integer.parseInt(cadena);
+            if (a>0) {
+                resultado = true;
+            }
+            else{
+                resultado = false;
+            }
+        }
+        
 
         return resultado;
     }
@@ -1425,7 +1436,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                     jTextField6.setText("");
                 }
                 else{
-                    JOptionPane.showMessageDialog(null, "Ingrese un numero en el salto de pagina, la opcion no fue guardada","Advertencia ", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Ingrese un numero valido en el salto de pagina, la opcion no fue guardada","Advertencia ", JOptionPane.WARNING_MESSAGE);
                 }
                
             }
@@ -1525,7 +1536,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                     
                 }
                 else{
-                    JOptionPane.showMessageDialog(null, "Ingrese un numero en la pagina","Advertencia ", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Ingrese un numero valido en la pagina","Advertencia ", JOptionPane.WARNING_MESSAGE);
                 }
             }
             else{
