@@ -125,4 +125,8 @@ public class ControladorVistaJugador {
     public int tipoDePagina(){
         return this.gestorDeJuego.tipoPag();
     }
+    
+    public int numeroPaginaActual(){
+        return this.gestorDeJuego.numeroPaginaActual();
+    }
 }

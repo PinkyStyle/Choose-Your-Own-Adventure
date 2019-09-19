@@ -105,13 +105,17 @@ public class GestorDeJuego {
                 {
                     System.out.println("Final bueno obtenido");
                     gestorDeLibros.cambiarEstadoLibro(tituloDeAventura);
+                    this.nPagina = camino.getNumeroPagina();
                     return 4;
                 } else if (parse[1].equalsIgnoreCase("regular") == true) {
+                    this.nPagina = camino.getNumeroPagina();
                     return 3;
                 } else if (parse[1].equalsIgnoreCase("malo") == true) {
+                    this.nPagina = camino.getNumeroPagina();
                     return 2;
                 }
             } else if (tipo.equalsIgnoreCase("Pagina Normal") == true) {
+                this.nPagina = camino.getNumeroPagina();
                 return 1;
             }
         }
@@ -245,6 +249,10 @@ public class GestorDeJuego {
     public void nuevoInicio() {
         System.out.println("Nuevo inicio de libro");
         this.nPagina = 1;
+    }
+
+    public int numeroPaginaActual() {
+        return this.nPagina;
     }
 
 }
