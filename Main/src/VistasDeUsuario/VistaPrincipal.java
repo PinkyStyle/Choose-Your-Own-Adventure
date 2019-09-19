@@ -691,13 +691,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
             }
             
         }
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(this.opcionesJugandoPaginaNormal(this.cvj.mostrarListaCaminosDePagina())));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-               // jComboBox1ActionPerformed(evt);
-            }
-        });
+        
 
         
 
@@ -752,6 +746,14 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
+        
+        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(this.opcionesJugandoPaginaNormal(this.cvj.mostrarListaCaminosDePagina())));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+               // jComboBox1ActionPerformed(evt);
+            }
+        });
 
         pack();
     
@@ -809,10 +811,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 }
             }   
         }else{
-            JOptionPane.showMessageDialog(null, "No puedes seguir avanzado ya que quemaste todos tus objetos, saliendo... ","Advertencia ", JOptionPane.WARNING_MESSAGE);
-            this.getContentPane().removeAll(); 
-            this.repaint();
-            this.initComponents();
+            if (this.cvj.tipoDePagina()==1) {
+                JOptionPane.showMessageDialog(null, "No puedes seguir avanzado ya que quemaste todos tus objetos, saliendo... ","Advertencia ", JOptionPane.WARNING_MESSAGE);
+                this.getContentPane().removeAll(); 
+                this.repaint();
+                this.initComponents();
+            }
+            //
         }
         
         return opcionesJugandoPaginaNormal;
