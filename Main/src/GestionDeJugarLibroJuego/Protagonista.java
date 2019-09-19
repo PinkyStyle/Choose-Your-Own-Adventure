@@ -17,37 +17,57 @@ public class Protagonista {
         this.nombre = nombre;
     }
 
+    /**
+     * 
+     * @param artefacto
+     * @return 
+     */
     public boolean buscarArtefacto(Artefacto artefacto) {
-        if(artefactos.contains(artefacto)){
-            return true;
-        }
-        else {
-            return false;
-        }
+        for (int i = 0; i < artefactos.size(); i++) {
+            if(artefactos.get(i).getNombre().equals(artefacto.getNombre())){
+                return true;
+            }
+        }  
+        return false;
     }
-    
-    
-    
+   
+    /**
+     * 
+     * @param artefactos 
+     */
     public void setArtefactos(ArrayList<Artefacto> artefactos) {
         this.artefactos = artefactos;
     }
     
+    /**
+     * 
+     * @param artefacto 
+     */
     public void addArtefacto(Artefacto artefacto){
         artefactos.add(artefacto);
     }
     
+    /**
+     * 
+     * @param artefacto 
+     */
     public void eliminarArtefacto(Artefacto artefacto){
         artefactos.remove(artefacto);  
         addArtefactoQuemado(artefacto);
     }
     
+    /**
+     * 
+     * @param artefacto
+     * @return 
+     */
     public boolean buscarAtefactoQuemado(Artefacto artefacto){
-       if(artefactos.contains(artefacto)){
-            return true;
-        }
-        else {
-            return false;
-        }
+       for (int i = 0; i < artefactosQuemados.size(); i++) {
+            if(artefactosQuemados.get(i).getNombre().equals(artefacto.getNombre())){
+                return true;
+            }
+        }  
+        return false;
     }
     public void setArtefactosQuemados(ArrayList<Artefacto> artegactosQuemados) {
         this.artefactosQuemados = artegactosQuemados;
