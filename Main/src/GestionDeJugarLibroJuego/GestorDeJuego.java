@@ -2,6 +2,7 @@ package GestionDeJugarLibroJuego;
 
 import static ControladorDeUsuario.ControladorVistaConstructor.gestorDeLibros;
 import ModuloDeCreacionLibroJuego.Artefacto;
+import ModuloDeCreacionLibroJuego.BuilderPagina;
 import ModuloDeCreacionLibroJuego.Camino;
 import ModuloDeCreacionLibroJuego.Final;
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class GestorDeJuego {
     private Protagonista protagonista;
     private String tituloDeAventura;
     private int nPagina;
-    
+
     /**
      * Default constructor
      *
@@ -22,14 +23,12 @@ public class GestorDeJuego {
     public GestorDeJuego() {
     }
 
-    //noh vimoh giles ctm v 1.1
-
     /**
      *Lista que retorna todos los nombres de los libros para ser mostrados en la interfaz.
      * @return
      */
     public ArrayList<String> mostrarListaLibroJuegos() {
-        return gestorDeLibros.mostrarListaDeLibroJuegos(); 
+        return gestorDeLibros.mostrarListaDeLibroJuegos();
     }
 
     /**
@@ -39,6 +38,7 @@ public class GestorDeJuego {
      * @return
      */
     public ArrayList<String> mostrarinformacionDeUnLibroJuegos(String tituloDeAventura) {
+        System.out.println("Mostrando información del libro " + tituloDeAventura);
         return gestorDeLibros.mostrarinformacionDeUnLibroJuegos(tituloDeAventura);
     }
 
@@ -57,6 +57,9 @@ public class GestorDeJuego {
         this.nPagina = 1;
         this.protagonista.setArtefactos(new ArrayList<>());
         this.protagonista.setArtefactosQuemados(new ArrayList<>());
+        System.out.println("Ha iniciado el juego!");
+        System.out.println("Protagonista: " + nombreAventuraro);
+
     }
 
     /**
@@ -66,42 +69,63 @@ public class GestorDeJuego {
      */
     public int actualizarPagina(String opcionCamino) {
         //1.agrego artefacto o elimino artefacto segun sea el caso.
-        Camino camino=null;
-        // se obtienen todos los caminos de una pagina.
+        Camino camino = null;
         ArrayList<Camino> caminos = gestorDeLibros.getCaminosDePagina(tituloDeAventura, nPagina);
         // obtengo todos los caminos a los que puedo ir, con los artefactos que tiene el protagonista.
         ArrayList<String> lista = gestorDeLibros.mostrarRutasDePagina(tituloDeAventura, nPagina);
         for (int i = 0; i < lista.size(); i++) {
-            if(lista.get(i).equals(opcionCamino)){
+            if (lista.get(i).equals(opcionCamino)) {
                 camino = caminos.get(i);
-                if (camino.getDarArtefacto() != null) {// me estan dando un  artefacto, y por ende debo guardarlo.
-                    if(!protagonista.buscarAtefactoQuemado(camino.getDarArtefacto())){
+                if (camino.getDarArtefacto() != null) {// me estan dando un  artefacto
+                    if (!protagonista.buscarAtefactoQuemado(camino.getDarArtefacto())) {
                         protagonista.addArtefacto(camino.getDarArtefacto());
+                        System.out.println("Artefacto añadido: " + camino.getDarArtefacto().getNombre());
                     }
-                } 
-                if(!protagonista.buscarArtefacto(camino.getDarArtefacto())){
+                }
+                if (!protagonista.buscarArtefacto(camino.getDarArtefacto())) {
                     if (camino.getQuitarArtefacto() != null) {// me estan quitando un artefacto por ir a ese camino.
+                        System.out.println("Artefacto quitado: " + camino.getQuitarArtefacto().getNombre());
                         protagonista.eliminarArtefacto(camino.getQuitarArtefacto()); // al eliminar el artefacto de la lista se agrega al tiro a la lista de quemados
                     }
                 }
                 break;// salimos del ciclo debido a que dar y quitar son las unicas opciones que podemos realizar
             }
         }
-        if(camino==null){//significa que la pagina no tenia caminos
+        if (camino == null) {
+            System.out.println("Camino null. Página no encontrada");
             return -1;
         }
-        String tipo =gestorDeLibros.tipoDePagina(tituloDeAventura, camino.getNumeroPagina());// obtenemos el tipo de pagina, de la pagina a la que saltaremos.
-        if(tipo==null){// significa que no hay salgo, osea no existe una forma de llegar al camino
+        String tipo = gestorDeLibros.tipoDePagina(tituloDeAventura, camino.getNumeroPagina());
+        if (tipo == null) {
+            System.out.println("Tipo null. Página no encontrada");
             return -1;
         }
-        if("Final".equals(tipo)){
-            Final pagina = (Final)gestorDeLibros.retornarPagina(tituloDeAventura, nPagina);
-            if("Bueno".equals(pagina.getTipoFinal())){
-                gestorDeLibros.cambiarEstadoLibro(tituloDeAventura);
+        System.out.println("tipo de pagina ============== "+tipo+"=============================");
+        
+        if (tipo != null) {
+            String[] parse = tipo.split(" ");
+            if (parse[0].equalsIgnoreCase("Final") == true) {
+                if (parse[1].equalsIgnoreCase("bueno") == true)// final bueno
+                {
+                    System.out.println("Final bueno obtenido");
+                    gestorDeLibros.cambiarEstadoLibro(tituloDeAventura);
+                    this.nPagina = camino.getNumeroPagina();
+                    return 4;
+                } else if (parse[1].equalsIgnoreCase("regular") == true) {
+                    this.nPagina = camino.getNumeroPagina();
+                    return 3;
+                } else if (parse[1].equalsIgnoreCase("malo") == true) {
+                    this.nPagina = camino.getNumeroPagina();
+                    return 2;
+                }
+            } else if (tipo.equalsIgnoreCase("Pagina Normal") == true) {
+                this.nPagina = camino.getNumeroPagina();
+                return 1;
             }
-            return 0;
         }
-        this.nPagina=camino.getNumeroPagina();
+        
+        System.out.println("fin de página normal");
+        this.nPagina = camino.getNumeroPagina();
         return 1;
     }
 
@@ -134,19 +158,30 @@ public class GestorDeJuego {
         ArrayList<Camino> caminos = gestorDeLibros.getCaminosDePagina(tituloDeAventura, nPagina);
         ArrayList<String> lista = gestorDeLibros.mostrarRutasDePagina(tituloDeAventura, nPagina);
         ArrayList<String> aux = new ArrayList<>();
-        for (int i = 0; i < caminos.size(); i++) {
-            if(caminos.get(i).getSolicitarArtefacto()!=null){
-                if(protagonista.buscarArtefacto(caminos.get(i).getSolicitarArtefacto())){
+        //System.out.println("el tamaño del camino :" +caminos.size());
+        if (caminos != null) {
+            for (int i = 0; i < caminos.size(); i++) {
+                System.out.println("el tamaño del camino :" +caminos.size());
+                if (caminos.get(i).getSolicitarArtefacto() != null) {
+                    if (protagonista.buscarArtefacto(caminos.get(i).getSolicitarArtefacto())) {
+                        aux.add(lista.get(i));
+                        System.out.println("Camino transitable añadido");
+                    }
+                } else {
                     aux.add(lista.get(i));
+                    System.out.println("Camino transitable añadido");
                 }
-            }else{
-                aux.add(lista.get(i));
+
             }
+
+            if (aux.isEmpty()) {
+                System.out.println("No hay caminos");
+                return null;
+            }
+            System.out.println("Se ha retornado la lista con todos los caminos transitables");
+            return aux;
         }
-        if(aux.isEmpty()){
-            return null;
-        }
-        return aux;
+        return null;
     }
 
     /**
@@ -163,11 +198,13 @@ public class GestorDeJuego {
             Camino camino = caminos.get(i);
             Artefacto solicitarArtefacto = camino.getSolicitarArtefacto();
             if (solicitarArtefacto != null) {// me solicitan un artefacto para transitar por ese camino.
-                    if (protagonista.buscarArtefacto(solicitarArtefacto)) { //significa que tengo el artefacto para ir por ese camino.
-                        caminosQuePuedoIr.add(camino.getOpcion());
-                    }
+                System.out.println("Artefacto solicitado: " + solicitarArtefacto.getNombre());
+                if (protagonista.buscarArtefacto(solicitarArtefacto)) { //significa que tengo el artefacto para ir por ese camino.
+                    caminosQuePuedoIr.add(camino.getOpcion());
+                    System.out.println("Sí tengo el artefacto");
                 }
             }
+        }
         return caminosQuePuedoIr;
     }
 
@@ -180,9 +217,19 @@ public class GestorDeJuego {
      */
     public int tipoPag() {
         String tipoPagina = gestorDeLibros.tipoDePagina(this.tituloDeAventura, this.nPagina);
+
+        System.out.println("Desde gestor de juego, ti de pagina :" + tipoPagina);
         if (tipoPagina != null) {
-            if (tipoPagina.equalsIgnoreCase("Final") == true) {
-                return 0;
+            String[] parse = tipoPagina.split(" ");
+            if (parse[0].equalsIgnoreCase("Final") == true) {
+                if (parse[1].equalsIgnoreCase("bueno") == true)// final bueno
+                {
+                    return 4;
+                } else if (parse[1].equalsIgnoreCase("regular") == true) {
+                    return 3;
+                } else if (parse[1].equalsIgnoreCase("malo") == true) {
+                    return 2;
+                }
             } else if (tipoPagina.equalsIgnoreCase("Pagina Normal") == true) {
                 return 1;
             }
@@ -192,17 +239,22 @@ public class GestorDeJuego {
 
     /* Recibe el String de la pagina del libro al que se le modificara NOMBRE 
     por el nombre del prota
-    */
-    public String agregarNombre (String texto){
+     */
+    public String agregarNombre(String texto) {
         texto = texto.replaceAll("NOMBRE", this.protagonista.getNombre());
         return texto;
     }
 
     /**
-     * actualiza el numero de pagina.
+     *
      */
     public void nuevoInicio() {
+        System.out.println("Nuevo inicio de libro");
         this.nPagina = 1;
     }
-    
+
+    public int numeroPaginaActual() {
+        return this.nPagina;
     }
+
+}

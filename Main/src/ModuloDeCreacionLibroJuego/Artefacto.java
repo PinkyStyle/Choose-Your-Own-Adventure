@@ -23,4 +23,6 @@ public class Artefacto {
         return nombre;
     }        
     
+    
+
 }

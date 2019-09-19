@@ -5,6 +5,11 @@ import ModuloDeCreacionLibroJuego.GestorDeLibros;
 
 /**
  * Clase que se encarga de redireccionar acciones solicitadas por la vista del constructor
+ * Metodologia de creacion
+ * 1._ Primero se debe crear el libro, para esto ocupe el metodo "crearLibroJuego"
+ * 2._ Despues debe crear la pagina, para esto ocupe el metodo "crearPagina"
+ * 3._ por ultimo agrege 1 por 1 los caminos, para esto ocupe el metodo "crearPagina"
+ * Nota: la parte 3 tiene que hacerlo 1 a 1, un camino a la vez
  */
 public class ControladorVistaConstructor {
 
@@ -36,10 +41,11 @@ public class ControladorVistaConstructor {
      * @param numeroPagina
      * @param descripcion
      * @param tipo
+     * @param imagen
      * @param artefacto
      */
-    public void crearPagina(String tituloDeAventura, int numeroPagina, String descripcion, String tipo, Artefacto artefacto) {
-        this.gestorDeLibros.agregarPagina(tituloDeAventura, numeroPagina, descripcion, tipo, artefacto);
+    public void crearPagina(String tituloDeAventura, int numeroPagina, String descripcion, String tipo, String imagen, Artefacto artefacto) {
+        this.gestorDeLibros.agregarPagina(tituloDeAventura, numeroPagina, descripcion, tipo, imagen, artefacto);
     }
     
     /**
