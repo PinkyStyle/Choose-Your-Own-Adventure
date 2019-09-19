@@ -888,7 +888,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
     
     
     private void reinicioSalir(java.awt.event.ActionEvent ev) throws FileNotFoundException{
-        if (opcionesRinicioSalir() == 0) {
+        int a = opcionesRinicioSalir();
+        System.out.println("salir ctmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm: "+a);
+        if (a == 0) {
             this.cvj.nuevoInicio();
             jugandoLibroJuego();
         }
