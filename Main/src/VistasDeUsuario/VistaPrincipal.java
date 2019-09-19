@@ -1427,13 +1427,19 @@ public class VistaPrincipal extends javax.swing.JFrame {
             else {
                 //this.jList1.get
                 if (this.isNumero(this.jTextField4.getText())) {
-                    this.jList1.setModel(listModel);
-                    listModel.addElement(this.jTextField1.getText()+";"+this.jTextField4.getText()+";"+this.jTextField2.getText()+";"+this.jTextField5.getText()+";"+this.jTextField6.getText());
-                    jTextField1.setText("");
-                    jTextField2.setText("");
-                    jTextField4.setText("");
-                    jTextField5.setText("");
-                    jTextField6.setText("");
+                    if (this.validarArtefactos(this.jTextField2.getText()) && this.validarArtefactos(this.jTextField5.getText()) && this.validarArtefactos(this.jTextField6.getText())) {
+                        this.jList1.setModel(listModel);
+                        listModel.addElement(this.jTextField1.getText()+";"+this.jTextField4.getText()+";"+this.jTextField2.getText()+";"+this.jTextField5.getText()+";"+this.jTextField6.getText());
+                        jTextField1.setText("");
+                        jTextField2.setText("");
+                        jTextField4.setText("");
+                        jTextField5.setText("");
+                        jTextField6.setText("");
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null, "Por favor no ingrese caracteres no validos en los actefactos","Advertencia ", JOptionPane.WARNING_MESSAGE);
+                    }
+                    
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Ingrese un numero valido en el salto de pagina, la opcion no fue guardada","Advertencia ", JOptionPane.WARNING_MESSAGE);
@@ -1857,6 +1863,23 @@ public class VistaPrincipal extends javax.swing.JFrame {
         Object [] opciones ={"Aceptar","Cancelar"};
         int eleccion = JOptionPane.showOptionDialog(rootPane,"En realidad desea salir a la ventana principal","Mensaje de Confirmacion",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opciones,"Aceptar");
         return eleccion;
+    }
+    
+    private boolean validarArtefactos(String cadena){
+        boolean string =true;
+        System.out.println("cadena artefacto; "+cadena);
+        for (int i = 0; i < cadena.length(); i++) {
+            if ((cadena.codePointAt(i)>=65 && cadena.codePointAt(i)<=90) || (cadena.codePointAt(i)>=97 && cadena.codePointAt(i)<=123) || (cadena.codePointAt(i)==32) || (cadena.codePointAt(i)>=48 && cadena.codePointAt(i)<=57) || (cadena.codePointAt(i)==00)) {
+                //return string =false;
+                System.out.println("artefaco bueno ");
+            }
+            else{
+                System.out.println("artefaco malo ");
+                return string =false;
+            }
+        }
+        
+        return string;
     }
     
     
