@@ -531,19 +531,19 @@ public class VistaPrincipal extends javax.swing.JFrame {
         else{
             if (this.cvj.tipoDePagina()== -1) {
                 this.flag1=false;
-                //JOptionPane.showMessageDialog(null, "El Libro no fue completado correctamente, saliendo al menu inicial","Advertencia ", JOptionPane.WARNING_MESSAGE);
-                //this.getContentPane().removeAll(); 
-                //this.repaint();
-                //this.initComponents();
-                this.jugandoPaginaNormal();
-                this.rellenadoDatosPaginaNormal();
+                JOptionPane.showMessageDialog(null, "El Libro no fue completado correctamente, saliendo al menu inicial","Advertencia ", JOptionPane.WARNING_MESSAGE);
+                this.getContentPane().removeAll(); 
+                this.repaint();
+                this.initComponents();
+                ///this.jugandoPaginaNormal();
+                ///this.rellenadoDatosPaginaNormal();
                 
             }
             if (this.cvj.tipoDePagina()== 0) {
                 this.flag1=false;
-                //jugandoPaginaFinal();
-                this.jugandoPaginaNormal();
-                this.rellenadoDatosPaginaNormal();
+                jugandoPaginaFinal();
+                ///this.jugandoPaginaNormal();
+                ///this.rellenadoDatosPaginaNormal();
             }
         
         }
@@ -772,23 +772,29 @@ public class VistaPrincipal extends javax.swing.JFrame {
         else{
             //this.cvc.crearLibroJuego(jTextField1.getText(), jTextField2.getText(), imagen, jTextArea1.getText());
             System.out.println("entro");
-            if (flag1 == true) {
-                //agregar ruta de la imagen en el null
-                this.tituloLibroJuego=jTextField2.getText();
-                this.cvc.crearLibroJuego(jTextField1.getText(), jTextField2.getText(),abre.getAbsolutePath(), jTextArea1.getText());
-                this.imagen = new JLabel();
-                this.imagen.setBounds(0, 0,200,200);
-                this.jPanel1.add(this.imagen);
-                this.pack();
-                this.repaint();
+            if (!this.cvj.mostrarListaLibros().contains(jTextField2.getText())) {
+                if (flag1 == true) {
+                    //agregar ruta de la imagen en el null
+                    this.tituloLibroJuego=jTextField2.getText();
+                    this.cvc.crearLibroJuego(jTextField1.getText(), jTextField2.getText(),abre.getAbsolutePath(), jTextArea1.getText());
+                    this.imagen = new JLabel();
+                    this.imagen.setBounds(0, 0,200,200);
+                    this.jPanel1.add(this.imagen);
+                    this.pack();
+                    this.repaint();
+                }
+                else{
+                    this.tituloLibroJuego=jTextField2.getText();
+                    this.cvc.crearLibroJuego(jTextField1.getText(), jTextField2.getText(), null, jTextArea1.getText());
+                }
+                listModel = new DefaultListModel();
+                this.paginasLibroJuego = new ArrayList<>();
+                this.crearPagina();
             }
             else{
-                this.tituloLibroJuego=jTextField2.getText();
-                this.cvc.crearLibroJuego(jTextField1.getText(), jTextField2.getText(), null, jTextArea1.getText());
+                JOptionPane.showMessageDialog(null, "El titulo ingresado ya existe","Advertencia ", JOptionPane.WARNING_MESSAGE);
             }
-            listModel = new DefaultListModel();
-            this.paginasLibroJuego = new ArrayList<>();
-            this.crearPagina();
+            
         }
     } 
     
