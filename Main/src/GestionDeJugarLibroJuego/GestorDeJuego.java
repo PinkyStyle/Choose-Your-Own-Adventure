@@ -97,7 +97,7 @@ public class GestorDeJuego {
         }
         if("Final".equals(tipo)){
             Final pagina = (Final)gestorDeLibros.retornarPagina(tituloDeAventura, nPagina);
-            if(pagina.getTipoFinal()=="Bueno"){
+            if("Bueno".equals(pagina.getTipoFinal())){
                 System.out.println("Final bueno obtenido");
                 gestorDeLibros.cambiarEstadoLibro(tituloDeAventura);
             }

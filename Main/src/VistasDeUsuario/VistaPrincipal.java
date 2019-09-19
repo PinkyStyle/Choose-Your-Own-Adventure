@@ -704,12 +704,16 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private String[] opcionesJugandoPaginaNormal(ArrayList<String> caminos){
         String [] opcionesJugandoPaginaNormal = new String[0];
         if (caminos != null) {
-            opcionesJugandoPaginaNormal = new String [caminos.size()];
+            System.out.println("el tamaño del camino es: "+caminos.size());
+            
+            opcionesJugandoPaginaNormal = new String [caminos.size()+1];
             for (int i = 0; i < caminos.size()+1; i++) {
                 if (i==0) {
                     opcionesJugandoPaginaNormal[i]="Escoje uno";
                 }
+                
                 else{
+                    System.out.println(" que esta pasando: "+caminos.get(i-1));
                     opcionesJugandoPaginaNormal[i]=caminos.get(i-1);
                 }
             }   
