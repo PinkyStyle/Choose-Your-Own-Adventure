@@ -738,7 +738,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
              System.out.println("imprimiendo desde el milla :"+ this.jComboBox1.getSelectedItem());
             int a = this.cvj.actualizarPagina((String) this.jComboBox1.getSelectedItem());
             if (a== 1) {
-
+                System.out.println("entro");
                 this.jugandoPaginaNormal();
                 this.rellenadoDatosPaginaNormal();
             }
