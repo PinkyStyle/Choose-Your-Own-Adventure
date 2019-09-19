@@ -759,6 +759,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         //this.jTextField4.setText(tituloLibroJuego);
         
         this.jTextArea1.setText(this.cvj.mostrarDescripcionDePagina());
+        this.jTextField4.setText(Integer.toString(this.cvj.numeroPaginaActual()));
         if (flag1 == true) {
             this.imagen = new JLabel();
             this.imagen.setBounds(0, 0,172,172);
@@ -774,11 +775,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 //this.jPanel1.remove(imagen);
                 ImageIcon i = new ImageIcon(abre.getAbsolutePath()); 
                 Image img = i.getImage();
-                img = img.getScaledInstance(200, 200, java.awt.Image.SCALE_SMOOTH);
+                img = img.getScaledInstance(250, 250, java.awt.Image.SCALE_SMOOTH);
                 i = new ImageIcon(img);
                 this.imagen = new JLabel();
                 this.imagen.setIcon(i);
-                this.imagen.setBounds(0, 0,200,200);
+                this.imagen.setBounds(0, 0,250,250);
                 this.jPanel1.add(this.imagen);
                 this.pack();
                 this.repaint();
