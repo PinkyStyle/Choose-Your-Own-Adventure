@@ -521,7 +521,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }
     
     private void jugandoLibroJuego() throws FileNotFoundException {
-        System.out.println("tipo  de pagina : "+this.cvj.tipoDePagina());
+        System.out.println("tipo  de pagina bryan========================================== : "+this.cvj.tipoDePagina());
         if (this.cvj.tipoDePagina()== 1) {
             this.flag1=false;
             String s ="normal";
@@ -529,6 +529,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
             this.rellenadoDatosPaginaNormal();
         }
         else{
+            //System.out.println(this.cvj);
             if (this.cvj.tipoDePagina()== -1) {
                 //this.flag1=false;
                 JOptionPane.showMessageDialog(null, "El Libro no fue completado correctamente, saliendo al menu inicial","Advertencia ", JOptionPane.WARNING_MESSAGE);
@@ -646,7 +647,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
         }
         else{
             if (tipo.equals("bueno")) {
+                System.out.println(" entre aca final bueno puto");
                 jButton1.setText("Reinicio/Salir");
+                
                 jButton1.addActionListener(new java.awt.event.ActionListener() {
                     public void actionPerformed(java.awt.event.ActionEvent evt) {
                         try {
