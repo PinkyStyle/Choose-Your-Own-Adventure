@@ -72,16 +72,16 @@ public class GestorDeJuego {
         for (int i = 0; i < lista.size(); i++) {
             if (lista.get(i).equals(opcionCamino)) {
                 camino = caminos.get(i);
-                if (camino.getDarArtefacto() != null) {// me estan dando un  artefacto
-                    if (!protagonista.buscarAtefactoQuemado(camino.getDarArtefacto())) {
+                if (camino.getDarArtefacto() != null) {
+                   if (!protagonista.buscarArtefacto(camino.getDarArtefacto()) && !protagonista.buscarAtefactoQuemado(camino.getDarArtefacto())) {
                         protagonista.addArtefacto(camino.getDarArtefacto());
                         System.out.println("Artefacto añadido: " + camino.getDarArtefacto().getNombre());
                     }
                 }
-                if (!protagonista.buscarArtefacto(camino.getDarArtefacto())) {
-                    if (camino.getQuitarArtefacto() != null) {// me estan quitando un artefacto por ir a ese camino.
-                        System.out.println("Artefacto quitado: " + camino.getQuitarArtefacto().getNombre());
-                        protagonista.eliminarArtefacto(camino.getQuitarArtefacto()); // al eliminar el artefacto de la lista se agrega al tiro a la lista de quemados
+                if (camino.getQuitarArtefacto()!= null) {
+                    if (protagonista.buscarArtefacto(camino.getQuitarArtefacto())) {
+                        protagonista.eliminarArtefacto(camino.getQuitarArtefacto());
+                        System.out.println("Artefacto añadido: " + camino.getDarArtefacto().getNombre());
                     }
                 }
                 break;
