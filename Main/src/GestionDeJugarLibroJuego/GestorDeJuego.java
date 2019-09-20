@@ -112,7 +112,9 @@ public class GestorDeJuego {
                     this.nPagina = camino.getNumeroPagina();
                     return 3;
                 } else if (parse[1].equalsIgnoreCase("malo") == true) {
-                    this.protagonista.eliminarArtefacto(paginaFinal.getArtefacto());
+                    if(this.protagonista.buscarArtefacto(paginaFinal.getArtefacto())){
+                        this.protagonista.eliminarArtefacto(paginaFinal.getArtefacto());
+                    }
                     this.nPagina = camino.getNumeroPagina();
                     return 2;
                 }

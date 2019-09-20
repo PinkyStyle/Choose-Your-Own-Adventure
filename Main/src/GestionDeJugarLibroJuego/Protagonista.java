@@ -15,6 +15,8 @@ public class Protagonista {
      */
     public Protagonista(String nombre) {
         this.nombre = nombre;
+        this.artefactos=new ArrayList<>();
+        this.artefactosQuemados=new ArrayList<>();
     }
 
     /**
