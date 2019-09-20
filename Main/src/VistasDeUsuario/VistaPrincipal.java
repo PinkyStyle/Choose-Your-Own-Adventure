@@ -171,7 +171,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jLabel2.setText("                Autor");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setText("                  Titulo");
+        jLabel3.setText("                  Título");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setText("      Imagen (Opcional)");
@@ -432,7 +432,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jTextField4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel4.setText("Como quieres que te reconozcan durante esta travesia?");
+        jLabel4.setText("¿Como quieres que te reconozcan durante esta aventura?");
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Estado:");
 
@@ -511,7 +511,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
     
     private void verificarInicioJuego(ActionEvent evt) throws FileNotFoundException{
-        if (!this.jComboBox1.getSelectedItem().equals("Escoje uno")){
+        if (!this.jComboBox1.getSelectedItem().equals("Escoge uno")){
             if (!this.jTextField3.getText().isEmpty()) {
                 this.tituloLibroJuego = (String) this.jComboBox1.getSelectedItem();
                 this.cvj.iniciarJuego(this.tituloLibroJuego, this.jTextField3.getText());
@@ -548,7 +548,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
             //System.out.println(this.cvj);
             if (tipo == -1) {
                 //this.flag1=false;
-                JOptionPane.showMessageDialog(null, "El Libro no fue completado correctamente, saliendo al menu inicial","Advertencia ", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El Libro no fue completado correctamente, saliendo al menú inicial","Advertencia ", JOptionPane.WARNING_MESSAGE);
                 this.getContentPane().removeAll(); 
                 this.repaint();
                 this.initComponents();
@@ -614,12 +614,12 @@ public class VistaPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel4.setText("  Pagina:");
+        jLabel4.setText("  Página:");
 
         jTextField4.setEditable(false);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("                            Descripcion");
+        jLabel1.setText("                            Descripción");
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -824,7 +824,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
             opcionesJugandoPagina = new String [caminos.size()+1];
             for (int i = 0; i < caminos.size()+1; i++) {
                 if (i==0) {
-                    opcionesJugandoPagina[i]="Escoje uno";
+                    opcionesJugandoPagina[i]="Escoge uno";
                 }
                 
                 else{
@@ -836,7 +836,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
             if (this.cvj.tipoDePagina()== 1) {
                 this.flag2 = true;
                 opcionesJugandoPagina = new String[1];
-                opcionesJugandoPagina[0] = "No tienes opciones validas";
+                opcionesJugandoPagina[0] = "No tienes opciones válidas";
                 //JOptionPane.showMessageDialog(null, "No puedes seguir avanzado ya que quemaste todos tus objetos, saliendo... ","Advertencia ", JOptionPane.WARNING_MESSAGE);
                 //this.getContentPane().removeAll(); 
                 //this.repaint();
@@ -844,7 +844,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
             }
             if (this.cvj.tipoDePagina()== 2 || this.cvj.tipoDePagina()== 3 || this.cvj.tipoDePagina()== 4) {
                 opcionesJugandoPagina = new String[1];
-                opcionesJugandoPagina[0] = "Haz llegado al final, no tienes caminos por recorrer";
+                opcionesJugandoPagina[0] = "Has llegado al final, no tienes caminos por recorrer";
             }
             
             //
@@ -880,7 +880,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 }
                 if (a== 4) {
                     String s = "bueno";
-                    JOptionPane.showMessageDialog(null, "Haz llegado al final de la historia");
+                    JOptionPane.showMessageDialog(null, "Has llegado al final de la historia");
                     this.jugandoPagina(s);
                     this.rellenadoDatosPagina();
                 }
@@ -900,7 +900,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
             }
         }
         else{
-            JOptionPane.showMessageDialog(null, "Ingrese una opcion para continuar","Advertencia ", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Ingrese una opción para continuar","Advertencia ", JOptionPane.WARNING_MESSAGE);
         }
     }
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {                                         
@@ -938,7 +938,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     
     private int opcionesRinicioSalir(){
         Object [] opciones ={"Reinicio","Salir"};
-        int eleccion = JOptionPane.showOptionDialog(rootPane,"Que deseas hacer?","Mensaje de Confirmacion",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opciones,"Aceptar");
+        int eleccion = JOptionPane.showOptionDialog(rootPane,"¿Que deseas hacer?","Mensaje de Confirmacion",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opciones,"Aceptar");
         return eleccion;
     }
     
@@ -977,7 +977,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 this.crearPagina();
             }
             else{
-                JOptionPane.showMessageDialog(null, "El titulo ingresado ya existe","Advertencia ", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El título ingresado ya existe","Advertencia ", JOptionPane.WARNING_MESSAGE);
             }
             
         }
@@ -1033,9 +1033,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel1.setText("                            Descripcion");
+        jLabel1.setText("                            Descripción");
 
-        jLabel2.setText("Opcion");
+        jLabel2.setText("Opción");
 
         jLabel3.setText("Dar artefacto");
 
@@ -1062,7 +1062,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setText("  Pagina:");
+        jLabel4.setText("  Página:");
 
         jButton2.setText("Check");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -1071,9 +1071,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setText("Salto a pagina");
+        jLabel5.setText("Salto a página");
 
-        jButton3.setText("Agregar opcion");
+        jButton3.setText("Agregar opción");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 agregarOpcion(evt);
@@ -1105,7 +1105,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         });
 
         jButton7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton7.setText("Siguiente pagina");
+        jButton7.setText("Siguiente página");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 siguientePagina(evt);
@@ -1114,7 +1114,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         
         jLabel7.setText("Quitar artefacto");
         jLabel8.setText("Necesita artefacto");
-        jLabel9.setText("Tipo pagina:");
+        jLabel9.setText("Tipo página:");
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Escoja un tipo","Pagina normal", "Final bueno", "Final regular", "Final malo" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1270,7 +1270,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private void check(ActionEvent evt) {
         if (isNumero(this.jTextField3.getText())) {
             if (this.paginasLibroJuego.contains(Integer.parseInt(this.jTextField3.getText()))) {
-                JOptionPane.showMessageDialog(null, "Ese n° de pagina ya esta creada","Advertencia ", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Ese n° de pagina ya está creada","Advertencia ", JOptionPane.WARNING_MESSAGE);
             }
         }
 
@@ -1279,7 +1279,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private void jComboBox1ActionPerformed(ActionEvent evt) {
         System.out.println(this.jComboBox1.getSelectedItem());
         this.resetPagina();
-        if (this.jComboBox1.getSelectedItem().equals("Pagina normal")) {
+        if (this.jComboBox1.getSelectedItem().equals("Página normal")) {
             jTextArea1.setEditable(true);
             jTextArea1.setEnabled(true);
             jTextField1.setEditable(true);
@@ -1407,7 +1407,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     
     private String[] listaLibroJuegos (ArrayList<String> lista){
         String [] listaLibroJuego = new String [1];
-        listaLibroJuego[0]="Escoje uno";
+        listaLibroJuego[0]="Escoge uno";
         
         if (lista != null) {
             listaLibroJuego = new String [lista.size()+1];
@@ -1427,7 +1427,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     
     private void obtenerDatosLibro(ActionEvent evt,ArrayList<String> datos) throws FileNotFoundException {
         //obtenerdatos()this.jComboBox1.getSelectedItem();
-        if (!this.jComboBox1.getSelectedItem().equals("Escoje uno") ) {
+        if (!this.jComboBox1.getSelectedItem().equals("Escoge uno") ) {
             this.jTextField1.setText(datos.get(0));
             this.jTextField2.setText(datos.get(1));
             this.jTextArea1.setText(datos.get(2));
@@ -1495,12 +1495,12 @@ public class VistaPrincipal extends javax.swing.JFrame {
                         jTextField6.setText("");
                     }
                     else{
-                        JOptionPane.showMessageDialog(null, "Por favor no ingrese caracteres no validos en los actefactos","Advertencia ", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Por favor no ingrese caracteres no válidos en los artefactos","Advertencia ", JOptionPane.WARNING_MESSAGE);
                     }
                     
                 }
                 else{
-                    JOptionPane.showMessageDialog(null, "Ingrese un numero valido en el salto de pagina, la opcion no fue guardada","Advertencia ", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Ingrese un número válido en el salto de página, la opción no fue guardada","Advertencia ", JOptionPane.WARNING_MESSAGE);
                 }
                
             }
@@ -1508,17 +1508,17 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }
     
     private void siguientePagina(ActionEvent evt) {
-        if (this.jComboBox1.getSelectedItem().equals("Pagina normal")) {
+        if (this.jComboBox1.getSelectedItem().equals("Página normal")) {
             if (this.jList1.getModel().getSize()>0 && !this.jTextArea1.getText().isEmpty() && !this.jTextField3.getText().isEmpty()) {
                 if (this.isNumero(this.jTextField3.getText())) {
                     if (!this.paginasLibroJuego.contains(Integer.parseInt(this.jTextField3.getText()))) {
-                        JOptionPane.showMessageDialog(null, "La pagina fue guardada con exito");
+                        JOptionPane.showMessageDialog(null, "La página fue guardada con éxito");
                         int a = Integer.parseInt(this.jTextField3.getText());
                         if (flag1==false) {
-                            this.cvc.crearPagina(this.tituloLibroJuego, a,this.jTextArea1.getText(),"Pagina Normal",null, null);
+                            this.cvc.crearPagina(this.tituloLibroJuego, a,this.jTextArea1.getText(),"Página Normal",null, null);
                         }
                         else{
-                            this.cvc.crearPagina(this.tituloLibroJuego, a,this.jTextArea1.getText(),"Pagina Normal",abre.getAbsolutePath(), null);
+                            this.cvc.crearPagina(this.tituloLibroJuego, a,this.jTextArea1.getText(),"Página Normal",abre.getAbsolutePath(), null);
                         }
                         System.out.println("a"+a);
                         this.paginasLibroJuego.add(a);
@@ -1596,12 +1596,12 @@ public class VistaPrincipal extends javax.swing.JFrame {
                         this.crearPagina();
                     }
                     else{
-                        JOptionPane.showMessageDialog(null, "Ese n° de pagina ya esta creada","Advertencia ", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Ese n° de página ya esta creada","Advertencia ", JOptionPane.WARNING_MESSAGE);
                     }
                     
                 }
                 else{
-                    JOptionPane.showMessageDialog(null, "Ingrese un numero valido en la pagina","Advertencia ", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Ingrese un número válido en la página","Advertencia ", JOptionPane.WARNING_MESSAGE);
                 }
             }
             else{
@@ -1612,7 +1612,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
             if (!this.jTextArea1.getText().isEmpty() && !this.jTextField3.getText().isEmpty()) {
                 if (this.isNumero(this.jTextField3.getText())) {
                     if (!this.paginasLibroJuego.contains(Integer.parseInt(this.jTextField3.getText()))) {
-                        JOptionPane.showMessageDialog(null, "La pagina fue guardada con exito");
+                        JOptionPane.showMessageDialog(null, "La página fue guardada con exito");
                         int a = Integer.parseInt(this.jTextField3.getText());
                         Artefacto ar = new Artefacto(this.jTextField2.getText());
                         if (flag1==false) {
@@ -1627,11 +1627,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
                         this.crearPagina();
                     }
                     else{
-                        JOptionPane.showMessageDialog(null, "Ese n° de pagina ya esta creada","Advertencia ", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Ese n° de página ya está creada","Advertencia ", JOptionPane.WARNING_MESSAGE);
                     }
                 }
                 else{
-                    JOptionPane.showMessageDialog(null, "Ingrese un numero en la pagina","Advertencia ", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Ingrese un número en la página","Advertencia ", JOptionPane.WARNING_MESSAGE);
                 }
             }
             else{
@@ -1642,7 +1642,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
             if (!this.jTextArea1.getText().isEmpty() && !this.jTextField3.getText().isEmpty()) {
                 if (this.isNumero(this.jTextField3.getText())) {
                     if (!this.paginasLibroJuego.contains(Integer.parseInt(this.jTextField3.getText()))) {
-                        JOptionPane.showMessageDialog(null, "La pagina fue guardada con exito");
+                        JOptionPane.showMessageDialog(null, "La página fue guardada con exito");
                         int a = Integer.parseInt(this.jTextField3.getText());
                         Artefacto ar = new Artefacto(this.jTextField5.getText());
                         if (flag1==false) {
@@ -1655,11 +1655,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
                         this.crearPagina();
                     }
                     else{
-                        JOptionPane.showMessageDialog(null, "Ese n° de pagina ya esta creada","Advertencia ", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Ese n° de página ya está creada","Advertencia ", JOptionPane.WARNING_MESSAGE);
                     }
                 }
                 else{
-                    JOptionPane.showMessageDialog(null, "Ingrese un numero en la pagina","Advertencia ", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Ingrese un número en la página","Advertencia ", JOptionPane.WARNING_MESSAGE);
                 }
             }
             else{
@@ -1670,7 +1670,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
             if (!this.jTextArea1.getText().isEmpty() && !this.jTextField3.getText().isEmpty()) {
                 if (this.isNumero(this.jTextField3.getText())) {
                     if (!this.paginasLibroJuego.contains(Integer.parseInt(this.jTextField3.getText()))) {
-                        JOptionPane.showMessageDialog(null, "La pagina fue guardada con exito");
+                        JOptionPane.showMessageDialog(null, "La página fue guardada con éxito");
                         int a = Integer.parseInt(this.jTextField3.getText());
                         if (flag1==false) {
                             this.cvc.crearPagina(this.tituloLibroJuego, a,this.jTextArea1.getText(),"Final regular",null, null);
@@ -1682,11 +1682,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
                         this.crearPagina();
                     }
                     else{
-                        JOptionPane.showMessageDialog(null, "Ese n° de pagina ya esta creada","Advertencia ", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Ese n° de página ya está creada","Advertencia ", JOptionPane.WARNING_MESSAGE);
                     }
                 }
                 else{
-                    JOptionPane.showMessageDialog(null, "Ingrese un numero en la pagina","Advertencia ", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Ingrese un número en la página","Advertencia ", JOptionPane.WARNING_MESSAGE);
                 }
             }
             else{
@@ -1697,19 +1697,19 @@ public class VistaPrincipal extends javax.swing.JFrame {
     
     
     private void guardarYsalirLibroJuego(ActionEvent evt) {
-        if (this.jComboBox1.getSelectedItem().equals("Pagina normal")) {
+        if (this.jComboBox1.getSelectedItem().equals("Página normal")) {
             if (this.jList1.getModel().getSize()>0 && !this.jTextArea1.getText().isEmpty() && !this.jTextField3.getText().isEmpty()) {
                 if (this.isNumero(this.jTextField3.getText())) {
                     //guardar en controlador
                     if (!this.paginasLibroJuego.contains(Integer.parseInt(this.jTextField3.getText()))) {
                         int a = Integer.parseInt(this.jTextField3.getText());
                         if (flag1==false) {
-                            this.cvc.crearPagina(this.tituloLibroJuego, a,this.jTextArea1.getText(),"Pagina Normal",null, null);
+                            this.cvc.crearPagina(this.tituloLibroJuego, a,this.jTextArea1.getText(),"Página Normal",null, null);
                         }
                         else{
-                            this.cvc.crearPagina(this.tituloLibroJuego, a,this.jTextArea1.getText(),"Pagina Normal",abre.getAbsolutePath(), null);
+                            this.cvc.crearPagina(this.tituloLibroJuego, a,this.jTextArea1.getText(),"Página Normal",abre.getAbsolutePath(), null);
                         }
-                        JOptionPane.showMessageDialog(null, "La pagina fue guardada con exito");
+                        JOptionPane.showMessageDialog(null, "La página fue guardada con éxito");
                         if (this.salirPrincipal() == 0) {
                             this.getContentPane().removeAll(); 
                             this.repaint();
@@ -1717,12 +1717,12 @@ public class VistaPrincipal extends javax.swing.JFrame {
                         }
                     }
                     else{
-                        JOptionPane.showMessageDialog(null, "Ese n° de pagina ya esta creada","Advertencia ", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Ese n° de página ya está creada","Advertencia ", JOptionPane.WARNING_MESSAGE);
                     }
                     
                 }
                 else{
-                    JOptionPane.showMessageDialog(null, "Ingrese un numero en la pagina","Advertencia ", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Ingrese un número en la página","Advertencia ", JOptionPane.WARNING_MESSAGE);
                 }
             }
             else{
@@ -1743,7 +1743,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                                 this.cvc.crearPagina(this.tituloLibroJuego, a,this.jTextArea1.getText(),"Final bueno",abre.getAbsolutePath(), null);
                             }
 
-                            JOptionPane.showMessageDialog(null, "La pagina fue guardada con exito");
+                            JOptionPane.showMessageDialog(null, "La página fue guardada con éxito");
                             if (this.salirPrincipal() == 0) {
                                 this.getContentPane().removeAll(); 
                                 this.repaint();
@@ -1759,7 +1759,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                                 this.cvc.crearPagina(this.tituloLibroJuego, a,this.jTextArea1.getText(),"Final bueno",abre.getAbsolutePath(), ar);
                             }
 
-                            JOptionPane.showMessageDialog(null, "La pagina fue guardada con exito");
+                            JOptionPane.showMessageDialog(null, "La página fue guardada con éxito");
                             if (this.salirPrincipal() == 0) {
                                 this.getContentPane().removeAll(); 
                                 this.repaint();
@@ -1769,11 +1769,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
                         
                     }
                     else{
-                        JOptionPane.showMessageDialog(null, "Ese n° de pagina ya esta creada","Advertencia ", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Ese n° de página ya está creada","Advertencia ", JOptionPane.WARNING_MESSAGE);
                     }
                 }
                 else{
-                    JOptionPane.showMessageDialog(null, "Ingrese un numero en la pagina","Advertencia ", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Ingrese un número en la página","Advertencia ", JOptionPane.WARNING_MESSAGE);
                 }
             }
             else{
@@ -1794,7 +1794,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                                 this.cvc.crearPagina(this.tituloLibroJuego, a,this.jTextArea1.getText(),"Final malo",abre.getAbsolutePath(), null);
                             }
 
-                            JOptionPane.showMessageDialog(null, "La pagina fue guardada con exito");
+                            JOptionPane.showMessageDialog(null, "La página fue guardada con éxito");
                             if (this.salirPrincipal() == 0) {
                                 this.getContentPane().removeAll(); 
                                 this.repaint();
@@ -1810,7 +1810,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                                 this.cvc.crearPagina(this.tituloLibroJuego, a,this.jTextArea1.getText(),"Final malo",abre.getAbsolutePath(), ar);
                             }
 
-                            JOptionPane.showMessageDialog(null, "La pagina fue guardada con exito");
+                            JOptionPane.showMessageDialog(null, "La página fue guardada con éxito");
                             if (this.salirPrincipal() == 0) {
                                 this.getContentPane().removeAll(); 
                                 this.repaint();
@@ -1821,11 +1821,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
                         
                     }
                     else{
-                        JOptionPane.showMessageDialog(null, "Ese n° de pagina ya esta creada","Advertencia ", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Ese n° de página ya está creada","Advertencia ", JOptionPane.WARNING_MESSAGE);
                     }
                 }
                 else{
-                    JOptionPane.showMessageDialog(null, "Ingrese un numero en la pagina","Advertencia ", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Ingrese un número en la página","Advertencia ", JOptionPane.WARNING_MESSAGE);
                 }
             }
             else{
@@ -1844,7 +1844,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                             this.cvc.crearPagina(this.tituloLibroJuego, a,this.jTextArea1.getText(),"Final regular",abre.getAbsolutePath(), null);
                         }
                         
-                        JOptionPane.showMessageDialog(null, "La pagina fue guardada con exito");
+                        JOptionPane.showMessageDialog(null, "La página fue guardada con éxito");
                         if (this.salirPrincipal() == 0) {
                             this.getContentPane().removeAll(); 
                             this.repaint();
@@ -1852,11 +1852,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
                         }
                     }
                     else{
-                        JOptionPane.showMessageDialog(null, "Ese n° de pagina ya esta creada","Advertencia ", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Ese n° de página ya está creada","Advertencia ", JOptionPane.WARNING_MESSAGE);
                     }
                 }
                 else{
-                    JOptionPane.showMessageDialog(null, "Ingrese un numero en la pagina","Advertencia ", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Ingrese un número en la página","Advertencia ", JOptionPane.WARNING_MESSAGE);
                 }
             }
             else{
@@ -1908,7 +1908,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
             return;
         }
         if (flag1) {
-            JOptionPane.showMessageDialog(null, "La imagen fue guardada con exito");
+            JOptionPane.showMessageDialog(null, "La imagen fue guardada con éxito");
         }
         else{
             JOptionPane.showMessageDialog(null, "El evento fue cancelado");
@@ -1920,7 +1920,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     
     private int salirPrincipal(){
         Object [] opciones ={"Aceptar","Cancelar"};
-        int eleccion = JOptionPane.showOptionDialog(rootPane,"En realidad desea salir a la ventana principal","Mensaje de Confirmacion",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opciones,"Aceptar");
+        int eleccion = JOptionPane.showOptionDialog(rootPane,"¿En realidad desea salir a la ventana principal?","Mensaje de Confirmacion",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opciones,"Aceptar");
         return eleccion;
     }
     
