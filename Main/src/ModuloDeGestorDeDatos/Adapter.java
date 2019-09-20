@@ -145,7 +145,7 @@ public class Adapter {
                     if(img.get(0) != null){
                         Path imagenOrigen = FileSystems.getDefault().getPath(img.get(i));
                         Path imagenDestino = FileSystems.getDefault().getPath(
-                                this.origen+"/"+titulo+"/imagenPagina"+pagina.getNumeroPagina()+"p"+i+".jpg");
+                                this.origen+"/"+titulo+"/paginas/imagenPagina"+pagina.getNumeroPagina()+"p"+i+".jpg");
 
                         try {
                             Files.copy(imagenOrigen, imagenDestino, StandardCopyOption.REPLACE_EXISTING);
