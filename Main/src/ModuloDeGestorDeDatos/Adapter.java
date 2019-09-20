@@ -145,7 +145,7 @@ public class Adapter {
                     if(img.get(0) != null){
                         Path imagenOrigen = FileSystems.getDefault().getPath(img.get(i));
                         Path imagenDestino = FileSystems.getDefault().getPath(
-                                this.origen+"/"+titulo+"/paginas/imagenPagina"+pagina.getNumeroPagina()+"p"+i+".jpg");
+                                this.origen+"/"+titulo+"/imagenes/imagenPagina"+pagina.getNumeroPagina()+"p"+i+".jpg");
 
                         try {
                             Files.copy(imagenOrigen, imagenDestino, StandardCopyOption.REPLACE_EXISTING);
@@ -209,7 +209,7 @@ public class Adapter {
             BufferedReader br;
 
             for(File f:libros){  
-
+                int count = 0;
                 String cadena;
                 File[] archivos = f.listFiles();
                 if(archivos.length ==4){
@@ -218,7 +218,18 @@ public class Adapter {
                 else{
                     imagen = null;
                 }
-                fr = new FileReader(archivos[0]);
+                File descLibro = null;
+                while(true){
+                    if(archivos[count].getName().contains("Descripcion")){
+                        descLibro = archivos[count].getAbsoluteFile();
+                        break;
+                    }
+                    count++;
+                    if(count>=archivos.length-1){
+                        break;
+                    }                        
+                }
+                fr = new FileReader(descLibro);
                 br = new BufferedReader(fr);    
                 int i = 0;
                 while( (cadena = br.readLine()) != null){
@@ -239,7 +250,7 @@ public class Adapter {
                 
                 File[] imagenes = null;
                 File[] paginas = null;
-                int count = 0;
+                count = 0;
                 while(true){
                     if(archivos[count].getName().equals("imagenes")){
                         imagenes = archivos[count].listFiles();    
