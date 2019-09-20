@@ -223,5 +223,15 @@ public class GestorDeLibros {
         }
         System.out.println("no se agrego el camino no se encontro el libro o la pagina: gestor de libros- metodo retornarPagina");
     }
+
+    /**
+     * Metodo que avisa al adapter de que la pagina esta completamente creada
+     * @param tituloLibroJuego
+     * @param nPagina 
+     */
+    public void caminosCreados(String tituloLibroJuego, int nPagina) {
+        //PINKI ACA LOCO, ESTAMOS READY CON LA PAGINA
+        
+    }
     
 }

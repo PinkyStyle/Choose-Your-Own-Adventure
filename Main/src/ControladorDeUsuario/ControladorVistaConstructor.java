@@ -59,11 +59,11 @@ public class ControladorVistaConstructor {
      * @param solicitar 
      */
     public void agregarCamino(String tituloDeAventura, int nPagina, int proximoSalto, String opcion, Artefacto dar, Artefacto quitar, Artefacto solicitar){
-         this.gestorDeLibros.agregarCamino(tituloDeAventura,  nPagina,  proximoSalto,  opcion,  dar,  quitar,  solicitar);
+        this.gestorDeLibros.agregarCamino(tituloDeAventura,  nPagina,  proximoSalto,  opcion,  dar,  quitar,  solicitar);
     }
 
-    public void caminosCreados(String tituloLibroJuego, int a) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void caminosCreados(String tituloLibroJuego, int nPagina) {
+        this.gestorDeLibros.caminosCreados(tituloLibroJuego, nPagina);
     }
     
 
