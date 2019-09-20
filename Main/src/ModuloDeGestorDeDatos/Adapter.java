@@ -222,54 +222,55 @@ public class Adapter {
                     count++;
                 }
                 count = 0;
+                
+                while (true) {
+                    System.out.println(archivos[count].getName());
+                    if (archivos[count].getName().equals("imagenLibro.jpg")) {
+                        imagen = archivos[count].getAbsolutePath();
+                        break;
+                    }
+                    count++;
+                    if (count >= archivos.length) {
+                        break;
+                    }
+
+                }
+                if (imagen.equals("")) {
+                    imagen = null;
+                }
+                File descLibro = null;
+                count = 0;
+                while (true) {
+                    System.out.println(archivos[count].getName());
+                    if (archivos[count].getName().contains("Descripcion")) {
+                        descLibro = archivos[count].getAbsoluteFile();
+                        break;
+                    }
+                    count++;
+                    if (count >= archivos.length - 1) {
+                        break;
+                    }
+                }
+                fr = new FileReader(descLibro);
+                br = new BufferedReader(fr);
+                int i = 0;
+                while ((cadena = br.readLine()) != null) {
+                    if (i == 0) {
+                        titulo = cadena;
+                    }
+                    if (i == 1) {
+                        autor = cadena;
+                    }
+                    if (!"-".equals(cadena) && i != 0 && i != 1) {
+                        sinopsis = sinopsis + cadena;
+                    }
+                    i++;
+                }
+                cadena = "";
+
+                ControladorVistaConstructor.gestorDeLibros.crearLibroJuego(autor, titulo, imagen, sinopsis);
+                
                 if (paginas.length != 0) {
-                    while (true) {
-                        System.out.println(archivos[count].getName());
-                        if (archivos[count].getName().equals("imagenLibro.jpg")) {
-                            imagen = archivos[count].getAbsolutePath();
-                            break;
-                        }
-                        count++;
-                        if (count >= archivos.length) {
-                            break;
-                        }
-                        
-                    }
-                    if (imagen.equals("")) {
-                        imagen = null;
-                    }
-                    File descLibro = null;
-                    count = 0;
-                    while (true) {
-                        System.out.println(archivos[count].getName());
-                        if (archivos[count].getName().contains("Descripcion")) {
-                            descLibro = archivos[count].getAbsoluteFile();
-                            break;
-                        }
-                        count++;
-                        if (count >= archivos.length - 1) {
-                            break;
-                        }
-                    }
-                    fr = new FileReader(descLibro);
-                    br = new BufferedReader(fr);
-                    int i = 0;
-                    while ((cadena = br.readLine()) != null) {
-                        if (i == 0) {
-                            titulo = cadena;
-                        }
-                        if (i == 1) {
-                            autor = cadena;
-                        }
-                        if (!"-".equals(cadena) && i != 0 && i != 1) {
-                            sinopsis = sinopsis + cadena;
-                        }
-                        i++;
-                    }
-                    cadena = "";
-
-                    ControladorVistaConstructor.gestorDeLibros.crearLibroJuego(autor, titulo, imagen, sinopsis);
-
                     int numeroPagina;
                     String tipo;
                     String descripcion = "";
