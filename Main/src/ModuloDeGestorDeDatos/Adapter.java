@@ -234,12 +234,23 @@ public class Adapter {
                     i++;
                 }               
                 cadena = "";
-                
+                File[] imagenes = null;
+                File[] paginas = null;
                 ControladorVistaConstructor.gestorDeLibros.crearLibroJuego(autor, titulo, imagen, sinopsis);
-                
-                File[] imagenes = archivos[1].listFiles();            
-                File[] paginas = archivos[2].listFiles();
-                
+                int count = 0;
+                while(true){
+                    if(archivos[count].getName().equals("imagenes")){
+                        imagenes = archivos[count].listFiles();                       
+                    }
+                    if(archivos[count].getName().equals("paginas")){
+                        paginas = archivos[count].listFiles();                       
+                    }
+                    if(imagenes != null && paginas != null){
+                        break;
+                    }
+                    count++;
+                }
+                            
                 int numeroPagina;
                 String tipo;
                 String descripcion = "";    
@@ -330,7 +341,7 @@ public class Adapter {
                         }
                         if(imagenes.length != 0){
                             for(File img:imagenes){
-                                if(img.getAbsolutePath().contains(numeroPagina+"-")){
+                                if(img.getAbsolutePath().contains(numeroPagina+"p")){
                                     ControladorVistaConstructor.gestorDeLibros.agregarPagina(
                                             titulo, numeroPagina, descripcion, tipo,img.getAbsolutePath(), regalo);
                                 }
@@ -340,12 +351,6 @@ public class Adapter {
                             ControladorVistaConstructor.gestorDeLibros.agregarPagina(
                                             titulo, numeroPagina, descripcion, tipo,null, regalo);
                         }                            
-                    }
-
-                    for(File img:imagenes){
-                        if(img.getAbsolutePath().contains(numeroPagina+"-")){
-
-                        }
                     }
                 }
 
