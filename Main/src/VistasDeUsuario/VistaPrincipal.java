@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -40,7 +41,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
-    public VistaPrincipal() {
+    public VistaPrincipal() throws IOException {
         cvc = new ControladorVistaConstructor();
         cvj = new ControladorVistaJugador();
         initComponents();
@@ -206,9 +207,15 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jButton2.setText("CREAR ");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                crearLibroJuego(evt);
-                
-                //jButton2ActionPerformed(evt);
+                try {
+                    crearLibroJuego(evt);
+                    
+                    //jButton2ActionPerformed(evt);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(VistaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (UnsupportedEncodingException ex) {
+                    Logger.getLogger(VistaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
 
@@ -918,7 +925,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }
     
     
-    private void crearLibroJuego(java.awt.event.ActionEvent evt) { 
+    private void crearLibroJuego(java.awt.event.ActionEvent evt) throws FileNotFoundException, UnsupportedEncodingException { 
         if (jTextField1.getText().isEmpty() || jTextField2.getText().isEmpty() || jTextArea1.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Rellene todos los campos obligatorios","Advertencia ", JOptionPane.WARNING_MESSAGE);
         }
@@ -929,7 +936,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 if (flag1 == true) {
                     //agregar ruta de la imagen en el null
                     this.tituloLibroJuego=jTextField2.getText();
-                    this.cvc.crearLibroJuego(jTextField1.getText(), jTextField2.getText(),abre.getAbsolutePath(), jTextArea1.getText());
+                    this.cvc.crearLibroJuego(jTextField1.getText(), jTextField2.getText(),abre.getAbsolutePath(), jTextArea1.getText());                    
                     this.imagen = new JLabel();
                     this.imagen.setBounds(0, 0,200,200);
                     this.jPanel1.add(this.imagen);

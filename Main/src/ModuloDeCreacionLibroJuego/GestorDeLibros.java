@@ -1,4 +1,8 @@
 package ModuloDeCreacionLibroJuego;
+import ModuloDeGestorDeDatos.Adapter;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 
@@ -8,12 +12,14 @@ import java.util.ArrayList;
 public class GestorDeLibros {
     
     private ArrayList<LibroJuego> listaLibrojuego;
+    private Adapter adaptador;
 
     /**
      * Constructor que inicializa el arreglo de libros vacio
      */
-    public GestorDeLibros() {
+    public GestorDeLibros() throws IOException {
         this.listaLibrojuego=new ArrayList<>();
+        this.adaptador = new Adapter();
     }
 
     /**
@@ -23,10 +29,11 @@ public class GestorDeLibros {
      * @param imagen
      * @param sinopsis 
      */
-    public void crearLibroJuego(String nombreDeAutor, String tituloDeAventura, String imagen, String sinopsis){
+    public void crearLibroJuego(String nombreDeAutor, String tituloDeAventura, String imagen, String sinopsis) throws FileNotFoundException, UnsupportedEncodingException{
         this.listaLibrojuego.add(new LibroJuego(nombreDeAutor, tituloDeAventura, imagen, sinopsis));
         System.out.println("se creo el libro: gestor de libros - metodo crearLibroJuego");
-        //ADAPTADOR VEN A BUSCARLO
+        //ADAPTADOR VEN A BUSCARLO        
+        this.adaptador.guardarLibroJuego(new LibroJuego(nombreDeAutor, tituloDeAventura, imagen, sinopsis));
     }
     
     /**
@@ -224,4 +231,8 @@ public class GestorDeLibros {
         System.out.println("no se agrego el camino no se encontro el libro o la pagina: gestor de libros- metodo retornarPagina");
     }
     
+    
+    public void cargar() throws IOException{
+        this.adaptador.cargarLibroJuego();
+    }
 }

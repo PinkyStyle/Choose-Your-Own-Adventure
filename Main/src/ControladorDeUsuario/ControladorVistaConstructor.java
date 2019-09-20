@@ -2,6 +2,9 @@ package ControladorDeUsuario;
 
 import ModuloDeCreacionLibroJuego.Artefacto;
 import ModuloDeCreacionLibroJuego.GestorDeLibros;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 
 /**
  * Clase que se encarga de redireccionar acciones solicitadas por la vista del constructor
@@ -15,12 +18,15 @@ public class ControladorVistaConstructor {
 
     private String tituloDeAventura;
     public static GestorDeLibros gestorDeLibros;
+
     
     /**
      * Constructor de la vista del autor
+     * @throws java.io.IOException
      */
-    public ControladorVistaConstructor() {
-        this.gestorDeLibros=new GestorDeLibros();
+    public ControladorVistaConstructor() throws IOException {
+        this.gestorDeLibros = new GestorDeLibros();
+        this.cargarLibros();
     }
 
     /**
@@ -29,9 +35,11 @@ public class ControladorVistaConstructor {
      * @param tituloDeAventura
      * @param imagen
      * @param sinopsis 
+     * @throws java.io.FileNotFoundException 
+     * @throws java.io.UnsupportedEncodingException 
      */
-    public void crearLibroJuego(String nombreDeAutor, String tituloDeAventura, String imagen, String sinopsis) {
-        this.gestorDeLibros.crearLibroJuego(nombreDeAutor, tituloDeAventura, imagen, sinopsis);
+    public void crearLibroJuego(String nombreDeAutor, String tituloDeAventura, String imagen, String sinopsis) throws FileNotFoundException, UnsupportedEncodingException {
+        this.gestorDeLibros.crearLibroJuego(nombreDeAutor, tituloDeAventura, imagen, sinopsis);     
     }
 
     
@@ -60,6 +68,10 @@ public class ControladorVistaConstructor {
      */
     public void agregarCamino(String tituloDeAventura, int nPagina, int proximoSalto, String opcion, Artefacto dar, Artefacto quitar, Artefacto solicitar){
          this.gestorDeLibros.agregarCamino(tituloDeAventura,  nPagina,  proximoSalto,  opcion,  dar,  quitar,  solicitar);
+    }
+    
+    public void cargarLibros() throws IOException{
+        this.gestorDeLibros.cargar();
     }
 
 }
