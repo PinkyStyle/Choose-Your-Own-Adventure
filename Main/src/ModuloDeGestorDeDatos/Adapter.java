@@ -121,27 +121,36 @@ public class Adapter {
     public void guardarPagina(BuilderPagina pagina, String titulo) throws FileNotFoundException, UnsupportedEncodingException{
         String directorio = origen+"/"+titulo+"/paginas";
         
-        try (PrintWriter pw = new PrintWriter(directorio+"/pagina"+pagina.getNumeroPagina(),"UTF-8")) {
+        try (PrintWriter pw = new PrintWriter(directorio+"/pagina"+pagina.getNumeroPagina()+".txt","UTF-8")) {
             pw.println(pagina.getNumeroPagina());
             pw.println(pagina.getTipo());
+            pw.println("-");
             pw.println(pagina.getDescripcion());
-            if(pagina.getTipo().contains("Final")){
-                Final f = (Final) pagina;
-                pw.println(f.getArtefacto().getNombre());
+            pw.println("-");
+            if(pagina.getTipo().contains("Final")){                
+                Final f = (Final) pagina;           
+                if(f.getArtefacto() == null){
+                    pw.println("");
+                }
+                else{
+                    pw.println(f.getArtefacto().getNombre());
+                }                
             }
             ArrayList<String> img = pagina.getImagenes();
             for (int i = 0; i < img.size(); i++) {
-                
-                Path imagenOrigen = FileSystems.getDefault().getPath(img.get(i));
-                Path imagenDestino = FileSystems.getDefault().getPath(
-                        this.origen+titulo+"/imagenPagina"+pagina.getNumeroPagina()+"-"+i+".jpg");
+                if(!img.isEmpty()){
+                    if(img.get(0) != null){
+                        Path imagenOrigen = FileSystems.getDefault().getPath(img.get(i));
+                        Path imagenDestino = FileSystems.getDefault().getPath(
+                                this.origen+titulo+"/imagenPagina"+pagina.getNumeroPagina()+"-"+i+".jpg");
 
-                try {
-                    Files.copy(imagenOrigen, imagenDestino, StandardCopyOption.REPLACE_EXISTING);
-                } catch (IOException e) {
-                    System.err.println(e);
-                }  
-                
+                        try {
+                            Files.copy(imagenOrigen, imagenDestino, StandardCopyOption.REPLACE_EXISTING);
+                        } catch (IOException e) {
+                            System.err.println(e);
+                        }  
+                    }
+                }                
             }
             if(pagina.getTipo().equals("Pagina Normal")){
                 PaginaNormal pn = (PaginaNormal) pagina;
@@ -155,8 +164,9 @@ public class Adapter {
                     pw.println(c.getSolicitarArtefacto());
                     pw.println(c.getNumeroPagina());                
                 }
-                pw.println("end");
+                
             }
+            pw.println("end");
         }
     }
     
@@ -201,66 +211,111 @@ public class Adapter {
                         sinopsis= sinopsis+cadena;
                     }                    
                     i++;
-                }                    
+                }               
+                cadena = "";
                 
                 ControladorVistaConstructor.gestorDeLibros.crearLibroJuego(autor, titulo, imagen, sinopsis);
-
-                File[] imagenes = archivos[0].listFiles();            
-                File[] paginas = archivos[1].listFiles();
-
+                
+                File[] imagenes = archivos[1].listFiles();            
+                File[] paginas = archivos[2].listFiles();
+                
                 int numeroPagina;
                 String tipo;
                 String descripcion = "";    
                 Artefacto regalo;
-
                 for(File pag:paginas){
                     fr = new FileReader(pag);
                     br = new BufferedReader(fr);                                
 
                     numeroPagina = Integer.parseInt(br.readLine());
+                    System.out.println("Numero de pagina: "+numeroPagina);
                     tipo = br.readLine();
-                    descripcion = descripcion+br.readLine();
-
-                    if(tipo.equals("Pagina Normal")){
-                        for(File img:imagenes){
-                            if(img.getAbsolutePath().contains(numeroPagina+"-")){
-                                ControladorVistaConstructor.gestorDeLibros.agregarPagina(
-                                        titulo, numeroPagina, descripcion, tipo,img.getAbsolutePath(), null);
+                    int contador = 0;
+                    while( (cadena = br.readLine()) != null){
+                        if("-".equals(cadena)){   
+                            contador++;
+                        }              
+                        else{
+                            descripcion = descripcion + " "+ cadena;
+                        }                           
+                        if(contador == 2){
+                            break;
+                        }
+                    }
+                                       
+                    if(tipo.equals("Pagina Normal")){                        
+                        if(imagenes.length !=0){
+                            for(File img:imagenes){
+                                if(img.getAbsolutePath().contains(numeroPagina+"-")){
+                                    ControladorVistaConstructor.gestorDeLibros.agregarPagina(
+                                            titulo, numeroPagina, descripcion, tipo,img.getAbsolutePath(), null);
+                                }                                
                             }
                         }
-
+                        else{                            
+                            ControladorVistaConstructor.gestorDeLibros.agregarPagina(
+                                    titulo, numeroPagina, descripcion, tipo,null, null);
+                        }
 
                         Artefacto dar = null;
                         Artefacto quitar = null;
                         Artefacto solicitar = null;
                         String opcion = "";
-                        int salto = -1;
+                        int salto = 0;
 
                         while(!(cadena = br.readLine()).equals("end")){
-                            if(cadena.equals("-")){
+                            if(cadena.equals("-")){                                
                                 opcion = br.readLine();
-                                if((cadena=br.readLine()) != null ){
+                                if(!"null".equals(cadena=br.readLine()) ){
                                     dar = new Artefacto(cadena);
+                                    System.out.println("hola 1");
                                 }
-                                if((cadena=br.readLine()) != null ){
+                                else{
+                                    dar = null;
+                                }
+                                if(!"null".equals(cadena=br.readLine()) ){
                                     quitar = new Artefacto(cadena);
+                                    System.out.println("hola 1");
                                 }
-                                if((cadena=br.readLine()) != null ){
+                                else{
+                                    quitar = null;
+                                }
+                                if(!"null".equals(cadena=br.readLine()) ){
                                     solicitar = new Artefacto(cadena);
+                                    System.out.println("hola 1");
                                 }
-                                salto = Integer.parseInt(br.readLine());
+                                else{
+                                    solicitar = null;
+                                }
+                                String numero =br.readLine();
+                                salto = Integer.parseInt(numero);
                             }
-                            ControladorVistaConstructor.gestorDeLibros.agregarCamino(titulo, numeroPagina, salto, origen, dar, quitar, solicitar);
-                        }                                                              
-                    }
+                            System.out.println(101);
+                            System.out.println("Salto: "+salto);
+                            ControladorVistaConstructor.gestorDeLibros.agregarCamino(titulo, numeroPagina, salto, opcion, dar, quitar, solicitar);
+                        }   
+                        System.out.println(102);
+                    }                    
                     else{
-                        regalo = new Artefacto(br.readLine());
-                        for(File img:imagenes){
-                            if(img.getAbsolutePath().contains(numeroPagina+"-")){
-                                ControladorVistaConstructor.gestorDeLibros.agregarPagina(
-                                        titulo, numeroPagina, descripcion, tipo,img.getAbsolutePath(), regalo);
+                        String nombreRegalo =br.readLine();
+                        if("".equals(nombreRegalo)){
+                            regalo = null;
+                        }
+                        else{
+                            regalo = new Artefacto(nombreRegalo);
+                        }
+                        if(imagenes.length != 0){
+                            for(File img:imagenes){
+                                if(img.getAbsolutePath().contains(numeroPagina+"-")){
+                                    ControladorVistaConstructor.gestorDeLibros.agregarPagina(
+                                            titulo, numeroPagina, descripcion, tipo,img.getAbsolutePath(), regalo);
+                                }
                             }
                         }
+                        else{
+                            ControladorVistaConstructor.gestorDeLibros.agregarPagina(
+                                            titulo, numeroPagina, descripcion, tipo,null, regalo);
+                        }                            
                     }
 
                     for(File img:imagenes){
@@ -273,7 +328,7 @@ public class Adapter {
             }    
         }
         else{
-            System.out.println("no hay niuna wea");
+            System.out.println("No hay libros");
         }
     }
 }

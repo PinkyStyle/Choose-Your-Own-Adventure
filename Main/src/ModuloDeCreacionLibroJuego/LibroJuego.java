@@ -77,7 +77,7 @@ public class LibroJuego {
                 return;
             }
         }
-        System.out.println("no se agrego el camino correctamente");
+        System.out.println("se agrego el camino correctamente");
     }
 
     /**

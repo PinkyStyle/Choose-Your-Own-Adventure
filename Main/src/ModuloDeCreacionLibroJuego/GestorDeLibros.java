@@ -31,7 +31,7 @@ public class GestorDeLibros {
      */
     public void crearLibroJuego(String nombreDeAutor, String tituloDeAventura, String imagen, String sinopsis) throws FileNotFoundException, UnsupportedEncodingException{
         this.listaLibrojuego.add(new LibroJuego(nombreDeAutor, tituloDeAventura, imagen, sinopsis));
-        System.out.println("se creo el libro: gestor de libros - metodo crearLibroJuego");
+        //System.out.println("se creo el libro: gestor de libros - metodo crearLibroJuego");
         //ADAPTADOR VEN A BUSCARLO        
         this.adaptador.guardarLibroJuego(new LibroJuego(nombreDeAutor, tituloDeAventura, imagen, sinopsis));
     }
@@ -235,9 +235,12 @@ public class GestorDeLibros {
      * Metodo que avisa al adapter de que la pagina esta completamente creada
      * @param tituloLibroJuego
      * @param nPagina 
+     * @throws java.io.FileNotFoundException 
+     * @throws java.io.UnsupportedEncodingException 
      */
-    public void caminosCreados(String tituloLibroJuego, int nPagina) {
-        //PINKI ACA LOCO, ESTAMOS READY CON LA PAGINA
+    public void caminosCreados(String tituloLibroJuego, int nPagina) throws FileNotFoundException, UnsupportedEncodingException {
+        BuilderPagina pagina = this.retornarPagina(tituloLibroJuego, nPagina);
+        this.adaptador.guardarPagina(pagina,tituloLibroJuego);
         
     }
     

@@ -74,9 +74,8 @@ public class ControladorVistaConstructor {
         this.gestorDeLibros.cargar();
     }
 
-    public void caminosCreados(String tituloLibroJuego, int nPagina) {
+    public void caminosCreados(String tituloLibroJuego, int nPagina) throws FileNotFoundException, UnsupportedEncodingException {
         this.gestorDeLibros.caminosCreados(tituloLibroJuego, nPagina);
     }
     
-
 }
