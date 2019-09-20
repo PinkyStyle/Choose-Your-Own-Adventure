@@ -234,9 +234,11 @@ public class Adapter {
                     i++;
                 }               
                 cadena = "";
+                
+                ControladorVistaConstructor.gestorDeLibros.crearLibroJuego(autor, titulo, imagen, sinopsis);
+                
                 File[] imagenes = null;
                 File[] paginas = null;
-                ControladorVistaConstructor.gestorDeLibros.crearLibroJuego(autor, titulo, imagen, sinopsis);
                 int count = 0;
                 while(true){
                     if(archivos[count].getName().equals("imagenes")){
@@ -267,23 +269,19 @@ public class Adapter {
                     System.out.println("Numero de pagina: "+numeroPagina);
                     tipo = br.readLine();
                     int contador = 0;
-                    while( (cadena = br.readLine()) != null){
+                    while( contador!=2){
                         if("-".equals(cadena)){   
                             contador++;
                         }              
                         else{
                             descripcion = descripcion + " "+ cadena;
                         }                           
-                        if(contador == 2){
-                            break;
-                        }
                     }
                                        
                     if(tipo.equals("Pagina Normal")){       
                         br.readLine();
                         if(imagenes.length !=0){
-                            for(File img:imagenes){
-                                System.out.println(img);
+                            for(File img:imagenes){                                
                                 if(img.getAbsolutePath().contains(numeroPagina+"p")){
                                     ControladorVistaConstructor.gestorDeLibros.agregarPagina(
                                             titulo, numeroPagina, descripcion, tipo,img.getAbsolutePath(), null);
@@ -301,7 +299,8 @@ public class Adapter {
                         String opcion = "";
                         int salto = 0;
                         
-                        System.out.println("cadena:" +cadena);
+                        System.out.println("asi entra a las cagas de caminos");
+                        System.out.println("cadena:------------------------------------" +cadena);
                         while(!(cadena = br.readLine()).equals("end")){
                             if(cadena.equals("-")){                                
                                 opcion = br.readLine();
