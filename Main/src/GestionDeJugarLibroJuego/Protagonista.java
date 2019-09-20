@@ -1,109 +1,112 @@
 package GestionDeJugarLibroJuego;
+
 import ModuloDeCreacionLibroJuego.Artefacto;
 import java.util.ArrayList;
 
 /**
- * 
+ *
  */
 public class Protagonista {
+
     private ArrayList<Artefacto> artefactos;
     private ArrayList<Artefacto> artefactosQuemados;
-    private String nombre; 
-    
+    private String nombre;
+
     /**
      * Default constructor
      */
     public Protagonista(String nombre) {
         this.nombre = nombre;
-        this.artefactos=new ArrayList<>();
-        this.artefactosQuemados=new ArrayList<>();
+        this.artefactos = new ArrayList<>();
+        this.artefactosQuemados = new ArrayList<>();
     }
 
     /**
-     * 
+     *
      * @param artefacto
-     * @return 
+     * @return
      */
     public boolean buscarArtefacto(Artefacto artefacto) {
         for (int i = 0; i < artefactos.size(); i++) {
-            if(artefactos.get(i).getNombre().equals(artefacto.getNombre())){
+            if (artefactos.get(i).getNombre().equals(artefacto.getNombre())) {
                 return true;
             }
-        }  
+        }
         return false;
     }
-   
+
     /**
-     * 
-     * @param artefactos 
+     *
+     * @param artefactos
      */
     public void setArtefactos(ArrayList<Artefacto> artefactos) {
         this.artefactos = artefactos;
     }
-    
+
     /**
-     * 
-     * @param artefacto 
+     *
+     * @param artefacto
      */
-    public void addArtefacto(Artefacto artefacto){
+    public void addArtefacto(Artefacto artefacto) {
         artefactos.add(artefacto);
     }
-    
+
     /**
-     * 
-     * @param artefacto 
+     *
+     * @param artefacto
      */
-    public void eliminarArtefacto(Artefacto artefacto){
-        this.artefactos.remove(artefacto);  
+    public void eliminarArtefacto(Artefacto artefacto) {
+        this.artefactos.remove(artefacto);
         this.addArtefactoQuemado(artefacto);
     }
-    
+
     /**
-     * 
+     *
      * @param artefacto
-     * @return 
+     * @return
      */
-    public boolean buscarAtefactoQuemado(Artefacto artefacto){
-       for (int i = 0; i < artefactosQuemados.size(); i++) {
-            if(artefactosQuemados.get(i).getNombre().equals(artefacto.getNombre())){
-                return true;
+    public boolean buscarAtefactoQuemado(Artefacto artefacto) {
+        if (artefactosQuemados != null) {
+            for (int i = 0; i < artefactosQuemados.size(); i++) {
+                if (artefactosQuemados.get(i).getNombre().equals(artefacto.getNombre())) {
+                    return true;
+                }
             }
-        }  
+        }
+
         return false;
     }
-    
+
     /**
-     * 
-     * @param artegactosQuemados 
+     *
+     * @param artegactosQuemados
      */
     public void setArtefactosQuemados(ArrayList<Artefacto> artegactosQuemados) {
         this.artefactosQuemados = artegactosQuemados;
     }
-    
+
     /**
-     * 
-     * @param artefacto 
+     *
+     * @param artefacto
      */
-    public void addArtefactoQuemado(Artefacto artefacto){
+    public void addArtefactoQuemado(Artefacto artefacto) {
         artefactosQuemados.add(artefacto);
     }
-  
+
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
-    public String getNombre(){
+    public String getNombre() {
         return this.nombre;
     }
-    
+
     /**
-     * 
-     * @param nombre 
+     *
+     * @param nombre
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
-    
-    
+
 }

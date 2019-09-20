@@ -81,7 +81,7 @@ public class GestorDeJuego {
                 if (camino.getQuitarArtefacto()!= null) {
                     if (protagonista.buscarArtefacto(camino.getQuitarArtefacto())) {
                         protagonista.eliminarArtefacto(camino.getQuitarArtefacto());
-                        System.out.println("Artefacto añadido: " + camino.getDarArtefacto().getNombre());
+                        System.out.println("Artefacto quitado: " + camino.getQuitarArtefacto().getNombre());
                     }
                 }
                 if (camino.getDarArtefacto() == null && camino.getQuitarArtefacto()== null && camino.getSolicitarArtefacto()!= null) {
