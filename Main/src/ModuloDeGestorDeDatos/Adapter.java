@@ -361,21 +361,22 @@ public class Adapter {
                         }
                         if(imagenes.length != 0){
                             for(File img:imagenes){
-                                System.out.println(img.getName());
                                 String algo = numeroPagina+"p";
-                                System.out.println("Esta wea busca aaahhhhhhhhhhhhhhhhhhhhhhhhhhh " + algo);
                                 if(img.getName().contains(algo)){
-                                    System.out.println("agrega la pagina mierdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-                                    System.out.println(img.getAbsolutePath());
+                                    
+                                    String hola=img.getAbsolutePath();
+                                    System.out.println("el ruben es weco °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°|||"+hola);
                                     ControladorVistaConstructor.gestorDeLibros.agregarPagina(
-                                            titulo, numeroPagina, descripcion, tipo,img.getAbsolutePath(), regalo);
-                                    System.out.println(ControladorVistaConstructor.gestorDeLibros.mostrarImagenesDePagina(titulo,numeroPagina).get(0));
+                                            titulo, numeroPagina, descripcion, tipo,hola, regalo);
+                                    System.out.println("el milla es weco!!!!!!!!!!!!!!!!!!!!!!!!!1"+ControladorVistaConstructor.gestorDeLibros.mostrarImagenesDePagina(titulo,numeroPagina).get(0));
                                     break;
                                 }
-                                ControladorVistaConstructor.gestorDeLibros.agregarPagina(
-                                            titulo, numeroPagina, descripcion, tipo,null, regalo);
+                                
                             }
+                            ControladorVistaConstructor.gestorDeLibros.agregarPagina(
+                                            titulo, numeroPagina, descripcion, tipo,null, regalo);
                         }
+                        
                         else{
                             ControladorVistaConstructor.gestorDeLibros.agregarPagina(
                                             titulo, numeroPagina, descripcion, tipo,null, regalo);
