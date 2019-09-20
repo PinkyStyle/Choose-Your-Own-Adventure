@@ -1,4 +1,4 @@
-package GestionDeJugarLibroJuego;
+ package GestionDeJugarLibroJuego;
 
 import static ControladorDeUsuario.ControladorVistaConstructor.gestorDeLibros;
 import ModuloDeCreacionLibroJuego.Artefacto;
@@ -37,7 +37,7 @@ public class GestorDeJuego {
      * @return
      */
     public ArrayList<String> mostrarinformacionDeUnLibroJuegos(String tituloDeAventura) {
-        System.out.println("Mostrando informaciÃ³n del libro " + tituloDeAventura);
+        System.out.println("Mostrando información del libro " + tituloDeAventura);
         return gestorDeLibros.mostrarinformacionDeUnLibroJuegos(tituloDeAventura);
     }
 
@@ -84,36 +84,16 @@ public class GestorDeJuego {
                         System.out.println("Artefacto quitado: " + camino.getQuitarArtefacto().getNombre());
                     }
                 }
-                if (camino.getDarArtefacto() == null && camino.getQuitarArtefacto()== null && camino.getSolicitarArtefacto()!= null) {
-                    
-                }
-                if (camino.getDarArtefacto() != null && camino.getQuitarArtefacto()== null && camino.getSolicitarArtefacto()== null) {
-                    
-                }
-                if (camino.getDarArtefacto() != null && camino.getQuitarArtefacto()== null && camino.getSolicitarArtefacto()== null) {
-                
-                }
-                if (camino.getDarArtefacto() != null && camino.getQuitarArtefacto()== null && camino.getSolicitarArtefacto()== null) {
-                    
-                }
-                if (camino.getDarArtefacto() != null && camino.getQuitarArtefacto()== null && camino.getSolicitarArtefacto()== null) {
-                    
-                }
-                if (camino.getDarArtefacto() != null && camino.getQuitarArtefacto()== null && camino.getSolicitarArtefacto()== null) {
-                
-                }
-                if (camino.getDarArtefacto() != null && camino.getQuitarArtefacto()== null && camino.getSolicitarArtefacto()== null) {
-                    
-                }
+                break;
             }
         }
         if (camino == null) {
-            System.out.println("Camino null. PÃ¡gina no encontrada");
+            System.out.println("Camino null. Página no encontrada");
             return -1;
         }
         String tipo = gestorDeLibros.tipoDePagina(tituloDeAventura, camino.getNumeroPagina());
         if (tipo == null) {
-            System.out.println("Tipo null. PÃ¡gina no encontrada");
+            System.out.println("Tipo null. Página no encontrada");
             return -1;
         }
         System.out.println("tipo de pagina ============== "+tipo+"=============================");
@@ -141,7 +121,7 @@ public class GestorDeJuego {
             }
         }
         
-        System.out.println("fin de pÃ¡gina normal");
+        System.out.println("fin de página normal");
         
         return 1;
     }
@@ -175,18 +155,18 @@ public class GestorDeJuego {
         ArrayList<Camino> caminos = gestorDeLibros.getCaminosDePagina(tituloDeAventura, nPagina);
         ArrayList<String> lista = gestorDeLibros.mostrarRutasDePagina(tituloDeAventura, nPagina);
         ArrayList<String> aux = new ArrayList<>();
-        //System.out.println("el tamaÃ±o del camino :" +caminos.size());
+        //System.out.println("el tamaño del camino :" +caminos.size());
         if (caminos != null) {
             for (int i = 0; i < caminos.size(); i++) {
-                System.out.println("el tamaÃ±o del camino :" +caminos.size());
+                System.out.println("el tamaño del camino :" +caminos.size());
                 if (caminos.get(i).getSolicitarArtefacto() != null) {
                     if (protagonista.buscarArtefacto(caminos.get(i).getSolicitarArtefacto())) {
                         aux.add(lista.get(i));
-                        System.out.println("Camino transitable aÃ±adido");
+                        System.out.println("Camino transitable añadido");
                     }
                 } else {
                     aux.add(lista.get(i));
-                    System.out.println("Camino transitable aÃ±adido");
+                    System.out.println("Camino transitable añadido");
                 }
 
             }
@@ -218,7 +198,7 @@ public class GestorDeJuego {
                 System.out.println("Artefacto solicitado: " + solicitarArtefacto.getNombre());
                 if (protagonista.buscarArtefacto(solicitarArtefacto)) { //significa que tengo el artefacto para ir por ese camino.
                     caminosQuePuedoIr.add(camino.getOpcion());
-                    System.out.println("SÃ­ tengo el artefacto");
+                    System.out.println("Sí tengo el artefacto");
                 }
             }
         }
