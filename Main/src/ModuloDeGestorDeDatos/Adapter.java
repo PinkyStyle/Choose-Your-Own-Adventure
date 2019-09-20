@@ -281,19 +281,26 @@ public class Adapter {
                     tipo = br.readLine();
                     int contador = 0;
                     while( contador!=2){
-                        if("-".equals(cadena)){   
+                        if("-".equals(cadena=br.readLine())){   
                             contador++;
                         }              
                         else{
                             descripcion = descripcion + " "+ cadena;
                         }                           
                     }
+                    System.out.println("el cont========================!!!!!!!!!!"+contador);
                                        
-                    if(tipo.equals("Pagina Normal")){       
+                    if(tipo.equals("Pagina Normal")){ 
+                        
                         br.readLine();
                         if(imagenes.length !=0){
-                            for(File img:imagenes){                                
-                                if(img.getAbsolutePath().contains(numeroPagina+"p")){
+                            
+                            for(File img:imagenes){
+                                System.out.println(img.getName());
+                                String algo = numeroPagina+"p";
+                                
+                                if(img.getName().contains(algo)){
+                                    System.out.println("entre al print |||||||||||||||||===============");
                                     ControladorVistaConstructor.gestorDeLibros.agregarPagina(
                                             titulo, numeroPagina, descripcion, tipo,img.getAbsolutePath(), null);
                                 }                                
@@ -311,8 +318,9 @@ public class Adapter {
                         int salto = 0;
                         
                         System.out.println("asi entra a las cagas de caminos");
-                        System.out.println("cadena:------------------------------------" +cadena);
+                        
                         while(!(cadena = br.readLine()).equals("end")){
+                            System.out.println("cadena:*******************************" +cadena);
                             if(cadena.equals("-")){                                
                                 opcion = br.readLine();
                                 if(!"".equals(cadena=br.readLine()) ){
@@ -355,7 +363,11 @@ public class Adapter {
                         }
                         if(imagenes.length != 0){
                             for(File img:imagenes){
-                                if(img.getAbsolutePath().contains(numeroPagina+"p")){
+                                System.out.println(img.getName());
+                                String algo = numeroPagina+"p";
+                                System.out.println("Esta wea busca aaahhhhhhhhhhhhhhhhhhhhhhhhhhh " + algo);
+                                if(img.getName().contains(algo)){
+                                    System.out.println("onrarnrenernrnmernrnnrnr============");
                                     ControladorVistaConstructor.gestorDeLibros.agregarPagina(
                                             titulo, numeroPagina, descripcion, tipo,img.getAbsolutePath(), regalo);
                                 }
