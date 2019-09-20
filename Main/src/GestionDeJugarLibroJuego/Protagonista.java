@@ -15,6 +15,8 @@ public class Protagonista {
      */
     public Protagonista(String nombre) {
         this.nombre = nombre;
+        this.artefactos=new ArrayList<>();
+        this.artefactosQuemados=new ArrayList<>();
     }
 
     /**
@@ -52,8 +54,8 @@ public class Protagonista {
      * @param artefacto 
      */
     public void eliminarArtefacto(Artefacto artefacto){
-        artefactos.remove(artefacto);  
-        addArtefactoQuemado(artefacto);
+        this.artefactos.remove(artefacto);  
+        this.addArtefactoQuemado(artefacto);
     }
     
     /**
@@ -69,19 +71,35 @@ public class Protagonista {
         }  
         return false;
     }
+    
+    /**
+     * 
+     * @param artegactosQuemados 
+     */
     public void setArtefactosQuemados(ArrayList<Artefacto> artegactosQuemados) {
         this.artefactosQuemados = artegactosQuemados;
     }
+    
+    /**
+     * 
+     * @param artefacto 
+     */
     public void addArtefactoQuemado(Artefacto artefacto){
         artefactosQuemados.add(artefacto);
     }
   
-    
+    /**
+     * 
+     * @return 
+     */
     public String getNombre(){
         return this.nombre;
     }
     
-
+    /**
+     * 
+     * @param nombre 
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }

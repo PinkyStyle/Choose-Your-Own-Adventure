@@ -101,31 +101,32 @@ public class GestorDeJuego {
             return -1;
         }
         System.out.println("tipo de pagina ============== "+tipo+"=============================");
-        
+        this.nPagina = camino.getNumeroPagina();
         if (tipo != null) {
             String[] parse = tipo.split(" ");
             if (parse[0].equalsIgnoreCase("Final") == true) {
-                if (parse[1].equalsIgnoreCase("bueno") == true)// final bueno
-                {
+                Final paginaFinal=(Final) gestorDeLibros.retornarPagina(tituloDeAventura, nPagina);
+                if (parse[1].equalsIgnoreCase("bueno") == true){
                     System.out.println("Final bueno obtenido");
                     gestorDeLibros.cambiarEstadoLibro(tituloDeAventura);
-                    this.nPagina = camino.getNumeroPagina();
+                    this.protagonista.addArtefacto(paginaFinal.getArtefacto());
                     return 4;
                 } else if (parse[1].equalsIgnoreCase("regular") == true) {
-                    this.nPagina = camino.getNumeroPagina();
                     return 3;
                 } else if (parse[1].equalsIgnoreCase("malo") == true) {
-                    this.nPagina = camino.getNumeroPagina();
+                    if(this.protagonista.buscarArtefacto(paginaFinal.getArtefacto())){
+                        this.protagonista.eliminarArtefacto(paginaFinal.getArtefacto());
+                    }
                     return 2;
                 }
             } else if (tipo.equalsIgnoreCase("Pagina Normal") == true) {
-                this.nPagina = camino.getNumeroPagina();
+                
                 return 1;
             }
         }
         
         System.out.println("fin de página normal");
-        this.nPagina = camino.getNumeroPagina();
+        
         return 1;
     }
 

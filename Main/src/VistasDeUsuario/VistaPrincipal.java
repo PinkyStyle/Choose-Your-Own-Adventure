@@ -332,6 +332,14 @@ public class VistaPrincipal extends javax.swing.JFrame {
         this.getContentPane().removeAll(); 
         this.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         this.repaint();
+        
+        if (flag1 == true) {
+            this.imagen = new JLabel();
+            this.imagen.setBounds(0, 0,172,172);
+            this.jPanel1.add(this.imagen);
+            this.pack();
+            this.repaint();
+        }
 
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
@@ -529,6 +537,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
     
     private void jugandoLibroJuego() throws FileNotFoundException {
         System.out.println("tipo  de pagina bryan========================================== : "+this.cvj.tipoDePagina());
+        if (flag1 == true) {
+            this.imagen = new JLabel();
+            this.imagen.setBounds(0, 0,172,172);
+            this.jPanel1.add(this.imagen);
+            this.pack();
+            this.repaint();
+        }
         if (this.cvj.tipoDePagina()== 1) {
             //this.flag1=false;
             String s ="normal";
@@ -772,7 +787,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         this.jTextField4.setText(Integer.toString(this.cvj.numeroPaginaActual()));
         if (flag1 == true) {
             this.imagen = new JLabel();
-            this.imagen.setBounds(0, 0,172,172);
+            this.imagen.setBounds(0, 0,250,250);
             this.jPanel1.add(this.imagen);
             this.pack();
             this.repaint();
@@ -942,6 +957,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                     this.jPanel1.add(this.imagen);
                     this.pack();
                     this.repaint();
+                    flag1 = false;
                 }
                 else{
                     this.tituloLibroJuego=jTextField2.getText();
@@ -967,6 +983,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
             this.jPanel1.add(this.imagen);
             this.pack();
             this.repaint();
+            flag1 = false;
         }
         
         
@@ -1419,6 +1436,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
             this.jTextArea1.setText(datos.get(2));
             this.jTextField4.setText(datos.get(4));
             //error archivco
+            System.out.println(datos.get(1)+" ; "+datos.get(3));
+            System.out.println("cantidad de componentes del panel"+this.jPanel1.getComponentCount());
+            if (this.jPanel1.getComponentCount()==1) {
+                this.jPanel1.remove(0);
+                this.pack();
+                this.repaint();
+            }
             if (datos.get(3) != null) {
                 abre = new File(datos.get(3));
                 if(abre!=null){     
@@ -1436,6 +1460,17 @@ public class VistaPrincipal extends javax.swing.JFrame {
                     this.repaint();
                     this.flag1 = true;
                 }  
+            }
+            else{
+                
+                //System.out.println("sdflkhjsdfklsdfhjlkasdfjlkasdf nlksdfnjlkfsdasdfnlkasdfnlk;asdfnlk AQUIIIIIIIIIIIIIII CTMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM");
+                this.imagen = new JLabel();
+                this.imagen.setBounds(0, 0,200,200);
+                this.jPanel1.add(this.imagen);
+                this.pack();
+                this.repaint();
+                this.flag1 = false;
+                
             }
             
 
