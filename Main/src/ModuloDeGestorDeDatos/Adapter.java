@@ -145,7 +145,7 @@ public class Adapter {
                     if(img.get(0) != null){
                         Path imagenOrigen = FileSystems.getDefault().getPath(img.get(i));
                         Path imagenDestino = FileSystems.getDefault().getPath(
-                                this.origen+titulo+"/imagenPagina"+pagina.getNumeroPagina()+"-"+i+".jpg");
+                                this.origen+"/"+titulo+"/imagenPagina"+pagina.getNumeroPagina()+"p"+i+".jpg");
 
                         try {
                             Files.copy(imagenOrigen, imagenDestino, StandardCopyOption.REPLACE_EXISTING);
@@ -162,9 +162,27 @@ public class Adapter {
                 for(Camino c:caminos){
                     pw.println("-");
                     pw.println(c.getOpcion());
-                    pw.println(c.getDarArtefacto());
-                    pw.println(c.getQuitarArtefacto());
-                    pw.println(c.getSolicitarArtefacto());
+                    if(c.getDarArtefacto() != null){
+                        pw.println(c.getDarArtefacto().getNombre());
+                    }
+                    else{
+                        pw.println("");
+                    }
+                    if(c.getQuitarArtefacto()!= null){
+                        pw.println(c.getQuitarArtefacto().getNombre());
+                    }
+                    else{
+                        pw.println("");
+                    }
+                    if(c.getSolicitarArtefacto()!= null){
+                        pw.println(c.getSolicitarArtefacto().getNombre());
+                    }
+                    else{
+                        pw.println("");
+                    }
+                    
+                    
+                    
                     pw.println(c.getNumeroPagina());                
                 }
                 
@@ -229,7 +247,7 @@ public class Adapter {
                 for(File pag:paginas){
                     fr = new FileReader(pag);
                     br = new BufferedReader(fr);                                
-
+                    descripcion = "";
                     numeroPagina = Integer.parseInt(br.readLine());
                     System.out.println("Numero de pagina: "+numeroPagina);
                     tipo = br.readLine();
@@ -250,7 +268,8 @@ public class Adapter {
                         br.readLine();
                         if(imagenes.length !=0){
                             for(File img:imagenes){
-                                if(img.getAbsolutePath().contains(numeroPagina+"-")){
+                                System.out.println(img);
+                                if(img.getAbsolutePath().contains(numeroPagina+"p")){
                                     ControladorVistaConstructor.gestorDeLibros.agregarPagina(
                                             titulo, numeroPagina, descripcion, tipo,img.getAbsolutePath(), null);
                                 }                                
