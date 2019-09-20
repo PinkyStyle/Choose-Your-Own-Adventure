@@ -1537,7 +1537,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                             this.cvc.crearPagina(this.tituloLibroJuego, a,this.jTextArea1.getText(),"Pagina Normal",null, null);                            
                         }
                         else{
-                            this.cvc.crearPagina(this.tituloLibroJuego, a,this.jTextArea1.getText(),"Página Normal",abre.getAbsolutePath(), null);
+                            this.cvc.crearPagina(this.tituloLibroJuego, a,this.jTextArea1.getText(),"Pagina Normal",abre.getAbsolutePath(), null);
                         }
                         System.out.println("a"+a);
                         this.paginasLibroJuego.add(a);
@@ -1962,7 +1962,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
         boolean string =true;
         System.out.println("cadena artefacto; "+cadena);
         for (int i = 0; i < cadena.length(); i++) {
-            if ((cadena.codePointAt(i)>=65 && cadena.codePointAt(i)<=90) || (cadena.codePointAt(i)>=97 && cadena.codePointAt(i)<=123) || (cadena.codePointAt(i)==32) || (cadena.codePointAt(i)>=48 && cadena.codePointAt(i)<=57) || (cadena.codePointAt(i)==00)) {
+            System.out.println("La cadena qla ASCII es " + cadena.codePointAt(i));
+            if ((cadena.codePointAt(i)>=65 && cadena.codePointAt(i)<=90) || (cadena.codePointAt(i)>=97 && cadena.codePointAt(i)<=123) || (cadena.codePointAt(i)==32) || (cadena.codePointAt(i)>=48 && cadena.codePointAt(i)<=57) || (cadena.codePointAt(i)==00) || (cadena.codePointAt(i)==225) || (cadena.codePointAt(i)==233) || (cadena.codePointAt(i)==237) || (cadena.codePointAt(i)==243) ||  (cadena.codePointAt(i)==250) || (cadena.codePointAt(i)==193) || (cadena.codePointAt(i)==201) || (cadena.codePointAt(i)==205) || (cadena.codePointAt(i)==211) || (cadena.codePointAt(i)==218)) {
                 //return string =false;
                 System.out.println("artefaco bueno ");
             }
