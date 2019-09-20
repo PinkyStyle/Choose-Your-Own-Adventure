@@ -1541,6 +1541,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                                 }
                             }
                         }
+                        this.cvc.caminosCreados(this.tituloLibroJuego,a);
                         this.crearPagina();
                     }
                     else{

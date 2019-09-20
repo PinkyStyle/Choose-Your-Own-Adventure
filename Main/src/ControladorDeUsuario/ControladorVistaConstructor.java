@@ -62,4 +62,9 @@ public class ControladorVistaConstructor {
          this.gestorDeLibros.agregarCamino(tituloDeAventura,  nPagina,  proximoSalto,  opcion,  dar,  quitar,  solicitar);
     }
 
+    public void caminosCreados(String tituloLibroJuego, int a) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+
 }
