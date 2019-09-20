@@ -537,7 +537,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
             this.pack();
             this.repaint();
         }
-        if (this.cvj.tipoDePagina()== 1) {
+        int tipo = this.cvj.tipoDePagina();
+        if (tipo == 1) {
             //this.flag1=false;
             String s ="normal";
             this.jugandoPagina(s);
@@ -545,7 +546,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         }
         else{
             //System.out.println(this.cvj);
-            if (this.cvj.tipoDePagina()== -1) {
+            if (tipo == -1) {
                 //this.flag1=false;
                 JOptionPane.showMessageDialog(null, "El Libro no fue completado correctamente, saliendo al menu inicial","Advertencia ", JOptionPane.WARNING_MESSAGE);
                 this.getContentPane().removeAll(); 
@@ -555,7 +556,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 ///this.rellenadoDatosPaginaNormal();
                 
             }
-            if (this.cvj.tipoDePagina()== 4) {
+            if (tipo == 4) {
                 //this.flag1=false;
                 String s ="bueno";
                 this.jugandoPagina(s);
@@ -564,7 +565,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 ///this.jugandoPaginaNormal();
                 ///this.rellenadoDatosPaginaNormal();
             }
-            if (this.cvj.tipoDePagina()== 2) {
+            if (tipo == 2) {
                 //this.flag1=false;
                 String s ="malo";
                 this.jugandoPagina(s);
@@ -573,7 +574,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 ///this.jugandoPaginaNormal();
                 ///this.rellenadoDatosPaginaNormal();
             }
-            if (this.cvj.tipoDePagina()== 3) {
+            if (tipo == 3) {
                 //this.flag1=false;
                 String s ="regular";
                 this.jugandoPagina(s);
@@ -768,7 +769,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         );
         
         jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(this.opcionesJugandoPaginaNormal(this.cvj.mostrarListaCaminosDePagina())));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(this.opcionesJugandoPagina(this.cvj.mostrarListaCaminosDePagina())));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                // jComboBox1ActionPerformed(evt);
@@ -814,37 +815,42 @@ public class VistaPrincipal extends javax.swing.JFrame {
         
         
     }
-    private String[] opcionesJugandoPaginaNormal(ArrayList<String> caminos){
-        String [] opcionesJugandoPaginaNormal = new String[0];
+    private String[] opcionesJugandoPagina(ArrayList<String> caminos){
+        String [] opcionesJugandoPagina = new String[0];
         this.flag2 = false;
         if (caminos != null) {
             System.out.println("el tamaño del camino es: "+caminos.size());
             
-            opcionesJugandoPaginaNormal = new String [caminos.size()+1];
+            opcionesJugandoPagina = new String [caminos.size()+1];
             for (int i = 0; i < caminos.size()+1; i++) {
                 if (i==0) {
-                    opcionesJugandoPaginaNormal[i]="Escoje uno";
+                    opcionesJugandoPagina[i]="Escoje uno";
                 }
                 
                 else{
                     System.out.println(" que esta pasando: "+caminos.get(i-1));
-                    opcionesJugandoPaginaNormal[i]=caminos.get(i-1);
+                    opcionesJugandoPagina[i]=caminos.get(i-1);
                 }
             }   
         }else{
             if (this.cvj.tipoDePagina()== 1) {
                 this.flag2 = true;
-                opcionesJugandoPaginaNormal = new String[1];
-                opcionesJugandoPaginaNormal[0] = "No tienes opciones validas";
+                opcionesJugandoPagina = new String[1];
+                opcionesJugandoPagina[0] = "No tienes opciones validas";
                 //JOptionPane.showMessageDialog(null, "No puedes seguir avanzado ya que quemaste todos tus objetos, saliendo... ","Advertencia ", JOptionPane.WARNING_MESSAGE);
                 //this.getContentPane().removeAll(); 
                 //this.repaint();
                 //this.initComponents();
             }
+            if (this.cvj.tipoDePagina()== 2 || this.cvj.tipoDePagina()== 3 || this.cvj.tipoDePagina()== 4) {
+                opcionesJugandoPagina = new String[1];
+                opcionesJugandoPagina[0] = "Haz llegado al final, no tienes caminos por recorrer";
+            }
+            
             //
         }
         
-        return opcionesJugandoPaginaNormal;
+        return opcionesJugandoPagina;
     }
     
     private void jugandoPaginaFinal(){
