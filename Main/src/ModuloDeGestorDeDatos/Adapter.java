@@ -240,10 +240,14 @@ public class Adapter {
                 int count = 0;
                 while(true){
                     if(archivos[count].getName().equals("imagenes")){
-                        imagenes = archivos[count].listFiles();                       
+                        imagenes = archivos[count].listFiles();    
+                        System.out.println("las imagenes estan aqui");
+                        System.out.println(archivos[count].getAbsolutePath());
                     }
                     if(archivos[count].getName().equals("paginas")){
-                        paginas = archivos[count].listFiles();                       
+                        paginas = archivos[count].listFiles();
+                        System.out.println("las paginas estan aqui");
+                        System.out.println(archivos[count].getAbsolutePath());
                     }
                     if(imagenes != null && paginas != null){
                         break;
@@ -301,35 +305,35 @@ public class Adapter {
                         while(!(cadena = br.readLine()).equals("end")){
                             if(cadena.equals("-")){                                
                                 opcion = br.readLine();
-                                if(!"null".equals(cadena=br.readLine()) ){
+                                if(!"".equals(cadena=br.readLine()) ){
                                     dar = new Artefacto(cadena);
                                     System.out.println("hola 1");
                                 }
                                 else{
                                     dar = null;
+                                    System.out.println("hola 2");
                                 }
-                                if(!"null".equals(cadena=br.readLine()) ){
+                                if(!"".equals(cadena=br.readLine()) ){
                                     quitar = new Artefacto(cadena);
                                     System.out.println("hola 1");
                                 }
                                 else{
                                     quitar = null;
+                                    System.out.println("hola 2");
                                 }
-                                if(!"null".equals(cadena=br.readLine()) ){
+                                if(!"".equals(cadena=br.readLine()) ){
                                     solicitar = new Artefacto(cadena);
                                     System.out.println("hola 1");
                                 }
                                 else{
                                     solicitar = null;
+                                    System.out.println("hola 2");
                                 }
                                 String numero =br.readLine();
                                 salto = Integer.parseInt(numero);
                             }
-                            System.out.println(101);
-                            System.out.println("Salto: "+salto);
                             ControladorVistaConstructor.gestorDeLibros.agregarCamino(titulo, numeroPagina, salto, opcion, dar, quitar, solicitar);
                         }   
-                        System.out.println(102);
                     }                    
                     else{
                         String nombreRegalo =br.readLine();
