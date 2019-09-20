@@ -67,11 +67,16 @@ public class ControladorVistaConstructor {
      * @param solicitar 
      */
     public void agregarCamino(String tituloDeAventura, int nPagina, int proximoSalto, String opcion, Artefacto dar, Artefacto quitar, Artefacto solicitar){
-         this.gestorDeLibros.agregarCamino(tituloDeAventura,  nPagina,  proximoSalto,  opcion,  dar,  quitar,  solicitar);
+        this.gestorDeLibros.agregarCamino(tituloDeAventura,  nPagina,  proximoSalto,  opcion,  dar,  quitar,  solicitar);
     }
     
     public void cargarLibros() throws IOException{
         this.gestorDeLibros.cargar();
     }
+
+    public void caminosCreados(String tituloLibroJuego, int nPagina) {
+        this.gestorDeLibros.caminosCreados(tituloLibroJuego, nPagina);
+    }
+    
 
 }
