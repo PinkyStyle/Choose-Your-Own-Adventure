@@ -72,11 +72,17 @@ public class GestorDeJuego {
         for (int i = 0; i < lista.size(); i++) {
             if (lista.get(i).equals(opcionCamino)) {
                 camino = caminos.get(i);
-                if (camino.getDarArtefacto() != null && camino.getQuitarArtefacto()== null && camino.getSolicitarArtefacto()== null) {
-                    
+                if (camino.getDarArtefacto() != null) {
+                   if (!protagonista.buscarArtefacto(camino.getDarArtefacto()) && !protagonista.buscarAtefactoQuemado(camino.getDarArtefacto())) {
+                        protagonista.addArtefacto(camino.getDarArtefacto());
+                        System.out.println("Artefacto añadido: " + camino.getDarArtefacto().getNombre());
+                    }
                 }
-                if (camino.getDarArtefacto() == null && camino.getQuitarArtefacto()!= null && camino.getSolicitarArtefacto()== null) {
-                
+                if (camino.getQuitarArtefacto()!= null) {
+                    if (protagonista.buscarArtefacto(camino.getQuitarArtefacto())) {
+                        protagonista.eliminarArtefacto(camino.getQuitarArtefacto());
+                        System.out.println("Artefacto añadido: " + camino.getDarArtefacto().getNombre());
+                    }
                 }
                 if (camino.getDarArtefacto() == null && camino.getQuitarArtefacto()== null && camino.getSolicitarArtefacto()!= null) {
                     

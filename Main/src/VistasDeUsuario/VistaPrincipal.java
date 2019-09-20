@@ -655,7 +655,12 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     try {
                         //jButton1ActionPerformed(evt);
-                        jugandoSiguientePagina();
+                        if (flag2==true) {
+                            JOptionPane.showMessageDialog(null, "No puedes seguir avanzado ya que quemaste todos tus objetos, saliendo... ","Advertencia ", JOptionPane.WARNING_MESSAGE);
+                            salirSinConfirmacion(evt);
+                        }else{
+                            jugandoSiguientePagina();
+                        }
                     } catch (FileNotFoundException ex) {
                         Logger.getLogger(VistaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -818,6 +823,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }
     private String[] opcionesJugandoPaginaNormal(ArrayList<String> caminos){
         String [] opcionesJugandoPaginaNormal = new String[0];
+        this.flag2 = false;
         if (caminos != null) {
             System.out.println("el tamaño del camino es: "+caminos.size());
             
@@ -833,11 +839,14 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 }
             }   
         }else{
-            if (this.cvj.tipoDePagina()==1) {
-                JOptionPane.showMessageDialog(null, "No puedes seguir avanzado ya que quemaste todos tus objetos, saliendo... ","Advertencia ", JOptionPane.WARNING_MESSAGE);
-                this.getContentPane().removeAll(); 
-                this.repaint();
-                this.initComponents();
+            if (this.cvj.tipoDePagina()== 1) {
+                this.flag2 = true;
+                opcionesJugandoPaginaNormal = new String[1];
+                opcionesJugandoPaginaNormal[0] = "No tienes opciones validas";
+                //JOptionPane.showMessageDialog(null, "No puedes seguir avanzado ya que quemaste todos tus objetos, saliendo... ","Advertencia ", JOptionPane.WARNING_MESSAGE);
+                //this.getContentPane().removeAll(); 
+                //this.repaint();
+                //this.initComponents();
             }
             //
         }
@@ -1996,4 +2005,5 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private final ControladorVistaJugador cvj;
     private String tituloLibroJuego;
     private File abre;
+    private boolean flag2 = false;
 }
