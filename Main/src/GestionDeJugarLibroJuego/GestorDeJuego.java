@@ -101,20 +101,23 @@ public class GestorDeJuego {
         if (tipo != null) {
             String[] parse = tipo.split(" ");
             if (parse[0].equalsIgnoreCase("Final") == true) {
-                if (parse[1].equalsIgnoreCase("bueno") == true)// final bueno
-                {
+                Final paginaFinal=(Final) gestorDeLibros.retornarPagina(tituloDeAventura, nPagina);
+                if (parse[1].equalsIgnoreCase("bueno") == true){
                     System.out.println("Final bueno obtenido");
                     gestorDeLibros.cambiarEstadoLibro(tituloDeAventura);
+                    this.protagonista.addArtefacto(paginaFinal.getArtefacto());
                     this.nPagina = camino.getNumeroPagina();
                     return 4;
                 } else if (parse[1].equalsIgnoreCase("regular") == true) {
                     this.nPagina = camino.getNumeroPagina();
                     return 3;
                 } else if (parse[1].equalsIgnoreCase("malo") == true) {
+                    this.protagonista.eliminarArtefacto(paginaFinal.getArtefacto());
                     this.nPagina = camino.getNumeroPagina();
                     return 2;
                 }
             } else if (tipo.equalsIgnoreCase("Pagina Normal") == true) {
+                
                 this.nPagina = camino.getNumeroPagina();
                 return 1;
             }
