@@ -136,6 +136,9 @@ public class Adapter {
                     pw.println(f.getArtefacto().getNombre());
                 }                
             }
+            else{
+                pw.println("");
+            }
             ArrayList<String> img = pagina.getImagenes();
             for (int i = 0; i < img.size(); i++) {
                 if(!img.isEmpty()){
@@ -243,7 +246,8 @@ public class Adapter {
                         }
                     }
                                        
-                    if(tipo.equals("Pagina Normal")){                        
+                    if(tipo.equals("Pagina Normal")){       
+                        br.readLine();
                         if(imagenes.length !=0){
                             for(File img:imagenes){
                                 if(img.getAbsolutePath().contains(numeroPagina+"-")){
@@ -262,7 +266,8 @@ public class Adapter {
                         Artefacto solicitar = null;
                         String opcion = "";
                         int salto = 0;
-
+                        
+                        System.out.println("cadena:" +cadena);
                         while(!(cadena = br.readLine()).equals("end")){
                             if(cadena.equals("-")){                                
                                 opcion = br.readLine();

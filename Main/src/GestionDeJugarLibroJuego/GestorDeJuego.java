@@ -24,7 +24,7 @@ public class GestorDeJuego {
     }
 
     /**
-     *Lista que retorna todos los nombres de los libros para ser mostrados en la interfaz.
+     *
      * @return
      */
     public ArrayList<String> mostrarListaLibroJuegos() {
@@ -32,21 +32,18 @@ public class GestorDeJuego {
     }
 
     /**
-     *devuelve toda la informacion de un libro, con exepción de las
-     * paginas que este contenga.
+     *
      * @param tituloDeAventura
      * @return
      */
     public ArrayList<String> mostrarinformacionDeUnLibroJuegos(String tituloDeAventura) {
-        System.out.println("Mostrando información del libro " + tituloDeAventura);
+        System.out.println("Mostrando informaciÃ³n del libro " + tituloDeAventura);
         return gestorDeLibros.mostrarinformacionDeUnLibroJuegos(tituloDeAventura);
     }
 
     //-----------------------------------------------------------------------
     /**
-     * Inicializa el juego creando el protagonista, npagina 1, tituloDeAventura,
-     * ademas de resetear las lista de artefactos y artefactos quemados
-     * que tienen un protagonista.
+     * Inicializa el juego creando el protagonista, npagina 1, tituloDeAventura
      *
      * @param tituloDeAventura
      * @param nombreAventuraro
@@ -71,33 +68,46 @@ public class GestorDeJuego {
         //1.agrego artefacto o elimino artefacto segun sea el caso.
         Camino camino = null;
         ArrayList<Camino> caminos = gestorDeLibros.getCaminosDePagina(tituloDeAventura, nPagina);
-        // obtengo todos los caminos a los que puedo ir, con los artefactos que tiene el protagonista.
         ArrayList<String> lista = gestorDeLibros.mostrarRutasDePagina(tituloDeAventura, nPagina);
         for (int i = 0; i < lista.size(); i++) {
             if (lista.get(i).equals(opcionCamino)) {
                 camino = caminos.get(i);
-                if (camino.getDarArtefacto() != null) {// me estan dando un  artefacto
-                    if (!protagonista.buscarAtefactoQuemado(camino.getDarArtefacto())) {
-                        protagonista.addArtefacto(camino.getDarArtefacto());
-                        System.out.println("Artefacto añadido: " + camino.getDarArtefacto().getNombre());
-                    }
+                if (camino.getDarArtefacto() != null && camino.getQuitarArtefacto()== null && camino.getSolicitarArtefacto()== null) {
+                    
                 }
-                if (!protagonista.buscarArtefacto(camino.getDarArtefacto())) {
-                    if (camino.getQuitarArtefacto() != null) {// me estan quitando un artefacto por ir a ese camino.
-                        System.out.println("Artefacto quitado: " + camino.getQuitarArtefacto().getNombre());
-                        protagonista.eliminarArtefacto(camino.getQuitarArtefacto()); // al eliminar el artefacto de la lista se agrega al tiro a la lista de quemados
-                    }
+                if (camino.getDarArtefacto() == null && camino.getQuitarArtefacto()!= null && camino.getSolicitarArtefacto()== null) {
+                
                 }
-                break;// salimos del ciclo debido a que dar y quitar son las unicas opciones que podemos realizar
+                if (camino.getDarArtefacto() == null && camino.getQuitarArtefacto()== null && camino.getSolicitarArtefacto()!= null) {
+                    
+                }
+                if (camino.getDarArtefacto() != null && camino.getQuitarArtefacto()== null && camino.getSolicitarArtefacto()== null) {
+                    
+                }
+                if (camino.getDarArtefacto() != null && camino.getQuitarArtefacto()== null && camino.getSolicitarArtefacto()== null) {
+                
+                }
+                if (camino.getDarArtefacto() != null && camino.getQuitarArtefacto()== null && camino.getSolicitarArtefacto()== null) {
+                    
+                }
+                if (camino.getDarArtefacto() != null && camino.getQuitarArtefacto()== null && camino.getSolicitarArtefacto()== null) {
+                    
+                }
+                if (camino.getDarArtefacto() != null && camino.getQuitarArtefacto()== null && camino.getSolicitarArtefacto()== null) {
+                
+                }
+                if (camino.getDarArtefacto() != null && camino.getQuitarArtefacto()== null && camino.getSolicitarArtefacto()== null) {
+                    
+                }
             }
         }
         if (camino == null) {
-            System.out.println("Camino null. Página no encontrada");
+            System.out.println("Camino null. PÃ¡gina no encontrada");
             return -1;
         }
         String tipo = gestorDeLibros.tipoDePagina(tituloDeAventura, camino.getNumeroPagina());
         if (tipo == null) {
-            System.out.println("Tipo null. Página no encontrada");
+            System.out.println("Tipo null. PÃ¡gina no encontrada");
             return -1;
         }
         System.out.println("tipo de pagina ============== "+tipo+"=============================");
@@ -125,13 +135,13 @@ public class GestorDeJuego {
             }
         }
         
-        System.out.println("fin de página normal");
+        System.out.println("fin de pÃ¡gina normal");
         
         return 1;
     }
 
     /**
-     *devuelve la descripcion de una pagina.
+     *
      * @return
      */
     public String mostrarDescripcionDePagina() {
@@ -140,8 +150,8 @@ public class GestorDeJuego {
     }
 
     /**
-     * devuelve la ruta de la imagen de una pagina.
-     * @return puede ser null si la pagina no tiene imagene.
+     *
+     * @return
      */
     public ArrayList<String> mostrarImagenesDePagina() {
         return gestorDeLibros.mostrarImagenesDePagina(this.tituloDeAventura, this.nPagina);
@@ -159,18 +169,18 @@ public class GestorDeJuego {
         ArrayList<Camino> caminos = gestorDeLibros.getCaminosDePagina(tituloDeAventura, nPagina);
         ArrayList<String> lista = gestorDeLibros.mostrarRutasDePagina(tituloDeAventura, nPagina);
         ArrayList<String> aux = new ArrayList<>();
-        //System.out.println("el tamaño del camino :" +caminos.size());
+        //System.out.println("el tamaÃ±o del camino :" +caminos.size());
         if (caminos != null) {
             for (int i = 0; i < caminos.size(); i++) {
-                System.out.println("el tamaño del camino :" +caminos.size());
+                System.out.println("el tamaÃ±o del camino :" +caminos.size());
                 if (caminos.get(i).getSolicitarArtefacto() != null) {
                     if (protagonista.buscarArtefacto(caminos.get(i).getSolicitarArtefacto())) {
                         aux.add(lista.get(i));
-                        System.out.println("Camino transitable añadido");
+                        System.out.println("Camino transitable aÃ±adido");
                     }
                 } else {
                     aux.add(lista.get(i));
-                    System.out.println("Camino transitable añadido");
+                    System.out.println("Camino transitable aÃ±adido");
                 }
 
             }
@@ -202,7 +212,7 @@ public class GestorDeJuego {
                 System.out.println("Artefacto solicitado: " + solicitarArtefacto.getNombre());
                 if (protagonista.buscarArtefacto(solicitarArtefacto)) { //significa que tengo el artefacto para ir por ese camino.
                     caminosQuePuedoIr.add(camino.getOpcion());
-                    System.out.println("Sí tengo el artefacto");
+                    System.out.println("SÃ­ tengo el artefacto");
                 }
             }
         }
@@ -213,6 +223,8 @@ public class GestorDeJuego {
      * verifica el tipo de pagina que tiene un libro. Si una pagina es de tipo
      * final significa que no tiene camino, y por ende termina la historia.
      *
+     * @param nombreLibro
+     * @param pag
      * @return -1 si la pagina no se encontro, 0 si la pagina es de tipo final y
      * 1 si la pagina es paginaNormal.
      */
