@@ -964,6 +964,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 else{
                     this.tituloLibroJuego=jTextField2.getText();
                     this.cvc.crearLibroJuego(jTextField1.getText(), jTextField2.getText(), null, jTextArea1.getText());
+                    flag1 = false;
                 }
                 listModel = new DefaultListModel();
                 this.paginasLibroJuego = new ArrayList<>();
@@ -1427,7 +1428,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
             this.jTextField4.setText(datos.get(4));
             //error archivco
             System.out.println(datos.get(1)+" ; "+datos.get(3));
-            System.out.println("cantidad de componentes del panel"+this.jPanel1.getComponentCount());
+            System.out.println("cantidad de componentes del panel "+this.jPanel1.getComponentCount());
             if (this.jPanel1.getComponentCount()==1) {
                 this.jPanel1.remove(0);
                 this.pack();
