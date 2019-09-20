@@ -1298,7 +1298,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private void jComboBox1ActionPerformed(ActionEvent evt) {
         System.out.println(this.jComboBox1.getSelectedItem());
         this.resetPagina();
-        if (this.jComboBox1.getSelectedItem().equals("Página normal")) {
+        if (this.jComboBox1.getSelectedItem().equals("Pagina normal")) {
             jTextArea1.setEditable(true);
             jTextArea1.setEnabled(true);
             jTextField1.setEditable(true);
@@ -1432,7 +1432,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
             listaLibroJuego = new String [lista.size()+1];
             for (int i = 0; i < lista.size()+1; i++) {
                 if (i==0) {
-                    listaLibroJuego[i]="Escoje uno";
+                    listaLibroJuego[i]="Escoge uno";
                 }
                 else{
                     listaLibroJuego[i]=lista.get(i-1);
