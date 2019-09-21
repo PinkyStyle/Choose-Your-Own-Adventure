@@ -370,7 +370,7 @@ public class Adapter {
                 } else {
                     System.out.println("El libro no tiene suficientes paginas");
                     System.out.println("Se eliminara el directorio asociado");
-                    eliminarDirectorio(f);
+                    //eliminarDirectorio(f);
                 }
 
             }
