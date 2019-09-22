@@ -14,6 +14,7 @@ public class Protagonista {
 
     /**
      * Default constructor
+     * @param nombre
      */
     public Protagonista(String nombre) {
         this.nombre = nombre;
