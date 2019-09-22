@@ -17,6 +17,7 @@ public class Main {
         // TODO code application logic here
         VistaPrincipal vp = new VistaPrincipal();
         vp.show();
+        vp.setResizable(false);
     }
     
 }

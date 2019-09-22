@@ -860,12 +860,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
         return opcionesJugandoPagina;
     }
     
-    private void jugandoPaginaFinal(){
-        //estoy viendo como lo muestro correctamente de momento solo manda al menu principal
-        //this.getContentPane().removeAll(); 
-        //this.repaint();
-        //this.initComponents();
-    }
     
     private void jugandoSiguientePagina() throws FileNotFoundException {
         if (!this.jComboBox1.getSelectedItem().equals("Escoje uno")) {
@@ -1291,6 +1285,12 @@ public class VistaPrincipal extends javax.swing.JFrame {
             if (this.paginasLibroJuego.contains(Integer.parseInt(this.jTextField3.getText()))) {
                 JOptionPane.showMessageDialog(null, "Ese n° de pagina ya está creada","Advertencia ", JOptionPane.WARNING_MESSAGE);
             }
+            else{
+                JOptionPane.showMessageDialog(null, "Ese n° de pagina está disponible");
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Ingrese un n° valido para realizar el check","Advertencia ", JOptionPane.WARNING_MESSAGE);
         }
 
     }
