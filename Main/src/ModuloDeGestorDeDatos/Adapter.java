@@ -43,10 +43,10 @@ public class Adapter {
         File directorio = new File(origen);
         if (!directorio.exists()) {
             if (directorio.mkdir()) {
-                System.out.println("Se ha creado el directorio para almacenar los librojuegos");
+                //System.out.println("Se ha creado el directorio para almacenar los librojuegos");
             }
         } else {
-            System.out.println("El directorio para libros ya existe");
+            //System.out.println("El directorio para libros ya existe");
             //cargarLibroJuego();
         }
     }
@@ -63,21 +63,21 @@ public class Adapter {
         File lj = new File(this.origen + libro);
         if (!lj.exists()) {
             if (lj.mkdirs()) {
-                System.out.println("Se creo el directorio del librojuego");
+                //System.out.println("Se creo el directorio del librojuego");
                 File paginas = new File(this.origen + libro + "/paginas");
                 if (!paginas.exists()) {
                     if (paginas.mkdirs()) {
-                        System.out.println("Directorio para imagenes creado con exito");
+                  //      System.out.println("Directorio para imagenes creado con exito");
                     } else {
-                        System.out.println("Ya existe un directorio para paginas");
+                    //    System.out.println("Ya existe un directorio para paginas");
                     }
                 }
                 File imagenes = new File(this.origen + libro + "/imagenes");
                 if (!imagenes.exists()) {
                     if (imagenes.mkdirs()) {
-                        System.out.println("Directorio para imagenes creado con exito");
+                      //  System.out.println("Directorio para imagenes creado con exito");
                     } else {
-                        System.out.println("Ya existe un directorio para imagenes");
+                        //System.out.println("Ya existe un directorio para imagenes");
                     }
                 }
                 String rutaImagen = librojuego.getImagen();
@@ -99,12 +99,12 @@ public class Adapter {
                     pw.println("-");
                 }
 
-                System.out.println("Se guardo el txt con el juego");
+                //System.out.println("Se guardo el txt con el juego");
             } else {
-                System.out.println("Error al crear el directorio del librojuego");
+                //System.out.println("Error al crear el directorio del librojuego");
             }
         } else {
-            System.out.println("Ese libro (o titulo) ya existe");
+           // System.out.println("Ese libro (o titulo) ya existe");
         }
     }
 
@@ -351,10 +351,8 @@ public class Adapter {
                                     if (img.getName().contains(algo)) {
 
                                         String hola = img.getAbsolutePath();
-                                        System.out.println("el ruben es weco °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°|||" + hola);
                                         ControladorVistaConstructor.gestorDeLibros.agregarPagina(
                                                 titulo, numeroPagina, descripcion, tipo, hola, regalo);
-                                        System.out.println("el milla es weco!!!!!!!!!!!!!!!!!!!!!!!!!1" + ControladorVistaConstructor.gestorDeLibros.mostrarImagenesDePagina(titulo, numeroPagina).get(0));
                                         break;
                                     }
 
@@ -368,14 +366,14 @@ public class Adapter {
                         }
                     }
                 } else {
-                    System.out.println("El libro no tiene suficientes paginas");
-                    System.out.println("Se eliminara el directorio asociado");
+                    //System.out.println("El libro no tiene suficientes paginas");
+                    //System.out.println("Se eliminara el directorio asociado");
                     //eliminarDirectorio(f);
                 }
 
             }
         } else {
-            System.out.println("No hay libros");
+            //System.out.println("No hay libros");
         }
     }
 

@@ -44,7 +44,6 @@ public class LibroJuego {
             PaginaNormal pagina= new PaginaNormal(numeroPagina, descripcion, tipo);
             pagina.addImagenes(imagen);
             this.paginas.add(pagina);
-            System.out.println("Se creo una pagina normal");
             return;
         }
         String[] parseo= tipo.split(" ");
@@ -52,11 +51,9 @@ public class LibroJuego {
             Final pagina=new Final(numeroPagina, descripcion, tipo, artefacto);
             pagina.addImagenes(imagen);
             this.paginas.add(pagina);
-            //System.out.println("brayan final :"+tipo);
             System.out.println("se creo una pagina final de tipo " + tipo);
             return;
         }
-        System.out.println("Fallo al crear la pagina");
     }
  
     /**
@@ -73,11 +70,9 @@ public class LibroJuego {
             if(this.paginas.get(i).getNumeroPagina()==nPagina){
                 PaginaNormal pagina=(PaginaNormal)this.paginas.get(i);
                 pagina.agregarCamino(new Camino(proximoSalto, opcion,  dar,  quitar,  solicitar));
-                System.out.println("Se agrego el camino correctamente");
                 return;
             }
         }
-        System.out.println("se agrego el camino correctamente");
     }
 
     /**
@@ -88,7 +83,6 @@ public class LibroJuego {
     public BuilderPagina getPagina(int nPagina) {
         for (int j = 0; j < this.paginas.size(); j++) {
             if(this.paginas.get(j).getNumeroPagina()==nPagina){
-                System.out.println("se encontro la pagina correctamente");
                 return this.paginas.get(j);
             }
         }
@@ -101,7 +95,6 @@ public class LibroJuego {
      */
     public void editarEstado(){
         this.estado="Completado";
-        System.out.println("El libro se ha completado");
     }
 
     /**
@@ -156,7 +149,6 @@ public class LibroJuego {
         lista.add(this.sinopsis);
         lista.add(this.imagen);
         lista.add(this.estado);
-        System.out.println("Metodo informacion de libro juego completada");
         return lista;
     }
 }
