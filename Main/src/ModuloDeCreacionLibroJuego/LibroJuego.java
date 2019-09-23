@@ -51,7 +51,6 @@ public class LibroJuego {
             Final pagina=new Final(numeroPagina, descripcion, tipo, artefacto);
             pagina.addImagenes(imagen);
             this.paginas.add(pagina);
-            System.out.println("se creo una pagina final de tipo " + tipo);
             return;
         }
     }
@@ -86,7 +85,6 @@ public class LibroJuego {
                 return this.paginas.get(j);
             }
         }
-        System.out.println("No se encontro la pagina");
         return null;
     }
     

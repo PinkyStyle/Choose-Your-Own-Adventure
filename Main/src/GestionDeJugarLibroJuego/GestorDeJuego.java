@@ -144,7 +144,6 @@ public class GestorDeJuego {
         ArrayList<Camino> caminos = gestorDeLibros.getCaminosDePagina(tituloDeAventura, nPagina);
         ArrayList<String> lista = gestorDeLibros.mostrarRutasDePagina(tituloDeAventura, nPagina);
         ArrayList<String> aux = new ArrayList<>();
-        //System.out.println("el tamaño del camino :" +caminos.size());
         if (caminos != null) {
             for (int i = 0; i < caminos.size(); i++) {
                 if (caminos.get(i).getSolicitarArtefacto() != null) {

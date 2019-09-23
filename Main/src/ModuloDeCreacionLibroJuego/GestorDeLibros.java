@@ -31,7 +31,6 @@ public class GestorDeLibros {
      */
     public void crearLibroJuego(String nombreDeAutor, String tituloDeAventura, String imagen, String sinopsis) throws FileNotFoundException, UnsupportedEncodingException{
         this.listaLibrojuego.add(new LibroJuego(nombreDeAutor, tituloDeAventura, imagen, sinopsis));
-        //System.out.println("se creo el libro: gestor de libros - metodo crearLibroJuego");
         //ADAPTADOR VEN A BUSCARLO        
         this.adaptador.guardarLibroJuego(new LibroJuego(nombreDeAutor, tituloDeAventura, imagen, sinopsis));
     }
@@ -207,7 +206,6 @@ public class GestorDeLibros {
                 return;
             }
         }
-        System.out.println("no se agrego el camino no se encontro el libro o la pagina: gestor de libros- metodo retornarPagina");
     }
 
     /**

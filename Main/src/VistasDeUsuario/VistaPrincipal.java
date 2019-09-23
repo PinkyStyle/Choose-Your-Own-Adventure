@@ -539,7 +539,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
             this.rellenadoDatosPagina();
         }
         else{
-            //System.out.println(this.cvj);
+            
             if (tipo == -1) {
                 //this.flag1=false;
                 JOptionPane.showMessageDialog(null, "El Libro no fue completado correctamente, saliendo al menú inicial","Advertencia ", JOptionPane.WARNING_MESSAGE);
@@ -661,7 +661,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
         }
         else{
             if (tipo.equals("bueno")) {
-                System.out.println(" entre aca final bueno puto");
                 jButton1.setText("Reinicio/Salir");
                 
                 jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -1314,7 +1313,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
      * Método que se encarga de bloquear las paginas según se cambia su tipo
      */
     private void jComboBox1ActionPerformed(ActionEvent evt) {
-        System.out.println(this.jComboBox1.getSelectedItem());
         this.resetPagina();
         if (this.jComboBox1.getSelectedItem().equals("Pagina normal")) {
             jTextArea1.setEditable(true);
@@ -1505,7 +1503,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
             }
             else{
                 
-                //System.out.println("sdflkhjsdfklsdfhjlkasdfjlkasdf nlksdfnjlkfsdasdfnlkasdfnlk;asdfnlk AQUIIIIIIIIIIIIIII CTMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM");
+               
                 this.imagen = new JLabel();
                 this.imagen.setBounds(0, 0,200,200);
                 this.jPanel1.add(this.imagen);
@@ -1987,7 +1985,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
         for (int i = 0; i < cadena.length(); i++) {
             if ((cadena.codePointAt(i)>=65 && cadena.codePointAt(i)<=90) || (cadena.codePointAt(i)>=97 && cadena.codePointAt(i)<=123) || (cadena.codePointAt(i)==32) || (cadena.codePointAt(i)>=48 && cadena.codePointAt(i)<=57) || (cadena.codePointAt(i)==00) || (cadena.codePointAt(i)==225) || (cadena.codePointAt(i)==233) || (cadena.codePointAt(i)==237) || (cadena.codePointAt(i)==243) ||  (cadena.codePointAt(i)==250) || (cadena.codePointAt(i)==193) || (cadena.codePointAt(i)==201) || (cadena.codePointAt(i)==205) || (cadena.codePointAt(i)==211) || (cadena.codePointAt(i)==218)) {
                 //return string =false;
-                System.out.println("Caracter bueno ");
             }
             else{
                 return string =false;
